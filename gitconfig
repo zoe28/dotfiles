@@ -1,0 +1,66 @@
+[user]
+  name = atav32
+  email = brianbzhang@gmail.com
+[github]
+  user = atav32
+[core]
+  editor = vim
+  excludesfile = ~/.gitignore_global
+[merge]
+  tool = vimdiff
+  conflictstyle = diff3
+  external = gitmerge
+[mergetool]
+  prompt = false
+[color]
+  status = auto
+  branch = auto
+  interactive = auto
+  diff = auto
+  grep = auto
+  ui = 1
+[color "diff"]
+  meta = yellow bold
+  frag = magenta
+  old = red reverse white
+  new = green reverse white
+[log]
+  decorate = full
+[alias]
+  a = add
+  b = branch
+  bo = branch
+  branches = branch
+  c = commit
+  co = checkout
+  up = checkout
+  di = diff
+  vimdiff = difftool --tool=vimdiff --no-prompt
+  fin = finish
+  last = diff-tree --no-commit-id --name-status -r HEAD~1..HEAD
+  glog = log --graph
+  master = checkout master
+  o = log --graph origin..HEAD
+  out = log --graph origin..HEAD
+  outgoing = log --graph origin..HEAD
+  pl = pull
+  ps = push
+  st = status
+  sum = status
+  unstage = reset HEAD
+  revert = checkout HEAD
+  uncommit = reset --soft HEAD^
+[push]
+  default = current
+[branch]
+  autosetuprebase = always
+[rerere]
+  enabled = 1
+[help]
+  autocorrect = 1
+[url "http://"]
+  insteadOf = git://
+[url "https://"]
+  insteadOf = git://
+[zumper]
+  finish-deletes-branch = 1

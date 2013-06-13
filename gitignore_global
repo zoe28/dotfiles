@@ -1,0 +1,5 @@
+*.pyenv
+*.swp
+.env
+.DS_Store
+tags

@@ -1,0 +1,14 @@
+node_modules/
+lib/
+bower_components/
+_static_root_/
+*.pyc
+frontend/static/
+*-compiled.js
+wordpress/
+wpbase/
+blog_wp/
+*.sql
+page_objects/shared/
+biz_utils/
+feeds/samples
