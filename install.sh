@@ -185,6 +185,11 @@ if [[ $OSTYPE == linux-gnu ]]; then
     fi
 fi
 
+# git-prompt
+if [ ! -e ~/.git-prompt.sh ]; then
+  curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -o ~/.git-prompt.sh
+fi
+
 # Cleanup
 
 mkdir -p "$HOME/.vim/"{bundle,swap,backup,undo}

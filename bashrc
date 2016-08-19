@@ -121,18 +121,23 @@ shopt -s checkwinsize
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 
-# Bash prompt
-BLUE="\[\033[0;34m\]"
-BLUEBOLD="\[\033[1;34m\]"
-GREEN="\[\033[1;32m\]"
-RED="\[\033[0;31m\]"
-REDBOLD="\[\033[1;31m\]"
-WHITE="\[\033[0m\]"
-WHITEBOLD="\[\033[1;37m\]"
-YELLOW="\[\033[0;33m\]"
-YELLOWBOLD="\[\033[1;33m\]"
+# Prompt
+# --------------------------------------------------------------------
 
-export PS1=" $GREEN\u@\h $YELLOW\@ $YELLOWBOLD\$(parse_git_branch) $BLUEBOLD\w \n$WHITE\\$ "
+if [ "$PLATFORM" = Linux ]; then
+  PS1="\[\e[1;38m\]\u\[\e[1;34m\]@\[\e[1;31m\]\h\[\e[1;30m\]:"
+  PS1="$PS1\[\e[0;38m\]\w\[\e[1;35m\]> \[\e[0m\]"
+else
+  ### git-prompt
+  __git_ps1() { :;}
+  if [ -e ~/.git-prompt.sh ]; then
+    source ~/.git-prompt.sh
+  fi
+  # PROMPT_COMMAND='history -a; history -c; history -r; printf "\[\e[38;5;59m\]%$(($COLUMNS - 4))s\r" "$(__git_ps1) ($(date +%m/%d\ %H:%M:%S))"'
+  PROMPT_COMMAND='history -a; printf "\[\e[38;5;59m\]%$(($COLUMNS - 4))s\r" "$(__git_ps1) ($(date +%m/%d\ %H:%M:%S))"'
+  PS1="\[\e[34m\]\u\[\e[1;32m\]@\[\e[0;33m\]\h\[\e[35m\]:"
+  PS1="$PS1\[\e[m\]\w\[\e[1;31m\]> \[\e[0m\]"
+fi
 
 
 # virtualenvwrapper stuff.
