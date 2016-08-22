@@ -6,12 +6,6 @@ tmux source ~/.tmux.conf > /dev/null
 alias tmux='tmux -2'
 
 
-# autoenv
-if [ -b "$HOME/.autoenv/activate.sh" ]; then
-    source ~/.autoenv/activate.sh
-fi
-source /usr/local/opt/autoenv/activate.sh
-
 
 # Ruby env
 #eval "$(rbenv init -)"
@@ -48,13 +42,6 @@ bind -x '"\C-w":tmux kill-window'
 alias kp="tmux kill-pane -a"
 
 
-# Ctags
-if [ -f `brew --prefix`/bin/ctags ]; then
-    alias ctags=`brew --prefix`/bin/ctags
-fi
-
-
-
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
@@ -62,13 +49,6 @@ fi
 # Ruby
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
-
-# Linux vs Mac
-if [[ $OSTYPE == linux-gnu ]]; then
-    COLOR="--color=auto"
-elif [[ $OSTYPE == darwin* ]]; then
-    COLOR="-G"
-fi
 
 
 # Git commit indicator
@@ -80,14 +60,6 @@ parse_git_branch ()
 {
     git branch 2> /dev/null | grep '*' | sed "s/*\ \(.*\)/$(parse_git_dirty)\1/"
 }
-
-
-# coreutils
-if [[ $OSTYPE == darwin* ]]; then
-  PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-  MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-fi
-
 
 # colored manpages
 man() {
@@ -133,14 +105,14 @@ else
   if [ -e ~/.git-prompt.sh ]; then
     source ~/.git-prompt.sh
   fi
-  # PROMPT_COMMAND='history -a; history -c; history -r; printf "\[\e[38;5;59m\]%$(($COLUMNS - 4))s\r" "$(__git_ps1) ($(date +%m/%d\ %H:%M:%S))"'
   PROMPT_COMMAND='history -a; printf "\[\e[38;5;59m\]%$(($COLUMNS - 4))s\r" "$(__git_ps1) ($(date +%m/%d\ %H:%M:%S))"'
   PS1="\[\e[34m\]\u\[\e[1;32m\]@\[\e[0;33m\]\h\[\e[35m\]:"
   PS1="$PS1\[\e[m\]\w\[\e[1;31m\]> \[\e[0m\]"
 fi
 
 
-# virtualenvwrapper stuff.
+# Virtual Env
+# --------------------------------------------------------------------
 export WORKON_HOME=~/.virtualenvs
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
   export PATH=/usr/local/bin:$PATH
@@ -163,6 +135,7 @@ export PIP_RESPECT_VIRTUALENV=true
 
 
 # Aliases
+# --------------------------------------------------------------------
 
 # vim love
 alias v="vim"
@@ -177,12 +150,136 @@ alias ps="ps aux"
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 
 # file sizes
-if [[ $OSTYPE == linux-gnu ]]; then
-    alias du="du -hs | sort -h"
-elif [[ $OSTYPE == darwin* ]]; then
-    alias du="du -hs | gsort -h"
-fi
+alias du="du -hs | sort -h"
 
+# use versions when in repo
+function mv {
+  if git rev-parse --is-inside-work-tree > /dev/null 2>&1 ; then
+      git mv -v $@ 2> /dev/null || $(which mv) -iv $@
+  else
+      $(which mv) -iv $@
+  fi
+}
+
+function rm {
+  ARGS=$@
+
+  # backup
+  while [ ! $# -eq 0 ]                            # while there are arguments
+  do
+    if [[ $1 != "-"* ]] ; then                    # if not an inline argument
+      BACKUP_FILE_NAME="${1%/}.tar.bz2"           # create back-up file-name (breaks for dirs)
+      if [ -f $BACKUP_FILE_NAME ]; then           # if the file exists
+        tar -jcf $BACKUP_FILE_NAME $1             # tar
+        mv -f $BACKUP_FILE_NAME /tmp > /dev/null  # move tar to /tmp (and shut up)
+      fi
+    fi
+    shift                                         # next argument
+  done
+
+  if git rev-parse --is-inside-work-tree > /dev/null 2>&1 ; then
+      git rm $ARGS 2> /dev/null || $(which rm) -iv $ARGS
+  else
+      $(which rm) -iv $ARGS
+  fi
+}
+
+alias cp='cp -v'
+
+# virtualenv shortcut
+alias virtualize='source bin/activate'
+
+# prompt if overwriting file
+alias mkdir='mkdir -v'
+
+# silly salt
+alias salt='sudo salt'
+
+# Program defaults
+alias bundleupdate='vim -c BundleUpdate -c qa'
+
+# Typos
+alias suod='sudo'
+alias sduo='sudo'
+alias vm='mv'
+alias sl='ls'
+alias got='git'
+alias grp='grep'
+
+# Open folder in Finder
+alias f='open -a Finder ./'
+alias o='open'
+
+# Clear
+alias clr='clear'
+
+# pep8 shortcut
+alias pep8='pep8 --show-source --show-pep8 '
+
+# kill of my proceses (useful once in a while because disconnects don't kill them)
+alias killall='pkill -u $USER'
+
+# delete all .swp files
+alias rmswp='rm -rf ~/.vim/swap/*.swp'
+
+# auto resize tmux window
+alias resize='tmux detach -a'
+alias share='tmux new-session -t 0'
+
+COLOR="--color=auto"
+alias ls='ls -F $COLOR'    #colors
+alias ll='ls -lsah $COLOR'  #long list
+alias lr='ls -lR'                #recursive
+alias tree='tree -Csuh'          #alternative to recursive ls
+alias df='df -kTh'
+alias path='echo -e ${PATH//:/\\n}'
+alias grep='grep $COLOR'
+
+# cd aliases
+alias cs='cd'
+alias ~='cd ~'
+alias ..='cd ..'        #go to parent dir
+alias ...='cd ../..'    #go to grandparent dir
+alias ....='cd ../../..'    #go to great-grandparent dir
+alias .....='cd ../../../..'    #go to great-great-grandparent dir
+
+# push & pop directory
+alias st='pushd $(pwd) -n'
+alias ba='popd'
+
+# .*rc files
+alias agrc='vim ~/.agignore'
+alias aliasrc='vim ~/.alias'
+alias bashrc='vim ~/.bashrc'
+alias inputrc='vim ~/.inputrc'
+alias gitrc='vim ~/.gitconfig'
+alias screenrc='vim ~/.screenrc'
+alias tmuxrc='vim ~/.tmux.conf'
+alias vimrc='vim ~/.vimrc'
+
+re () {
+  source ~/.bashrc
+
+  if [ -f ~/.alias ]; then
+    source ~/.alias
+  fi
+
+  echo "sourced .rc files"
+}
+
+# alias directories
+alias raw='cd ~/raw/code'
+alias dots='cd ~/dotfiles'
+
+# find public IP
+alias myip='curl ip.appspot.com'
+
+# nethack
+alias nethack='telnet nethack.alt.org'
+
+
+# Git
+# --------------------------------------------------------------------
 
 # git love
 alias cm='ag "<<<<<<<"'
@@ -316,139 +413,6 @@ grc () {
   fi
 }
 
-# use versions when in repo
-function mv {
-  if git rev-parse --is-inside-work-tree > /dev/null 2>&1 ; then
-      git mv -v $@ 2> /dev/null || $(which mv) -iv $@
-  else
-      $(which mv) -iv $@
-  fi
-}
-
-function rm {
-  ARGS=$@
-
-  # backup
-  while [ ! $# -eq 0 ]                            # while there are arguments
-  do
-    if [[ $1 != "-"* ]] ; then                    # if not an inline argument
-      BACKUP_FILE_NAME="${1%/}.tar.bz2"           # create back-up file-name (breaks for dirs)
-      if [ -f $BACKUP_FILE_NAME ]; then           # if the file exists
-        tar -jcf $BACKUP_FILE_NAME $1             # tar
-        mv -f $BACKUP_FILE_NAME /tmp > /dev/null  # move tar to /tmp (and shut up)
-      fi
-    fi
-    shift                                         # next argument
-  done
-
-  if git rev-parse --is-inside-work-tree > /dev/null 2>&1 ; then
-      git rm $ARGS 2> /dev/null || $(which rm) -iv $ARGS
-  else
-      $(which rm) -iv $ARGS
-  fi
-}
-
-alias cp='cp -v'
-
-
-# virtualenv shortcut
-alias virtualize='source bin/activate'
-
-# prompt if overwriting file
-alias mkdir='mkdir -v'
-
-# silly salt
-alias salt='sudo salt'
-
-# Program defaults
-alias bundleupdate='vim -c BundleUpdate -c qa'
-
-# Typos
-alias suod='sudo'
-alias sduo='sudo'
-alias vm='mv'
-alias sl='ls'
-alias got='git'
-alias grp='grep'
-
-# Open folder in Finder
-alias f='open -a Finder ./'
-alias o='open'
-
-# Clear
-alias clr='clear'
-
-# pep8 shortcut
-alias pep8='pep8 --show-source --show-pep8 '
-
-# kill of my proceses (useful once in a while because disconnects don't kill them)
-alias killall='pkill -u $USER'
-
-# delete all .swp files
-alias rmswp='rm -rf ~/.vim/swap/*.swp'
-
-# auto resize tmux window
-alias resize='tmux detach -a'
-alias share='tmux new-session -t 0'
-
-alias ls='ls -F $COLOR'    #colors
-alias lf='ls -fF $COLOR'    #colors
-alias l='ls -F $COLOR'    #colors
-alias ll='ls -lsah $COLOR'  #long list
-alias la='ls -AF $COLOR'  #show hidden
-alias lx='ls -lXB $COLOR'  #sort by sextension
-alias lk='ls -lSr $COLOR'  #sort by size biggest last
-alias lc='ls -ltcr $COLOR' #sort by and show chagne times
-alias lu='ls -ltur $COLOR' #sort by and show access time
-alias lt='ls -ltr $COLOR'  #sort by date
-alias lm='ls -al |more'          #pipe through more
-alias lr='ls -lR'                #recursive
-alias tree='tree -Csuh'          #alternative to recursive ls
-alias df='df -kTh'
-alias path='echo -e ${PATH//:/\\n}'
-alias grep='grep $COLOR'
-
-# cd aliases
-alias cs='cd'
-alias ~='cd ~'
-alias ..='cd ..'        #go to parent dir
-alias ...='cd ../..'    #go to grandparent dir
-alias ....='cd ../../..'    #go to great-grandparent dir
-alias .....='cd ../../../..'    #go to great-great-grandparent dir
-
-# push & pop directory
-alias st='pushd $(pwd) -n'
-alias ba='popd'
-
-# .*rc files
-alias agrc='vim ~/.agignore'
-alias aliasrc='vim ~/.alias'
-alias bashrc='vim ~/.bashrc'
-alias inputrc='vim ~/.inputrc'
-alias gitrc='vim ~/.gitconfig'
-alias screenrc='vim ~/.screenrc'
-alias tmuxrc='vim ~/.tmux.conf'
-alias vimrc='vim ~/.vimrc'
-
-re () {
-  source ~/.bashrc
-
-  if [ -f ~/.alias ]; then
-    source ~/.alias
-  fi
-
-  echo "sourced .rc files"
-}
-
-# alias directories
-alias raw='cd ~/raw/code'
-alias dots='cd ~/dotfiles'
-
-# find public IP
-alias myip='curl ip.appspot.com'
-
-# nethack
-alias nethack='telnet nethack.alt.org'
 
 
 # fuzzy typos
@@ -555,3 +519,7 @@ export NVM_DIR="/Users/zhangb/.nvm"
 ## TCP ports
 # show TCP unly (no UDP), and don't translate IP addrs and ports numbers to names
 alias tcpports="sudo lsof -i tcp -nP"
+
+if [[ $OSTYPE == darwin* ]]; then
+  source ~/.bash_osx
+fi
