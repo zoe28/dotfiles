@@ -11,17 +11,11 @@ alias tmux='tmux -2'
 #eval "$(rbenv init -)"
 
 
-# Grunt Watch - increase number of open files
-ulimit -n 10000
-
 
 # Bash completion
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-    . `brew --prefix`/etc/bash_completion
-fi
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
