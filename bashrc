@@ -6,28 +6,17 @@ tmux source ~/.tmux.conf > /dev/null
 alias tmux='tmux -2'
 
 
-# autoenv
-if [ -b "$HOME/.autoenv/activate.sh" ]; then
-    source ~/.autoenv/activate.sh
-fi
-source /usr/local/opt/autoenv/activate.sh
-
-
-# Ruby env
+# Ruby
+# --------------------------------------------------------------------
 #eval "$(rbenv init -)"
 
-
-# Grunt Watch - increase number of open files
-ulimit -n 10000
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 
 # Bash completion
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-    . `brew --prefix`/etc/bash_completion
-fi
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
@@ -48,27 +37,10 @@ bind -x '"\C-w":tmux kill-window'
 alias kp="tmux kill-pane -a"
 
 
-# Ctags
-if [ -f `brew --prefix`/bin/ctags ]; then
-    alias ctags=`brew --prefix`/bin/ctags
-fi
-
-
-
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 
-# Ruby
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
-
-# Linux vs Mac
-if [[ $OSTYPE == linux-gnu ]]; then
-    COLOR="--color=auto"
-elif [[ $OSTYPE == darwin* ]]; then
-    COLOR="-G"
-fi
 
 
 # Git commit indicator
@@ -80,14 +52,6 @@ parse_git_branch ()
 {
     git branch 2> /dev/null | grep '*' | sed "s/*\ \(.*\)/$(parse_git_dirty)\1/"
 }
-
-
-# coreutils
-if [[ $OSTYPE == darwin* ]]; then
-  PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-  MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-fi
-
 
 # colored manpages
 man() {
@@ -178,11 +142,7 @@ alias ps="ps aux"
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 
 # file sizes
-if [[ $OSTYPE == linux-gnu ]]; then
-    alias du="du -hs | sort -h"
-elif [[ $OSTYPE == darwin* ]]; then
-    alias du="du -hs | gsort -h"
-fi
+alias du="du -hs | sort -h"
 
 # use versions when in repo
 function mv {
@@ -258,17 +218,9 @@ alias rmswp='rm -rf ~/.vim/swap/*.swp'
 alias resize='tmux detach -a'
 alias share='tmux new-session -t 0'
 
+COLOR="--color=auto"
 alias ls='ls -F $COLOR'    #colors
-alias lf='ls -fF $COLOR'    #colors
-alias l='ls -F $COLOR'    #colors
 alias ll='ls -lsah $COLOR'  #long list
-alias la='ls -AF $COLOR'  #show hidden
-alias lx='ls -lXB $COLOR'  #sort by sextension
-alias lk='ls -lSr $COLOR'  #sort by size biggest last
-alias lc='ls -ltcr $COLOR' #sort by and show chagne times
-alias lu='ls -ltur $COLOR' #sort by and show access time
-alias lt='ls -ltr $COLOR'  #sort by date
-alias lm='ls -al |more'          #pipe through more
 alias lr='ls -lR'                #recursive
 alias tree='tree -Csuh'          #alternative to recursive ls
 alias df='df -kTh'
@@ -321,7 +273,6 @@ alias nethack='telnet nethack.alt.org'
 # Git
 # --------------------------------------------------------------------
 
-# git love
 alias cm='ag "<<<<<<<"'
 alias g="git"
 alias ga="git add -p"
@@ -559,3 +510,7 @@ export NVM_DIR="/Users/zhangb/.nvm"
 ## TCP ports
 # show TCP unly (no UDP), and don't translate IP addrs and ports numbers to names
 alias tcpports="sudo lsof -i tcp -nP"
+
+if [[ $OSTYPE == darwin* ]]; then
+  source ~/.bash_osx
+fi

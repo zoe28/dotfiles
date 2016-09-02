@@ -1,0 +1,43 @@
+#!/bin/bash
+
+
+# Autoenv
+# ------------------------------------------------------------------------------
+if [ -b "$HOME/.autoenv/activate.sh" ]; then
+    source ~/.autoenv/activate.sh
+fi
+source /usr/local/opt/autoenv/activate.sh
+
+
+# Coreutils
+# ------------------------------------------------------------------------------
+if [[ $OSTYPE == darwin* ]]; then
+  PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+  MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+fi
+
+
+# Bash completion
+# ------------------------------------------------------------------------------
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+    . `brew --prefix`/etc/bash_completion
+fi
+
+
+# Ctags
+# ------------------------------------------------------------------------------
+if [ -f `brew --prefix`/bin/ctags ]; then
+    alias ctags=`brew --prefix`/bin/ctags
+fi
+
+
+# Increase number of open files
+# ------------------------------------------------------------------------------
+ulimit -n 10000
+
+
+# Aliases
+# ------------------------------------------------------------------------------
+COLOR="-G"
+
+alias du="du -hs | gsort -h"                                        # file sizes
