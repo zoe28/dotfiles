@@ -1,5 +1,8 @@
+*.orig
+*.pyc
 *.pyenv
 *.swp
-.env
 .DS_Store
+.env/
+.idea/
 tags
