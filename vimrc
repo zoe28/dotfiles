@@ -85,6 +85,9 @@ Plugin 'AndrewRadev/linediff.vim'
 Plugin 'mikker/seoul256-iTerm'
 " Powerline fonts (Sauce Code Powerline Regular)
 Plugin 'powerline/fonts'
+" FZF plugin for Vim
+Plugin 'junegunn/fzf.vim'
+
 
 " ----------------------------------------------------------------------------
 " UI
