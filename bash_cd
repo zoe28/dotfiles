@@ -8,8 +8,8 @@ alias ....='cd ../../..'    #go to great-grandparent dir
 alias .....='cd ../../../..'    #go to great-great-grandparent dir
 
 # push & pop directory
-alias st='pushd $(pwd) -n'
-alias ba='popd'
+alias pu='pushd $(pwd) -n'
+alias po='popd'
 
 
 # Navigation functions
