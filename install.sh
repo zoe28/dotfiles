@@ -145,11 +145,19 @@ if [[ $OSTYPE == darwin* ]]; then
     fi
 
     # Install htop
-    if [ ! -d "/usr/local/Cellar/htop" ]; then
+    if [ ! -d "/usr/local/Cellar/htop-osx" ]; then
         echo "Installing htop"
         brew install htop
     else
         echo "htop already installed"
+    fi
+
+    # Install fasd
+    if [ ! -d "/usr/local/Cellar/fasd" ]; then
+        echo "Installing fasd"
+        brew install fasd
+    else
+        echo "fasd already installed"
     fi
 
     # Install Reattach-to-user-namespace
