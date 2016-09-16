@@ -129,7 +129,7 @@ if [[ $OSTYPE == darwin* ]]; then
     fi
 
     # Install Bash Completion
-    if [ ! -d "/usr/local/Cellar/bath-completion" ]; then
+    if [ ! -d "/usr/local/Cellar/bash-completion" ]; then
         echo "Installing bash completion"
         brew install bash-completion
     else

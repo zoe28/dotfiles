@@ -10,5 +10,4 @@ wpbase/
 blog_wp/
 *.sql
 page_objects/shared/
-biz_utils/
 feeds/samples

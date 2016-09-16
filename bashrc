@@ -299,7 +299,7 @@ alias gs="git status -sb"
 alias gso="git diff --name-status origin/master"
 alias gv="git vimdiff"
 alias reset='git stash'
-alias stash="git add ; git stash"
+alias stash="git add . ; git stash"
 alias throwaway='git reset --hard HEAD'
 
 function gdo {
