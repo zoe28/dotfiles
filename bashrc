@@ -1,12 +1,3 @@
-# Start tmux
-#if ! { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
-    ssh-agent tmux -2 2> /dev/null
-#fi
-tmux source ~/.tmux.conf > /dev/null
-alias tmux='tmux -2'
-
-
-
 # Ruby env
 #eval "$(rbenv init -)"
 
@@ -22,6 +13,7 @@ ulimit -n 10000
 if [ -f `brew --prefix`/etc/bash_completion ]; then
     . `brew --prefix`/etc/bash_completion
 fi
+
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
@@ -49,17 +41,6 @@ alias kp="tmux kill-pane -a"
 # Ruby
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
-
-
-# Git commit indicator
-parse_git_dirty ()
-{
-    [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]] && echo "*"
-}
-parse_git_branch ()
-{
-    git branch 2> /dev/null | grep '*' | sed "s/*\ \(.*\)/$(parse_git_dirty)\1/"
-}
 
 # colored manpages
 man() {
@@ -226,14 +207,13 @@ alias rmswp='rm -rf ~/.vim/swap/*.swp'
 alias resize='tmux detach -a'
 alias share='tmux new-session -t 0'
 
-COLOR="--color=auto"
-alias ls='ls -F $COLOR'    #colors
-alias ll='ls -lsah $COLOR'  #long list
+alias ls='ls -F --color=auto'    #colors
+alias ll='ls -lsah --color=auto'  #long list
 alias lr='ls -lR'                #recursive
 alias tree='tree -Csuh'          #alternative to recursive ls
 alias df='df -kTh'
 alias path='echo -e ${PATH//:/\\n}'
-alias grep='grep $COLOR'
+alias grep='grep --color=auto'
 
 # cd aliases
 alias cs='cd'
@@ -422,7 +402,7 @@ shopt -s cdspell
 # better cd
 cd() {
   builtin cd $@;
-  ls -F $COLOR;
+  ls -F --color=auto;
 }
 
 
@@ -519,7 +499,3 @@ export NVM_DIR="/Users/zhangb/.nvm"
 ## TCP ports
 # show TCP unly (no UDP), and don't translate IP addrs and ports numbers to names
 alias tcpports="sudo lsof -i tcp -nP"
-
-if [[ $OSTYPE == darwin* ]]; then
-  source ~/.bash_osx
-fi

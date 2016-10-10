@@ -1,17 +1,14 @@
-#!/bin/bash
-
-
 # Autoenv
 # ------------------------------------------------------------------------------
 if [ -b "$HOME/.autoenv/activate.sh" ]; then
     source ~/.autoenv/activate.sh
 fi
-source /usr/local/opt/autoenv/activate.sh
 
 
 # Coreutils
 # ------------------------------------------------------------------------------
-if [[ $OSTYPE == darwin* ]]; then
+export PLATFORM=$(uname -s)
+if [ "$PLATFORM" = 'Darwin' ]; then
   PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
   MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 fi
@@ -26,6 +23,7 @@ fi
 
 # Aliases
 # ------------------------------------------------------------------------------
-COLOR="-G"
-
 alias du="du -hs | gsort -h"                                        # file sizes
+alias ls='ls -FG'    #colors
+alias ll='ls -lsahG'  #long list
+alias grep='grep -G'
