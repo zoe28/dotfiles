@@ -1,0 +1,170 @@
+# Git aliases
+# --------------------------------------------------------------------
+alias cm='ag "<<<<<<<"'
+alias g="git"
+alias ga="git add -p"
+alias gbc="echo Total branches: `git branch | wc -l`"
+alias gd="clear ; git diff"
+alias gds="git diff --staged"
+alias gf="git fetch"
+alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
+alias gm="git mergetool"
+alias go="git checkout"
+alias gom="git push ; git checkout master"
+alias gpl="git pull"
+alias gps="git push"
+alias gs="git status -sb"
+alias gso="git diff --name-status origin/master"
+alias gv="git vimdiff"
+alias reset='git stash'
+alias stash="git add . ; git stash"
+alias throwaway='git reset --hard HEAD'
+
+
+# Git commit indicator
+parse_git_dirty ()
+{
+    [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]] && echo "*"
+}
+parse_git_branch ()
+{
+    git branch 2> /dev/null | grep '*' | sed "s/*\ \(.*\)/$(parse_git_dirty)\1/"
+}
+
+
+# Git functions
+# --------------------------------------------------------------------
+
+# fshow - git commit browser
+fshow() {
+  local out sha q
+  while out=$(
+      git log --graph --color=always \
+          --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
+      fzf --ansi --multi --no-sort --reverse --query="$q" --print-query); do
+    q=$(head -1 <<< "$out")
+    while read sha; do
+      git show --color=always $sha | less -R
+    done < <(sed '1d;s/^[^a-z0-9]*//;/^$/d' <<< "$out" | awk '{print $1}')
+  done
+}
+
+
+# ftags - search ctags
+ftags() {
+  local line
+  [ -e tags ] &&
+  line=$(
+    awk 'BEGIN { FS="\t" } !/^!/ {print toupper($4)"\t"$1"\t"$2"\t"$3}' tags |
+    cut -c1-80 | fzf --nth=1,2
+  ) && ${EDITOR:-vim} $(cut -f3 <<< "$line") -c "set nocst" \
+                                      -c "silent tag $(cut -f2 <<< "$line")"
+}
+
+
+# double-check that you really want to commit to master
+gc () {
+  BRANCH_NAME=`git symbolic-ref --short HEAD`
+  if [ "$BRANCH_NAME" = "master" ] ; then
+    read -p "Are you sure you want to commit to master? [y/n] " -n 1 CONFIRM
+    echo ""
+    if [ "$CONFIRM" = "y" ] ; then
+      git add -p ; git commit
+    fi
+  else
+    git add -p ; git commit
+  fi
+}
+
+
+# remove old branches that have already been merged into master
+gclean () {
+  DATE=`date -v-1m +%m-%d-%Y` # default date is 1 month ago
+  DRY_RUN=""
+  CURRENT_BRANCH=`git symbolic-ref --short HEAD`
+  BRANCHES=0
+
+  while [[ $# > 0 ]]
+  do
+  KEY="$1"
+
+  case $KEY in
+    # user can pass in a date
+    -d|--date)
+    DATE="$2"
+    ;;
+    # show what gets deleted
+    --dry|--dry-run)
+    DRY_RUN=1
+    ;;
+  esac
+  shift
+  done
+
+  for BRANCH in $(git branch --merged | grep -v $CURRENT_BRANCH) ; do
+    if [[ "$(git log $BRANCH --since $DATE | wc -l)" -eq 0 ]] ; then
+      echo "$BRANCH"
+      ((BRANCHES++))
+    fi
+  done
+
+  if [[ -z "$DRY_RUN" ]] ; then
+    echo -e "\n$BRANCHES merged branches stale since $DATE"
+    if [[ $BRANCHES -gt 0 ]] ; then
+      read -p "Do you want to delete all older merged branches? [y/n] " -n 1 CONFIRM
+      echo ""
+      if [ "$CONFIRM" = "y" ] ; then
+        for BRANCH in $(git branch --merged | grep -v $CURRENT_BRANCH) ; do
+          if [[ "$(git log $BRANCH --since $DATE | wc -l)" -eq 0 ]] ; then
+            git branch -D $BRANCH
+          fi
+        done
+      fi
+    fi
+  fi
+}
+
+
+# git diff origin
+gdo() {
+  BRANCH_NAME=`git symbolic-ref --short HEAD`
+  git diff origin/$BRANCH_NAME
+}
+
+
+# check out the branch matching the parameter
+gob () {
+  local branches branch
+  branches=$(git branch) &&
+  branch=$(echo "$branches" | fzf-tmux -d 15 +m) &&
+  git checkout $(echo "$branch" | sed "s/.* //")
+}
+
+
+# show details of last commit
+gq () {
+  git show :/$1
+}
+
+
+# check for merge conflicts before continuing
+grc () {
+  CONFLICT=`ag "<<<<<<<"`
+  if [ -z "$CONFLICT" ] ; then
+    git add . ; git rebase --continue
+  else
+    echo "$CONFLICT"
+    read -p "There are still merge conflicts. Do you want to merge? [y/n] " -n 1 CONFIRM
+    echo ""
+    if [ "$CONFIRM" = "y" ] ; then
+      git add . ; git rebase --continue
+    fi
+  fi
+}
+
+
+squash() {
+  git rebase -i HEAD~$1
+}
+alias sq='squash'
+alias sq2='squash 2'
