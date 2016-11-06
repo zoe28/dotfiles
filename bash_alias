@@ -71,4 +71,10 @@ alias vd="vim -d" # diff
 
 # Virtualenv
 # --------------------------------------------------------------------
-alias venv="source venv/bin/activate"
+venv() {
+  if [ -d "venv" ] ; then
+    source venv/bin/activate
+  else
+    virtualenv venv
+  fi
+}
