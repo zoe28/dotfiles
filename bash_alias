@@ -69,12 +69,12 @@ alias v="vim"
 alias va="vim -o" # multiple files in splits
 alias vd="vim -d" # diff
 
+
 # Virtualenv
 # --------------------------------------------------------------------
 venv() {
-  if [ -d "venv" ] ; then
-    source venv/bin/activate
-  else
+  if [ ! -d "venv" ] ; then
     virtualenv venv
   fi
+  source venv/bin/activate
 }
