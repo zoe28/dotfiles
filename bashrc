@@ -257,3 +257,6 @@ source ~/.bash_ps1
 if [[ $OSTYPE == darwin* ]]; then
   source ~/.bash_osx
 fi
+
+
+. /Users/brian/torch/install/bin/torch-activate
