@@ -229,6 +229,9 @@ export NVM_DIR="/Users/zhangb/.nvm"
 alias tcpports="sudo lsof -i tcp -nP"
 
 
+# Cocos2d-x
+# --------------------------------------------------------------------
+alias cocos="/Users/brian/Armory/cocos2d-x-3.13.1/tools/cocos2d-console/bin/cocos.py"
 
 # Source more bash files
 # --------------------------------------------------------------------
