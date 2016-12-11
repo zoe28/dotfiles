@@ -78,7 +78,9 @@ if [[ $bundleupdate -eq 1 ]]; then
     vim -c BundleUpdate -c qa &> /dev/null
 fi
 
-# Mac OS X
+
+
+## Mac OS X
 if [[ $OSTYPE == darwin* ]]; then
     # show hidden files in Finder
     defaults write com.apple.finder AppleShowAllFiles YES
@@ -94,87 +96,31 @@ if [[ $OSTYPE == darwin* ]]; then
         echo "Homebrew already installed"
     fi
 
-    # Install Tmux
-    if [ ! -d "/usr/local/Cellar/tmux" ]; then
-        echo "Installing tmux"
-        brew install tmux
-    else
-        echo "tmux already installed"
-    fi
-
-    # Install Autoenv
-    if [ ! -d "/usr/local/Cellar/autoenv" ]; then
-        echo "Installing autoenv"
-        brew install autoenv
-    else
-        echo "autoenv already installed"
+    if [ -d "/usr/local/Cellar" ]; then
+      echo "Installing brew packages. This could take a while..."
+      < brew.txt xargs brew install
     fi
 
     # Install fzf
     if [ ! -d "/usr/local/Cellar/fzf" ]; then
-        echo "Installing fzf"
         brew reinstall --HEAD fzf
         bash /usr/local/Cellar/fzf/HEAD/install
-    else
-        echo "fzf already installed"
     fi
 
     # Install Node.js
     if [ ! -d "/usr/local/Cellar/node" ]; then
-        echo "Installing node"
-        brew install node
         sudo npm install -g grunt-cli
-    else
-        echo "node already installed"
-    fi
-
-    # Install Bash Completion
-    if [ ! -d "/usr/local/Cellar/bash-completion" ]; then
-        echo "Installing bash completion"
-        brew install bash-completion
-    else
-        echo "bash completion already installed"
-    fi
-
-    # Install Silver Searcher
-    if [ ! -d "/usr/local/Cellar/the_silver_searcher" ]; then
-        echo "Installing silver searcher"
-        brew install the_silver_searcher
-    else
-        echo "silver searcher already installed"
-    fi
-
-    # Install htop
-    if [ ! -d "/usr/local/Cellar/htop-osx" ]; then
-        echo "Installing htop"
-        brew install htop
-    else
-        echo "htop already installed"
-    fi
-
-    # Install fasd
-    if [ ! -d "/usr/local/Cellar/fasd" ]; then
-        echo "Installing fasd"
-        brew install fasd
-    else
-        echo "fasd already installed"
-    fi
-
-    # Install Reattach-to-user-namespace
-    if [ ! -d "/usr/local/Cellar/reattach-to-user-namespace" ]; then
-        echo "Installing reattach-to-user-namespace"
-        brew install reattach-to-user-namespace
-    else
-        echo "reattach-to-user-namespace already installed"
     fi
 
     # Install Tmux Plugin Manager
-    if [ ! -d "~/.tmux" ]; then
+    if [ ! -d "~/.tmux/plugins/tpm" ]; then
         git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
     fi
 fi
 
-# Linux
+
+
+## Linux
 if [[ $OSTYPE == linux-gnu ]]; then
     # Install tmux
     if [ ! -x "/usr/bin/tmux" ]; then
@@ -193,12 +139,27 @@ if [[ $OSTYPE == linux-gnu ]]; then
     fi
 fi
 
-# git-prompt
+
+
+## git-prompt
 if [ ! -e ~/.git-prompt.sh ]; then
   curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -o ~/.git-prompt.sh
 fi
 
-# Cleanup
+
+
+## Python
+
+# Pip
+export PIP_REQUIRE_VIRTUALENV=false
+export PIP_RESPECT_VIRTUALENV=false
+pip install virtualenv
+export PIP_REQUIRE_VIRTUALENV=true
+export PIP_RESPECT_VIRTUALENV=true
+
+
+
+## Cleanup
 
 mkdir -p "$HOME/.vim/"{bundle,swap,backup,undo}
 
