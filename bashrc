@@ -13,6 +13,12 @@ fi
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 
+# Desk
+# --------------------------------------------------------------------
+[ -n "$DESK_ENV" ] && source "$DESK_ENV" || true
+alias d.="desk . ${PWD##*/}"
+
+
 # Bash completion
 # --------------------------------------------------------------------
 # enable programmable completion features (you don't need to enable
