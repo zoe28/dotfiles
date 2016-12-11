@@ -19,6 +19,7 @@ alias gv="git vimdiff"
 alias reset='git stash'
 alias stash="git add . ; git stash"
 alias throwaway='git stash'
+alias vrm='vim README.md'
 
 
 # Git commit indicator
