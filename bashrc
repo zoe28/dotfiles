@@ -1,7 +1,15 @@
+# Python
+# --------------------------------------------------------------------
+if which pyenv > /dev/null; then
+  eval "$(pyenv init -)";
+fi
+
+#export PYTHONSTARTUP=$HOME/.pythonstartup
+
+
 # Ruby
 # --------------------------------------------------------------------
 #eval "$(rbenv init -)"
-
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 
