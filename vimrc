@@ -87,6 +87,9 @@ Plugin 'mikker/seoul256-iTerm'
 Plugin 'powerline/fonts'
 " FZF plugin for Vim
 Plugin 'junegunn/fzf.vim'
+" Page layout
+Plugin 'junegunn/goyo.vim'
+
 
 
 " ----------------------------------------------------------------------------
