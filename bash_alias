@@ -86,7 +86,7 @@ venv() {
 # open all files containing query
 vg() {
   if [ ! $# -eq 0 ] ; then
-    vim -o $(ag -l $@)
+    vim -o $(ag -l "$@")
   fi
 }
 
