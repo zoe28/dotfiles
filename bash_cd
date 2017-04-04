@@ -1,5 +1,6 @@
-# Navigation aliases
+# Change directory aliases
 # --------------------------------------------------------------------
+
 alias cs='cd'
 alias ~='cd ~'
 alias ..='cd ..'        #go to parent dir
@@ -17,10 +18,9 @@ alias po='popd'
 
 # better cd
 cd() {
-  builtin cd $@;
+  builtin cd "$@";
   ls -F $COLOR;
 }
-
 
 # fd - cd to selected directory
 fd() {
@@ -29,7 +29,6 @@ fd() {
       -o -type d -print 2> /dev/null | fzf +m) &&
   cd "$dir"
 }
-
 
 # fdr - cd to selected parent directory
 fdr() {
@@ -47,22 +46,8 @@ fdr() {
 }
 
 
-# open all files containing query
-vg() {
-  if [ ! $# -eq 0 ] ; then
-    vim -o $(ag -l $@)
-  fi
-}
+# Directories
+# --------------------------------------------------------------------
 
-
-# search and open file
-vs() {
-  if [ $# -eq 0 ] ; then
-    FILENAME=$(fzf -1 -m -i)
-  else
-    FILENAME=$(fzf -1 -m -i -q $@)
-  fi
-  if [ -n "$FILENAME" ] ; then
-    vim -o $FILENAME
-  fi
-}
+alias raw='cd ~/raw'
+alias dots='cd ~/dotfiles'

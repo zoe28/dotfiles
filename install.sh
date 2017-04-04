@@ -62,6 +62,11 @@ if [[ $OSTYPE == darwin* ]]; then
     fi
 fi
 
+# Install vim-plug
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+# Install Vundle (obsolete)
 if [ ! -d "$HOME/.vim/bundle/vundle" ]; then
     echo "Installing vundle"
     git clone https://github.com/gmarik/vundle.git "$HOME/.vim/bundle/vundle" &> /dev/null

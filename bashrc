@@ -68,6 +68,9 @@ export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
 # ... or force ignoredups and ignorespace
 export HISTCONTROL=ignoreboth
 
+export HISTFILESIZE=10000000
+export HISTSIZE=10000000
+
 # append to the history file, don't overwrite it
 shopt -s histappend
 
@@ -174,10 +177,6 @@ re () {
   echo "sourced .rc files"
 }
 
-# alias directories
-alias raw='cd ~/raw'
-alias dots='cd ~/dotfiles'
-
 # find public IP
 alias myip='curl ip.appspot.com'
 
@@ -241,6 +240,7 @@ alias tcpports="sudo lsof -i tcp -nP"
 # Cocos2d-x
 # --------------------------------------------------------------------
 alias cocos="/Users/brian/Armory/cocos2d-x-3.13.1/tools/cocos2d-console/bin/cocos.py"
+
 
 # Source more bash files
 # --------------------------------------------------------------------

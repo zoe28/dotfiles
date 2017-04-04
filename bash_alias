@@ -17,16 +17,16 @@ man() {
 # git mv when in repo, \mv elsewhere
 mv() {
   if git rev-parse --is-inside-work-tree > /dev/null 2>&1 ; then
-      git mv -v $@ 2> /dev/null || $(which mv) -iv $@
+      git mv -v "$@" 2> /dev/null || $(which mv) -iv "$@"
   else
-      $(which mv) -iv $@
+      $(which mv) -iv "$@"
   fi
 }
 
 # git rm when in repo, \rm elsewhere
 # also tar a back-up and put it in /tmp
 rm() {
-  ARGS=$@
+  ARGS="$@"
   # backup
   while [ ! $# -eq 0 ]                            # while there are arguments
   do
@@ -77,4 +77,27 @@ venv() {
     virtualenv venv
   fi
   source venv/bin/activate
+}
+
+
+# fzf & search
+# --------------------------------------------------------------------
+
+# open all files containing query
+vg() {
+  if [ ! $# -eq 0 ] ; then
+    vim -o $(ag -l $@)
+  fi
+}
+
+# search and open file
+vs() {
+  if [ $# -eq 0 ] ; then
+    FILENAME=$(fzf -1 -m -i)
+  else
+    FILENAME=$(fzf -1 -m -i -q $@)
+  fi
+  if [ -n "$FILENAME" ] ; then
+    vim -o $FILENAME
+  fi
 }

@@ -14,139 +14,120 @@ set path=~/**
 
 " Cconfiguration
 if has("win32")
-    let g:vim_home_path = "~/vimfiles"
+  let g:vim_home_path = "~/vimfiles"
 else
-    let g:vim_home_path = "~/.vim"
+  let g:vim_home_path = "~/.vim"
 endif
 
 execute "set rtp+=" . g:vim_home_path . "/bundle/vundle/"
 let g:vundle_default_git_proto = 'https'
 call vundle#rc(g:vim_home_path. "/bundle")
 
-" Install
-Bundle 'gmarik/vundle'
-" Powerline in Vimscript
-Plugin 'bling/vim-airline'
-" Directory explorer
-Bundle 'scrooloose/nerdtree'
-" Tabs for nerdtree
-Bundle 'jistr/vim-nerdtree-tabs'
-" Syntax checker
-Bundle 'scrooloose/syntastic'
-" I can haz good JS style?
-Bundle 'walm/jshint.vim'
-Bundle 'douglascrockford/JSLint'
-" HTML5 syntax (need to `make install`)
-Bundle 'htacg/tidy-html5'
-" Nice syntax highlighting
-Bundle 'flazz/vim-colorschemes'
-" Quickly surround words with symbols
-Bundle 'tpope/vim-surround'
-" Vim sessions
-Bundle 'tpope/vim-obsession'
-" Doh! That's a Tmux split (no longer!)
-Bundle 'christoomey/vim-tmux-navigator'
-" Shows Git diff
-Bundle 'airblade/vim-gitgutter'
-" Less syntax highlighting
-Bundle 'groenewege/vim-less'
-" Highligh CSS colors
-Bundle 'ap/vim-css-color'
-" Move around better
-Bundle 'Lokaltog/vim-easymotion'
-" Tags
-Bundle 'majutsushi/tagbar'
-" Awk/Ag search
-Bundle 'mileszs/ack.vim'
-" Unite
-Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/neomru.vim'
-" Smarter diffing
-Plugin 'chrisbra/vim-diff-enhanced'
-" Dim inactive window (could be very slow)
-Plugin 'blueyed/vim-diminactive'
-" Angular
-Plugin 'burnettk/vim-angular'
-" Javascript
-Plugin 'pangloss/vim-javascript'
-" Autocomplete for punctuation
-Plugin 'Raimondi/delimitMate'
-" Expanding HTML abbreviations
-Plugin 'mattn/emmet-vim'
-" Tab autocomplete
-Plugin 'ervandew/supertab'
-" Git wrapper
-Plugin 'tpope/vim-fugitive'
-" Highlight whitespace
-Plugin 'ntpeters/vim-better-whitespace'
-" Line diffs
-Plugin 'AndrewRadev/linediff.vim'
-" Seoul iTerm
-Plugin 'mikker/seoul256-iTerm'
-" Powerline fonts (Sauce Code Powerline Regular)
-Plugin 'powerline/fonts'
-" FZF plugin for Vim
-Plugin 'junegunn/fzf.vim'
-" Page layout
-Plugin 'junegunn/goyo.vim'
+" Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
+call plug#begin('~/.vim/plugged')
+
+                                                           " == General ==
+Plug 'gmarik/vundle'                                       " Install Vundle
+Plug 'bling/vim-airline'                                   " Powerline in Vimscript
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }     " Directory explorer
+Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeToggle' } " Tabs for nerdtree
+Plug 'scrooloose/syntastic'                                " Syntax checker
+Plug 'tpope/vim-surround'                                  " Quickly surround words with symbols
+Plug 'tpope/vim-obsession'                                 " Vim sessions
+Plug 'christoomey/vim-tmux-navigator'                      " Doh! That's a Tmux split (no longer!)
+Plug 'airblade/vim-gitgutter'                              " Shows Git diff
+Plug 'flazz/vim-colorschemes'                              " Nice syntax highlighting
+Plug 'Lokaltog/vim-easymotion'                             " Move around better
+Plug 'majutsushi/tagbar'                                   " Tags
+Plug 'mileszs/ack.vim'                                     " Awk/Ag search
+Plug 'Shougo/unite.vim'                                    " Unite
+Plug 'Shougo/neomru.vim'
+Plug 'chrisbra/vim-diff-enhanced'                          " Smarter diffing
+Plug 'blueyed/vim-diminactive'                             " Dim inactive window (could be very slow)
+Plug 'Raimondi/delimitMate'                                " Autocomplete for punctuation
+Plug 'ervandew/supertab'                                   " Tab autocomplete
+Plug 'tpope/vim-fugitive'                                  " Git wrapper
+Plug 'ntpeters/vim-better-whitespace'                      " Highlight whitespace
+Plug 'AndrewRadev/linediff.vim'                            " Line diffs
+Plug 'mikker/seoul256-iTerm'                               " Seoul iTerm
+Plug 'powerline/fonts'                                     " Powerline fonts (Sauce Code Powerline Regular)
+Plug 'junegunn/fzf.vim'                                    " FZF plugin for Vim
+Plug 'junegunn/goyo.vim'                                   " Page layout
+Plug 'junegunn/vim-easy-align'                             " Aligning columns
+                                                           " == Javascript ==
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }    " Javascript
+Plug 'walm/jshint.vim', { 'for': 'javascript' }            " I can haz good JS style?
+Plug 'douglascrockford/JSLint', { 'for': 'javascript' }
+Plug 'burnettk/vim-angular', { 'for': 'javascript' }       " Angular
+                                                           " == HTML ==
+Plug 'htacg/tidy-html5', { 'do': 'make', 'for': 'html' }   " HTML5 syntax
+Plug 'mattn/emmet-vim', { 'for': 'html' }                  " Expanding HTML abbreviations
+                                                           " == CSS ==
+Plug 'groenewege/vim-less', { 'for': 'less' }              " syntax highlighting for LESS
+Plug 'ap/vim-css-color', { 'for': 'css' }                  " Highligh CSS colors
+
+" Initialize plugin system
+call plug#end()
 
 
 
 " ----------------------------------------------------------------------------
 " UI
 " ----------------------------------------------------------------------------
+
 autocmd BufEnter * :syntax sync fromstart
 filetype on
 filetype plugin indent on
-set autoread                     "auto reload if file saved externally
-set backspace=indent,eol,start   " Fixes a problem where I cannot delete text that is existing in the file
-set ch=1                         " Command line height
-set colorcolumn=100              " vertical line to indicate line width
-set encoding=utf-8               " Enable unicode
+set autoread                   " auto reload if file saved externally
+set backspace=indent,eol,start " Fixes a problem where I cannot delete text that is existing in the file
+set ch=1                       " Command line height
+set colorcolumn=100            " vertical line to indicate line width
+set encoding=utf-8             " Enable unicode
 set et
-set expandtab                    " all tabs are actually spaces
-set iskeyword=-                  " hyphens are word boundaries
-set laststatus=2                 " Always show status line
-set lazyredraw                   " If we're going to redraw, lets not be lazy about it.
+set expandtab                  " all tabs are actually spaces
+set iskeyword=-                " hyphens are word boundaries
+set laststatus=2               " Always show status line
+set lazyredraw                 " If we're going to redraw, lets not be lazy about it.
 set nocompatible
-set nostartofline                " don't jump to the start of a line when scrolling
-set number                       " show line numbers
-set report=0                     " Tell us about changes
-set scrolloff=5                 " Keep cursor 5 lines away from the edge of the screen
-set showcmd                      " Display commands as I type them
-set showmode                     " Show the current mode
+set nostartofline              " don't jump to the start of a line when scrolling
+set number                     " show line numbers
+set report=0                   " Tell us about changes
+set scrolloff=5                " Keep cursor 5 lines away from the edge of the screen
+set showcmd                    " Display commands as I type them
+set showmode                   " Show the current mode
 set smartindent
-set softtabstop=2                " two!
-set sw=2                         " shift width is four
-set ttimeoutlen=50               " Timeout length when switching modes
+set softtabstop=2              " two!
+set sw=2                       " shift width is four
+set ttimeoutlen=50             " Timeout length when switching modes
 set ttyfast
-set whichwrap=b,s,h,l,<,>,[,]    " Wrap on other things
-set wildignore+=*.class          " Ignore java compiled files
-set wildignore+=*.pyc            " Ignore python compiled files
-set wildignore+=*.swp            " Ignore vim backups
-set wildignore+=.git,.hg,.svn    " Ignore version control repos
-set wildmenu                     " Turn on wild menu. Sounds fun.
-set wildmode=longest:list,full   " make tab completion act like bash, but even better!
-syntax enable                    " Turn on Syntax highlighting
-syntax sync minlines=1000        " Look for synchronization points 1000 lines before the current position in the file.
+set whichwrap=b,s,h,l,<,>,[,]  " Wrap on other things
+set wildignore+=*.class        " Ignore java compiled files
+set wildignore+=*.pyc          " Ignore python compiled files
+set wildignore+=*.swp          " Ignore vim backups
+set wildignore+=.git,.hg,.svn  " Ignore version control repos
+set wildmenu                   " Turn on wild menu. Sounds fun.
+set wildmode=longest:list,full " make tab completion act like bash, but even better!
+syntax enable                  " Turn on Syntax highlighting
+syntax sync minlines=1000      " Look for synchronization points 1000 lines before the current position in the file.
 set timeoutlen=300
 set ttimeoutlen=10
 
 if exists('$TMUX')
   set clipboard=
 else
-  set clipboard=unnamed                             "sync with OS clipboard
+  set clipboard=unnamed        "sync with OS clipboard
 endif
 
 
 " ----------------------------------------------------------------------------
 " Visual stuff
 " ----------------------------------------------------------------------------
-set background=dark              " We use a dark terminal so we can play nethack
-set mat=5                        " show matching brackets for 1/10 of a second
-set laststatus=2                 " always have a file status line at the bottom, even when theres only one file
-set visualbell                   " Stop beeping
-set virtualedit=block            " Allow virtual edit in just block mode.
+
+set background=dark   " We use a dark terminal so we can play nethack
+set mat=5             " show matching brackets for 1/10 of a second
+set laststatus=2      " always have a file status line at the bottom, even when theres only one file
+set visualbell        " Stop beeping
+set virtualedit=block " Allow virtual edit in just block mode.
 
 hi NonText cterm=NONE ctermfg=NONE
 
@@ -154,6 +135,7 @@ hi NonText cterm=NONE ctermfg=NONE
 " ----------------------------------------------------------------------------
 " Searching and replacing
 " ---------------------------------------------------------------------------
+
 set showmatch                    " brackets/brace matching
 set incsearch                    " show me whats matching as I type my search
 set hlsearch                     " Highlight search results
@@ -177,12 +159,8 @@ highlight SpellBad term=reverse ctermbg=1
 
 
 " ---------------------------------------------------------------------------
-" Plugins
+" Plugs & Autocmds
 " ---------------------------------------------------------------------------
-"  --------------------------------------------------------------------------
-"  " CUSTOM AUTOCMDS
-"  "
-"  --------------------------------------------------------------------------
 
 """"""""""""""
 "Code Folding"
@@ -242,7 +220,7 @@ function! AirlineInit()
   let g:airline_symbols.branch = ''
   let g:airline_symbols.readonly = ''
   let g:airline_symbols.linenr = ''
-  
+
   " Sections
   let g:airline_inactive_collapse = 1
   let g:airline_section_b = airline#section#create([])
@@ -260,7 +238,7 @@ endfunction
 let g:nerdtree_tabs_open_on_console_startup = 0
 let NERDTreeQuitOnOpen = 1
 let NERDTreeShowHidden = 1
-map <F5> :NERDTreeToggle<Enter>
+map <Leader>t :NERDTreeToggle<Enter>
 
 "" Synstastic settings
 let g:syntastic_check_on_open = 1
@@ -318,6 +296,13 @@ let g:diminactive_use_syntax = 1
 "" Vim Fugitive
 set diffopt+=vertical
 
+"" EasyAlign
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
 
 "" Python
 if has('python')
@@ -326,10 +311,10 @@ import os.path
 import sys
 import vim
 if 'VIRTUAL_ENV' in os.environ:
-    project_base_dir = os.environ['VIRTUAL_ENV']
-    sys.path.insert(0, project_base_dir)
-    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-    execfile(activate_this, dict(__file__=activate_this))
+  project_base_dir = os.environ['VIRTUAL_ENV']
+  sys.path.insert(0, project_base_dir)
+  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  execfile(activate_this, dict(__file__=activate_this))
 EOF
 endif
 
@@ -393,15 +378,15 @@ map <C-e> <C-w>
 
 
 " Save
-nnoremap gs :w<Enter> 
-nnoremap gss :wq<Enter> 
+nnoremap gs :w<Enter>
+nnoremap gss :wq<Enter>
 nnoremap gsss :w !sudo tee % >/dev/null<Enter>
 
 
 " Quit
-nnoremap gq :q<Enter> 
-nnoremap gqq :q!<Enter> 
-nnoremap gqa :qa<Enter> 
+nnoremap gq :q<Enter>
+nnoremap gqq :q!<Enter>
+nnoremap gqa :qa<Enter>
 
 
 " Split commands.
