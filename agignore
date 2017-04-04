@@ -1,14 +1,2 @@
-*-compiled.js
 *.pyc
 *.sql
-
-_static_root_/
-blog_wp/
-bower_components/
-feeds/samples
-frontend/static/
-lib/
-node_modules/
-page_objects/shared/
-wordpress/
-wpbase/
