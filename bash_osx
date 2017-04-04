@@ -38,6 +38,12 @@ ulimit -n 10000
 eval "$(fasd --init auto)"
 
 
+# Torch
+if [ -f /Users/brian/torch/install/bin/torch-activate ]; then
+  /Users/brian/torch/install/bin/torch-activate
+fi
+
+
 # Aliases
 # ------------------------------------------------------------------------------
 alias du="du -hs | gsort -h"                                        # file sizes
