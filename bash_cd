@@ -3,10 +3,10 @@
 
 alias cs='cd'
 alias ~='cd ~'
-alias ..='cd ..'        #go to parent dir
-alias ...='cd ../..'    #go to grandparent dir
-alias ....='cd ../../..'    #go to great-grandparent dir
-alias .....='cd ../../../..'    #go to great-great-grandparent dir
+alias ..='cd ..'             # go to parent dir
+alias ...='cd ../..'         # go to grandparent dir
+alias ....='cd ../../..'     # go to great-grandparent dir
+alias .....='cd ../../../..' # go to great-great-grandparent dir
 
 # push & pop directory
 alias pu='pushd $(pwd) -n'

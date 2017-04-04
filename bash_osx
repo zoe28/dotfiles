@@ -1,7 +1,7 @@
 # Autoenv
 # ------------------------------------------------------------------------------
 if [ -b "$HOME/.autoenv/activate.sh" ]; then
-    source ~/.autoenv/activate.sh
+  source ~/.autoenv/activate.sh
 fi
 
 
@@ -17,14 +17,14 @@ fi
 # Bash completion
 # ------------------------------------------------------------------------------
 if [ -f `brew --prefix`/etc/bash_completion ]; then
-    . `brew --prefix`/etc/bash_completion
+  . `brew --prefix`/etc/bash_completion
 fi
 
 
 # Ctags
 # ------------------------------------------------------------------------------
 if [ -f `brew --prefix`/bin/ctags ]; then
-    alias ctags=`brew --prefix`/bin/ctags
+  alias ctags=`brew --prefix`/bin/ctags
 fi
 
 
@@ -46,7 +46,7 @@ fi
 
 # Aliases
 # ------------------------------------------------------------------------------
-alias du="du -hs | gsort -h"                                        # file sizes
-alias ls='ls -FG'    #colors
-alias ll='ls -lsahG'  #long list
+alias du="du -hs | gsort -h" # file sizes
+alias ls='ls -FG'            # colors
+alias ll='ls -lsahG'         # long list
 alias grep='grep -G'

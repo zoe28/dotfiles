@@ -1,14 +1,14 @@
 # Colored manpages
 # --------------------------------------------------------------------
 man() {
-    env LESS_TERMCAP_mb=$'\E[01;31m' \
-    LESS_TERMCAP_md=$'\E[01;31m' \
-    LESS_TERMCAP_me=$'\E[0m' \
-    LESS_TERMCAP_se=$'\E[0m' \
-    LESS_TERMCAP_so=$'\E[01;44;33m' \
-    LESS_TERMCAP_ue=$'\E[0m' \
-    LESS_TERMCAP_us=$'\E[01;32m' \
-    man "$@"
+  env LESS_TERMCAP_mb=$'\E[01;31m' \
+  LESS_TERMCAP_md=$'\E[01;31m' \
+  LESS_TERMCAP_me=$'\E[0m' \
+  LESS_TERMCAP_se=$'\E[0m' \
+  LESS_TERMCAP_so=$'\E[01;44;33m' \
+  LESS_TERMCAP_ue=$'\E[0m' \
+  LESS_TERMCAP_us=$'\E[01;32m' \
+  man "$@"
 }
 
 
@@ -17,9 +17,9 @@ man() {
 # git mv when in repo, \mv elsewhere
 mv() {
   if git rev-parse --is-inside-work-tree > /dev/null 2>&1 ; then
-      git mv -v "$@" 2> /dev/null || $(which mv) -iv "$@"
+    git mv -v "$@" 2> /dev/null || $(which mv) -iv "$@"
   else
-      $(which mv) -iv "$@"
+    $(which mv) -iv "$@"
   fi
 }
 
