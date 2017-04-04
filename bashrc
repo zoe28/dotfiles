@@ -73,6 +73,9 @@ export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
 # ... or force ignoredups and ignorespace
 export HISTCONTROL=ignoreboth
 
+export HISTFILESIZE=10000000
+export HISTSIZE=10000000
+
 # append to the history file, don't overwrite it
 shopt -s histappend
 
