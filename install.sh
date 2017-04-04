@@ -63,8 +63,10 @@ if [[ $OSTYPE == darwin* ]]; then
 fi
 
 # Install vim-plug
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+if [ ! -f ~/.vim/autoload/plug.vim ]; then
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
 
 # Install Vundle (obsolete)
 if [ ! -d "$HOME/.vim/bundle/vundle" ]; then
@@ -127,6 +129,14 @@ fi
 
 ## Linux
 if [[ $OSTYPE == linux-gnu ]]; then
+    # Install pip
+    if [ ! -x "/usr/bin/pip" ]; then
+        echo "Installing pip"
+        sudo apt-get install python-pip
+    else
+        echo "pip already installed"
+    fi
+
     # Install tmux
     if [ ! -x "/usr/bin/tmux" ]; then
         echo "Installing tmux"
