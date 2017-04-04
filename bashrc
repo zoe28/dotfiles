@@ -34,11 +34,6 @@ if [ -f ~/.git-completion.bash ]; then
 fi
 
 
-# FASD init
-# --------------------------------------------------------------------
-eval "$(fasd --init auto)"
-
-
 # Vim mode in the shell
 set -o vi
 
