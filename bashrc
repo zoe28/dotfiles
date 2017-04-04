@@ -179,10 +179,6 @@ re () {
   echo "sourced .rc files"
 }
 
-# alias directories
-alias raw='cd ~/raw'
-alias dots='cd ~/dotfiles'
-
 # find public IP
 alias myip='curl ip.appspot.com'
 
@@ -247,6 +243,7 @@ alias tcpports="sudo lsof -i tcp -nP"
 # --------------------------------------------------------------------
 alias cocos="/Users/brian/Armory/cocos2d-x-3.13.1/tools/cocos2d-console/bin/cocos.py"
 
+
 # Source more bash files
 # --------------------------------------------------------------------
 source ~/.bash_alias
@@ -259,4 +256,6 @@ if [[ $OSTYPE == darwin* ]]; then
 fi
 
 
+# Torch
+# --------------------------------------------------------------------
 . /Users/brian/torch/install/bin/torch-activate

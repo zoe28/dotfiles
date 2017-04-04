@@ -78,3 +78,26 @@ venv() {
   fi
   source venv/bin/activate
 }
+
+
+# fzf & search
+# --------------------------------------------------------------------
+
+# open all files containing query
+vg() {
+  if [ ! $# -eq 0 ] ; then
+    vim -o $(ag -l $@)
+  fi
+}
+
+# search and open file
+vs() {
+  if [ $# -eq 0 ] ; then
+    FILENAME=$(fzf -1 -m -i)
+  else
+    FILENAME=$(fzf -1 -m -i -q $@)
+  fi
+  if [ -n "$FILENAME" ] ; then
+    vim -o $FILENAME
+  fi
+}
