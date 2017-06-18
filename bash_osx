@@ -1,8 +1,24 @@
+# Aliases
+# ------------------------------------------------------------------------------
+alias du="du -hs | gsort -h" # file sizes
+alias grep='grep -G'
+
+
+
 # Autoenv
 # ------------------------------------------------------------------------------
 if [ -b "$HOME/.autoenv/activate.sh" ]; then
   source ~/.autoenv/activate.sh
 fi
+
+
+
+# Bash completion
+# ------------------------------------------------------------------------------
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+  . `brew --prefix`/etc/bash_completion
+fi
+
 
 
 # Coreutils
@@ -14,12 +30,6 @@ if [ "$PLATFORM" = 'Darwin' ]; then
 fi
 
 
-# Bash completion
-# ------------------------------------------------------------------------------
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-  . `brew --prefix`/etc/bash_completion
-fi
-
 
 # Ctags
 # ------------------------------------------------------------------------------
@@ -28,25 +38,20 @@ if [ -f `brew --prefix`/bin/ctags ]; then
 fi
 
 
-# Increase number of open files
-# ------------------------------------------------------------------------------
-ulimit -n 10000
-
 
 # FASD Command Line
 # ------------------------------------------------------------------------------
 eval "$(fasd --init auto)"
 
 
+
+# Increase number of open files
+# ------------------------------------------------------------------------------
+ulimit -n 10000
+
+
+
 # Torch
 if [ -f /Users/brian/torch/install/bin/torch-activate ]; then
   /Users/brian/torch/install/bin/torch-activate
 fi
-
-
-# Aliases
-# ------------------------------------------------------------------------------
-alias du="du -hs | gsort -h" # file sizes
-alias ls='ls -FG'            # colors
-alias ll='ls -lsahG'         # long list
-alias grep='grep -G'

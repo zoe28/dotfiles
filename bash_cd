@@ -1,6 +1,5 @@
-# Change directory aliases
+# Change directories
 # --------------------------------------------------------------------
-
 alias cs='cd'
 alias ~='cd ~'
 alias ..='cd ..'             # go to parent dir
@@ -12,17 +11,13 @@ alias .....='cd ../../../..' # go to great-great-grandparent dir
 alias pu='pushd $(pwd) -n'
 alias po='popd'
 
-
-# Navigation functions
-# --------------------------------------------------------------------
-
-# better cd
+## better cd
 cd() {
   builtin cd "$@";
-  ls -F $COLOR;
+  ls --color;
 }
 
-# fd - cd to selected directory
+## fd - cd to selected directory
 fd() {
   local dir
   dir=$(find ${1:-*} -path '*/\.*' -prune \
@@ -30,7 +25,7 @@ fd() {
   cd "$dir"
 }
 
-# fdr - cd to selected parent directory
+## fdr - cd to selected parent directory
 fdr() {
   local declare dirs=()
   get_parent_dirs() {
@@ -46,8 +41,8 @@ fdr() {
 }
 
 
-# Directories
-# --------------------------------------------------------------------
 
+# Shortcuts
+# --------------------------------------------------------------------
 alias raw='cd ~/raw'
-alias dots='cd ~/dotfiles'
+alias dots='cd ~/dots'

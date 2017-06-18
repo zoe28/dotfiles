@@ -1,20 +1,57 @@
-# Colored manpages
+# Bash
 # --------------------------------------------------------------------
-man() {
-  env LESS_TERMCAP_mb=$'\E[01;31m' \
-  LESS_TERMCAP_md=$'\E[01;31m' \
-  LESS_TERMCAP_me=$'\E[0m' \
-  LESS_TERMCAP_se=$'\E[0m' \
-  LESS_TERMCAP_so=$'\E[01;44;33m' \
-  LESS_TERMCAP_ue=$'\E[0m' \
-  LESS_TERMCAP_us=$'\E[01;32m' \
-  man "$@"
+alias cp='cp -v'
+alias df='df -kTh'
+alias du="du -hs | sort -h"
+alias f='open -a Finder ./'
+alias grep='grep --color=auto'
+alias killall='pkill -u $USER'
+alias ll='ls -lsahF --color=auto' #long list
+alias lr='ls -lR'                 #recursive
+alias ls='ls -F --color=auto'     #colors
+alias mkdir="mkdir -p"
+alias mkdir='mkdir -v'
+alias o='open'
+alias path='echo -e ${PATH//:/\\n}'
+alias ps="ps aux"
+alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
+alias tree='tree -Csuh' #alternative to recursive ls
+
+## unzip everything
+extract () {
+  if [ -f $1 ] ; then
+  case $1 in
+    *.tar.bz2)   tar xjf $1     ;;
+    *.tar.gz)    tar xzf $1     ;;
+    *.bz2)       bunzip2 $1     ;;
+    *.rar)       unrar e $1     ;;
+    *.gz)        gunzip $1      ;;
+    *.tar)       tar xf $1      ;;
+    *.tbz2)      tar xjf $1     ;;
+    *.tgz)       tar xzf $1     ;;
+    *.zip)       unzip $1       ;;
+    *.Z)         uncompress $1  ;;
+    *.7z)        7z x $1        ;;
+    *)     echo "'$1' cannot be extracted" ;;
+     esac
+ else
+   echo "'$1' is not a valid file"
+ fi
 }
 
+## display files in scrollable columns
+lsm() {
+  # 34 for 2 columns
+  # 19 for 3 columns
+  ls -Fc | perl -lne 's/(.{34}).*/$1... /s ; print' | column -x | more
+}
 
-# mv & rm
-# --------------------------------------------------------------------
-# git mv when in repo, \mv elsewhere
+## mkdir and then enter folder
+md() {
+  mkdir -p $1 && cd $1
+}
+
+## git mv when in repo, \mv elsewhere
 mv() {
   if git rev-parse --is-inside-work-tree > /dev/null 2>&1 ; then
     git mv -v "$@" 2> /dev/null || $(which mv) -iv "$@"
@@ -23,7 +60,18 @@ mv() {
   fi
 }
 
-# git rm when in repo, \rm elsewhere
+## source config files
+re () {
+  source ~/.bashrc
+
+  if [ -f ~/.alias ]; then
+    source ~/.alias
+  fi
+
+  echo "sourced .rc files"
+}
+
+## git rm when in repo, \rm elsewhere
 # also tar a back-up and put it in /tmp
 rm() {
   ARGS="$@"
@@ -48,39 +96,28 @@ rm() {
 }
 
 
-# Python
+
+# Cocos2d-x
 # --------------------------------------------------------------------
-alias py="python"
+alias cocos="/Users/brian/Armory/cocos2d-x-3.13.1/tools/cocos2d-console/bin/cocos.py"
 
 
-# Typos
+
+# config files
 # --------------------------------------------------------------------
-alias suod='sudo'
-alias sduo='sudo'
-alias vm='mv'
-alias sl='ls'
-alias got='git'
-alias grp='grep'
+alias agrc='vim ~/.agignore'
+alias aliasrc='vim ~/.alias'
+alias bashrc='vim ~/.bashrc'
+alias gitrc='vim ~/.gitconfig'
+alias inputrc='vim ~/.inputrc'
+alias screenrc='vim ~/.screenrc'
+alias sshrc='vim ~/.ssh/config'
+alias tmuxrc='vim ~/.tmux.conf'
+alias vimrc='vim ~/.vimrc'
 
 
-# Vim
-# --------------------------------------------------------------------
-alias v="vim"
-alias va="vim -o" # multiple files in splits
-alias vd="vim -d" # diff
 
-
-# Virtualenv
-# --------------------------------------------------------------------
-venv() {
-  if [ ! -d "venv" ] ; then
-    virtualenv venv
-  fi
-  source venv/bin/activate
-}
-
-
-# fzf & search
+# FZF & search
 # --------------------------------------------------------------------
 
 # open all files containing query
@@ -103,10 +140,89 @@ vs() {
 }
 
 
+
+# manpages
+# --------------------------------------------------------------------
+
+# add color
+man() {
+  env LESS_TERMCAP_mb=$'\E[01;31m' \
+  LESS_TERMCAP_md=$'\E[01;31m' \
+  LESS_TERMCAP_me=$'\E[0m' \
+  LESS_TERMCAP_se=$'\E[0m' \
+  LESS_TERMCAP_so=$'\E[01;44;33m' \
+  LESS_TERMCAP_ue=$'\E[0m' \
+  LESS_TERMCAP_us=$'\E[01;32m' \
+  man "$@"
+}
+
+
+
+# Nethack
+# --------------------------------------------------------------------
+alias nethack='telnet nethack.alt.org'
+
+
+
+# Network
+# --------------------------------------------------------------------
+alias myip='curl ip.appspot.com'
+# show TCP unly (no UDP), and don't translate IP addrs and ports numbers to names
+alias tcpports="sudo lsof -i tcp -nP"
+
+
+
+# Python
+# --------------------------------------------------------------------
+alias pep8='pep8 --show-source --show-pep8 '
+alias py="python"
+
+
+
 # SSH keygen
 # --------------------------------------------------------------------
 keygen() {
   ssh-keygen -t rsa -b 4096 -C "$@"
   eval "$(ssh-agent -s)"
   ssh-add ~/.ssh/id_rsa
+}
+
+
+
+# Tmux
+# --------------------------------------------------------------------
+alias resize='tmux detach -a' # auto resize tmux window
+alias share='tmux new-session -t 0'
+
+
+
+# Typos
+# --------------------------------------------------------------------
+alias suod='sudo'
+alias sduo='sudo'
+alias vm='mv'
+alias sl='ls'
+alias got='git'
+alias grp='grep'
+
+
+
+# Vim
+# --------------------------------------------------------------------
+alias rmswp='rm -rf ~/.vim/swap/*.swp' # delete all .swp files
+alias v="vim"
+alias va="vim -o" # multiple files in splits
+alias vd="vim -d" # diff
+
+
+
+# Virtualenv
+# --------------------------------------------------------------------
+alias virtualize='source bin/activate' # virtualenv shortcut
+
+venv() {
+  if [ ! -d "venv" ] ; then
+    virtualenv venv
+  fi
+  source venv/bin/activate
 }
