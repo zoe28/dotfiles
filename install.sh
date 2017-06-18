@@ -62,27 +62,11 @@ if [[ $OSTYPE == darwin* ]]; then
     fi
 fi
 
-# Install vim-plug
+# Install vim-plug and all plugins
 if [ ! -f ~/.vim/autoload/plug.vim ]; then
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-fi
-
-# Install Vundle (obsolete)
-if [ ! -d "$HOME/.vim/bundle/vundle" ]; then
-    echo "Installing vundle"
-    git clone https://github.com/gmarik/vundle.git "$HOME/.vim/bundle/vundle" &> /dev/null
-    if [[ $bundleupdate -eq 0 ]]; then
-        echo "Installing Bundles"
-        vim +BundleInstall +qall
-    fi
-else
-    echo "Vundle already installed"
-fi
-
-if [[ $bundleupdate -eq 1 ]]; then
-    echo "Running bundle update"
-    vim -c BundleUpdate -c qa &> /dev/null
+  vim -c PlugInstall -c qa &> /dev/null
 fi
 
 
@@ -168,7 +152,7 @@ fi
 # Pip
 export PIP_REQUIRE_VIRTUALENV=false
 export PIP_RESPECT_VIRTUALENV=false
-pip install virtualenv
+sudo pip install virtualenv
 export PIP_REQUIRE_VIRTUALENV=true
 export PIP_RESPECT_VIRTUALENV=true
 

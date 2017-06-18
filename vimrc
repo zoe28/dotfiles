@@ -9,7 +9,7 @@ let mapleader = " "
 set path=~/**
 
 " ----------------------------------------------------------------------------
-" Vundle
+" Vim Plug
 " ----------------------------------------------------------------------------
 
 " Cconfiguration
@@ -19,14 +19,11 @@ else
   let g:vim_home_path = "~/.vim"
 endif
 
-execute "set rtp+=" . g:vim_home_path . "/bundle/vundle/"
-let g:vundle_default_git_proto = 'https'
-call vundle#rc(g:vim_home_path. "/bundle")
-
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
 call plug#begin('~/.vim/plugged')
 
                                                                  " == General ==
+Plug 'junegunn/seoul256.vim'                                     " Colorscheme
 Plug 'gmarik/vundle'                                             " Install Vundle
 Plug 'bling/vim-airline'                                         " Powerline in Vimscript
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }           " Directory explorer
@@ -78,6 +75,7 @@ call plug#end()
 autocmd BufEnter * :syntax sync fromstart
 filetype on
 filetype plugin indent on
+
 set autoread                   " auto reload if file saved externally
 set backspace=indent,eol,start " Fixes a problem where I cannot delete text that is existing in the file
 set ch=1                       " Command line height
@@ -98,6 +96,8 @@ set showmode                   " Show the current mode
 set smartindent
 set softtabstop=2              " two!
 set sw=2                       " shift width is four
+set timeoutlen=300
+set ttimeoutlen=10
 set ttimeoutlen=50             " Timeout length when switching modes
 set ttyfast
 set whichwrap=b,s,h,l,<,>,[,]  " Wrap on other things
@@ -109,8 +109,6 @@ set wildmenu                   " Turn on wild menu. Sounds fun.
 set wildmode=longest:list,full " make tab completion act like bash, but even better!
 syntax enable                  " Turn on Syntax highlighting
 syntax sync minlines=1000      " Look for synchronization points 1000 lines before the current position in the file.
-set timeoutlen=300
-set ttimeoutlen=10
 
 if exists('$TMUX')
   set clipboard=
