@@ -5,6 +5,9 @@ set -o vi
 
 shopt -s cdspell
 
+# tab completion
+bind TAB:menu-complete
+
 
 
 # Bash completion
