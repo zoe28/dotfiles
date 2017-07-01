@@ -61,7 +61,7 @@ export FZF_DEFAULT_COMMAND='ag -l -g ""'
 # Git completion
 # --------------------------------------------------------------------
 if [ -f ~/.git-completion.bash ]; then
-    . ~/.git-completion.bash
+    source ~/.git-completion.bash
 fi
 
 
