@@ -80,6 +80,7 @@ set autoread                   " auto reload if file saved externally
 set backspace=indent,eol,start " Fixes a problem where I cannot delete text that is existing in the file
 set ch=1                       " Command line height
 set colorcolumn=100            " vertical line to indicate line width
+set complete-=i                " don't autocomplete with included files
 set encoding=utf-8             " Enable unicode
 set et
 set expandtab                  " all tabs are actually spaces
