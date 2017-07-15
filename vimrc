@@ -245,7 +245,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_enable_signs = 1
 let g:syntastic_python_checkers = ['pylint', 'flake8']
 let g:syntastic_python_flake8_args = '--config ~/.flake8'
-let g:syntastic_python_pylint_args = '--rcfile .pylintrc --msg-template="{path}:{line}: [{msg_id}] {msg}" -r n'
+let g:syntastic_python_pylint_args = '--rcfile .pylintrc --load-plugins pylint_django --msg-template="{path}:{line}: [{msg_id}] {msg}" -r n'
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_javascript_checkers = ['jshint', 'gjslint']
 let g:syntastic_html_tidy_exec = '~/.vim/bundle/tidy-html5/bin/tidy'

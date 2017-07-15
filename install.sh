@@ -169,6 +169,7 @@ fi
 export PIP_REQUIRE_VIRTUALENV=false
 export PIP_RESPECT_VIRTUALENV=false
 pip install virtualenv
+pip install pylint-django
 export PIP_REQUIRE_VIRTUALENV=true
 export PIP_RESPECT_VIRTUALENV=true
 
