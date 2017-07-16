@@ -62,6 +62,7 @@ Plug 'mattn/emmet-vim', { 'for': 'html' }                        " Expanding HTM
                                                                  " == CSS ==
 Plug 'groenewege/vim-less', { 'for': 'less' }                    " syntax highlighting for LESS
 Plug 'ap/vim-css-color', { 'for': 'css' }                        " Highligh CSS colors
+Plug 'craigemery/vim-autotag'                                    " Auto update ctags
 
 " Initialize plugin system
 call plug#end()
@@ -80,7 +81,7 @@ set autoread                   " auto reload if file saved externally
 set backspace=indent,eol,start " Fixes a problem where I cannot delete text that is existing in the file
 set ch=1                       " Command line height
 set colorcolumn=100            " vertical line to indicate line width
-set complete-=i                " don't autocomplete with included files
+set complete-=i                " don't autocomplete from included files
 set encoding=utf-8             " Enable unicode
 set et
 set expandtab                  " all tabs are actually spaces
@@ -96,7 +97,7 @@ set showcmd                    " Display commands as I type them
 set showmode                   " Show the current mode
 set smartindent
 set softtabstop=2              " two!
-set sw=2                       " shift width is four
+set shiftwidth=2
 set timeoutlen=300
 set ttimeoutlen=10
 set ttimeoutlen=50             " Timeout length when switching modes
