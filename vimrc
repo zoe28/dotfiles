@@ -210,7 +210,7 @@ function! s:unite_settings()
 endfunction
 
 "" Airline settings
-autocmd VimEnter * call AirlineInit()
+autocmd User AirlineAfterInit call AirlineInit()
 function! AirlineInit()
   " Powerline symbols
   let g:airline_left_sep = ''
