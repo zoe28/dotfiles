@@ -8,10 +8,9 @@ fi
 
 if [ -f ~/.tmux.conf ]; then
   tmux source ~/.tmux.conf > /dev/null
-  alias tmux='tmux -2'
 
   if ! { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
-    ssh-agent tmux -2 2> /dev/null
+    ssh-agent tmux attach -t 0 2> /dev/null
   fi
 fi
 
