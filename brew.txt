@@ -5,6 +5,7 @@ fzf
 git
 htop
 node
+nvm
 readline
 reattach-to-user-namespace
 the_silver_searcher
