@@ -169,3 +169,4 @@ squash() {
 }
 alias sq='squash'
 alias sq2='squash 2'
+alias sq3='squash 3'

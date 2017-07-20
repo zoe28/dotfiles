@@ -5,6 +5,13 @@ alias grep='grep -G'
 
 
 
+# Armory
+# ------------------------------------------------------------------------------
+# useful executables
+export PATH="/Users/brian/armory:$PATH"
+
+
+
 # Autoenv
 # ------------------------------------------------------------------------------
 if [ -b "$HOME/.autoenv/activate.sh" ]; then
