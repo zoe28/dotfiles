@@ -191,7 +191,7 @@ keygen() {
 
 # Tmux
 # --------------------------------------------------------------------
-alias resize='tmux detach -a' # auto resize tmux window
+alias takeover='tmux detach -a' # detach from all other session
 alias share='tmux new-session -t 0'
 
 

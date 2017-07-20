@@ -52,6 +52,7 @@ ulimit -n 10000
 
 
 # Torch
+# ------------------------------------------------------------------------------
 if [ -f /Users/brian/torch/install/bin/torch-activate ]; then
   /Users/brian/torch/install/bin/torch-activate
 fi
