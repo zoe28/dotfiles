@@ -63,6 +63,8 @@ Plug 'mattn/emmet-vim', { 'for': 'html' }                        " Expanding HTM
 Plug 'groenewege/vim-less', { 'for': 'less' }                    " syntax highlighting for LESS
 Plug 'ap/vim-css-color', { 'for': 'css' }                        " Highligh CSS colors
 Plug 'craigemery/vim-autotag'                                    " Auto update ctags
+Plug 'wavded/vim-stylus', { 'for': 'styl' }                      " Stylus files
+Plug 'mxw/vim-jsx', { 'for': ['js', 'jsx'] }                     " ReactJS
 
 " Initialize plugin system
 call plug#end()
