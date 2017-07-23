@@ -1,5 +1,6 @@
 *.pyc
 *.sql
 *.json
+*.svg
 
 node_modules/
