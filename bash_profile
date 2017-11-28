@@ -26,6 +26,10 @@ fi
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
+# Add coreutils
+export CORE_UTILS=/usr/local/opt/coreutils/libexec/gnubin
+export PATH=$CORE_UTILS:$PATH
+
 # Add environment variable COCOS_CONSOLE_ROOT for cocos2d-x
 export COCOS_CONSOLE_ROOT=/Users/brian/Armory/cocos2d-x-3.13.1/tools/cocos2d-console/bin
 export PATH=$COCOS_CONSOLE_ROOT:$PATH
