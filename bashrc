@@ -16,7 +16,7 @@ bind TAB:menu-complete
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
+  . /etc/bash_completion
 fi
 
 
@@ -61,7 +61,7 @@ export FZF_DEFAULT_COMMAND='ag -l -g ""'
 # Git completion
 # --------------------------------------------------------------------
 if [ -f ~/.git-completion.bash ]; then
-    source ~/.git-completion.bash
+  source ~/.git-completion.bash
 fi
 
 

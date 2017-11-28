@@ -45,4 +45,4 @@ fdr() {
 # Shortcuts
 # --------------------------------------------------------------------
 alias raw='cd ~/raw'
-alias dots='cd ~/dots'
+alias dots='cd ~/dotfiles'
