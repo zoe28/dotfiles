@@ -3,7 +3,7 @@
 name=${0##*/}
 
 function print_help() {
-echo "usage: $name [options]
+echo -e "usage: $name [options]
 
 optional args:
 
@@ -14,7 +14,7 @@ optional args:
 bundleupdate=0
 OPTS=$(getopt -o pbh --long bundle,help -n "$name" -- "$@")
 
-if [ $? != 0 ]; then echo "option error" >&2; exit 1; fi
+if [ $? != 0 ]; then echo -e "option error" >&2; exit 1; fi
 
 eval set -- "$OPTS"
 
@@ -30,7 +30,7 @@ while true; do
         --)
             shift; break;;
         *)
-            echo "Internal error!"; exit 1;;
+            echo -e "Internal error!"; exit 1;;
     esac
 done
 
@@ -47,27 +47,10 @@ for dot in $(ls); do
             fi
         fi
 
-        echo "Setting $dot"
+        echo -e "Setting $dot"
         ln -sf "$PWD/$dot" "$target"
     fi
 done
-
-if [[ $OSTYPE == darwin* ]]; then
-    # Install Vim
-    if [ ! -d "/usr/local/Cellar/vim" ]; then
-        echo "Installing vim"
-        brew install vim
-    else
-        echo "vim already installed"
-    fi
-fi
-
-# Install vim-plug and all plugins
-if [ ! -f ~/.vim/autoload/plug.vim ]; then
-  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  vim -c PlugInstall -c qa &> /dev/null
-fi
 
 
 
@@ -81,15 +64,30 @@ if [[ $OSTYPE == darwin* ]]; then
 
     # Install Homebrew
     if [ ! -d "/usr/local/Cellar" ]; then
-        echo "Installing Homebrew"
+        echo -e "Installing Homebrew"
         ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     else
-        echo "Homebrew already installed"
+        echo -e "Homebrew already installed"
     fi
 
     if [ -d "/usr/local/Cellar" ]; then
-      echo "Installing brew packages. This could take a while..."
+      echo -e "Installing brew packages. This could take a while..."
       < brew.txt xargs brew install
+    fi
+
+    # Install Vim
+    if [ ! -d "/usr/local/Cellar/vim" ]; then
+        echo -e "Installing vim"
+        brew install vim
+    else
+        echo -e "vim already installed"
+    fi
+
+    # Install vim-plug and all plugins
+    if [ ! -f ~/.vim/autoload/plug.vim ]; then
+      curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+          https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+      vim -c PlugInstall -c qa &> /dev/null
     fi
 
     # Install fzf
@@ -115,26 +113,26 @@ fi
 if [[ $OSTYPE == linux-gnu ]]; then
     # Install pip
     if [ ! -x "/usr/bin/pip" ]; then
-        echo "Installing pip"
+        echo -e "Installing pip"
         sudo apt-get install python-pip
     else
-        echo "pip already installed"
+        echo -e "pip already installed"
     fi
 
     # Install tmux
     if [ ! -x "/usr/bin/tmux" ]; then
-        echo "Installing tmux"
+        echo -e "Installing tmux"
         sudo apt-get install tmux
     else
-        echo "tmux already installed"
+        echo -e "tmux already installed"
     fi
 
     # Install Silver Searcher
     if [ ! -x "/usr/bin/ag" ]; then
-        echo "Installing silver searcher"
+        echo -e "Installing silver searcher"
         sudo apt-get install silversearcher-ag
     else
-        echo "silver searcher already installed"
+        echo -e "silver searcher already installed"
     fi
 fi
 
@@ -166,3 +164,9 @@ mkdir -p "$HOME/.vim/"{bundle,swap,backup,undo}
 source ~/.bashrc
 
 popd &> /dev/null
+
+echo -e "\nPackages Installed"
+echo -e "\nNext Steps:"
+echo -e "1) Enter ~/.vimrc and run :PlugInstall"
+echo -e "2) Set the Terminal font to 'Source Code Pro for Powerline'"
+echo -e "3) Set the Terminal color scheme to ~/.vim/plugged/seoul256-iTerm/seoul256.itermcolors"
