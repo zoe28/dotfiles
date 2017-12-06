@@ -1,0 +1,10 @@
+{
+  "defaultSeverity": "warning",
+  "extends": [
+    "/usr/local/lib/node_modules/stylelint-config-standard"
+  ],
+  "rules": {
+    "color-hex-length": null,
+    "max-empty-lines": null
+  }
+}

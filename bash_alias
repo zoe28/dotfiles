@@ -108,10 +108,12 @@ alias cocos="/Users/brian/Armory/cocos2d-x-3.13.1/tools/cocos2d-console/bin/coco
 alias agrc='vim ~/.agignore'
 alias aliasrc='vim ~/.alias'
 alias bashrc='vim ~/.bashrc'
+alias eslintrc='vim ~/.eslintrc'
 alias gitrc='vim ~/.gitconfig'
 alias inputrc='vim ~/.inputrc'
 alias screenrc='vim ~/.screenrc'
 alias sshrc='vim ~/.ssh/config'
+alias stylelintrc='vim ~/.stylelintrc'
 alias tmuxrc='vim ~/.tmux.conf'
 alias vimrc='vim ~/.vimrc'
 
