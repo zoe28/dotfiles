@@ -75,14 +75,6 @@ if [[ $OSTYPE == darwin* ]]; then
       < brew.txt xargs brew install
     fi
 
-    # Install Vim
-    if [ ! -d "/usr/local/Cellar/vim" ]; then
-        echo -e "Installing vim"
-        brew install vim
-    else
-        echo -e "vim already installed"
-    fi
-
     # Install vim-plug and all plugins
     if [ ! -f ~/.vim/autoload/plug.vim ]; then
       curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
@@ -96,14 +88,15 @@ if [[ $OSTYPE == darwin* ]]; then
         bash /usr/local/Cellar/fzf/HEAD/install
     fi
 
-    # Install Node.js
-    if [ ! -d "/usr/local/Cellar/node" ]; then
-        sudo npm install -g grunt-cli
-    fi
-
     # Install Tmux Plugin Manager
     if [ ! -d "~/.tmux/plugins/tpm" ]; then
         git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    fi
+
+    # Install global NPM cli
+    if [ -d "/usr/local/Cellar/node" ]; then
+      echo -e "Installing npm global packages. This could take a while..."
+      < npm_globals.txt xargs npm install -g
     fi
 fi
 

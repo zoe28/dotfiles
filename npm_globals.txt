@@ -1,0 +1,5 @@
+create-react-app
+create-react-native-app
+eslint
+stylelint
+stylelint-config-standard
