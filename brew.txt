@@ -8,6 +8,7 @@ htop
 node
 nvm
 pip2
+postgresql
 readline
 reattach-to-user-namespace
 the_silver_searcher
