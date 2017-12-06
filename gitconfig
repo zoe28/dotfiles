@@ -62,5 +62,3 @@
   insteadOf = git://
 [url "https://"]
   insteadOf = git://
-[zumper]
-  finish-deletes-branch = 1
