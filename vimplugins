@@ -38,6 +38,7 @@ Plug 'ntpeters/vim-better-whitespace'                            " Highlight whi
 Plug 'AndrewRadev/linediff.vim'                                  " Line diffs
 Plug 'mikker/seoul256-iTerm'                                     " Seoul iTerm
 Plug 'powerline/fonts'                                           " Powerline fonts (Sauce Code Powerline Regular)
+Plug 'tomtom/tcomment_vim'                                       " comment/uncomment
 Plug 'junegunn/fzf.vim'                                          " FZF plugin for Vim
 Plug 'junegunn/goyo.vim'                                         " Page layout
 Plug 'junegunn/vim-easy-align'                                   " Aligning columns
