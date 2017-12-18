@@ -59,16 +59,6 @@ autocmd FileType python set softtabstop=2            " For python, tabs are four
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class " Autoindent my new blocks in python
 highlight SpellBad term=reverse ctermbg=1
 
-
-" ---------------------------------------------------------------------------
-" Code Folding"
-" ---------------------------------------------------------------------------
-set foldmethod=indent
-set foldnestmax=99
-set foldlevel=3
-let javaScript_fold=1
-
-
 "" Python
 if has('python')
 python << EOF
@@ -82,6 +72,23 @@ if 'VIRTUAL_ENV' in os.environ:
   execfile(activate_this, dict(__file__=activate_this))
 EOF
 endif
+
+
+" ---------------------------------------------------------------------------
+" Code Folding
+" ---------------------------------------------------------------------------
+set foldmethod=indent
+set foldnestmax=99
+set foldlevel=3
+let javaScript_fold=1
+
+
+
+" ---------------------------------------------------------------------------
+" File Explorer
+" ---------------------------------------------------------------------------
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
 
 
 "" ctags
