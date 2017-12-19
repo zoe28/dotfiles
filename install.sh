@@ -7,12 +7,10 @@ echo -e "usage: $name [options]
 
 optional args:
 
--b|--bundle   run :BundleUpdate after install.
 -h|--help     print this help."
             }
 
-bundleupdate=0
-OPTS=$(getopt -o pbh --long bundle,help -n "$name" -- "$@")
+OPTS=$(getopt -o pbh --long help -n "$name" -- "$@")
 
 if [ $? != 0 ]; then echo -e "option error" >&2; exit 1; fi
 
@@ -20,9 +18,6 @@ eval set -- "$OPTS"
 
 while true; do
     case "$1" in
-        -b|--bundle)
-            bundleupdate=1
-            shift;;
         -h|--help)
             print_help
             exit 0
