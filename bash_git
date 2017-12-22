@@ -1,7 +1,6 @@
 # Git aliases
 # --------------------------------------------------------------------
 alias cm='ag "<<<<<<<"'
-alias g="git"
 alias ga="git add -p"
 alias gbc="echo Total branches: `git branch | wc -l`"
 alias gd="clear ; git diff"
@@ -10,6 +9,7 @@ alias gf="git fetch"
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 alias gld="git log master.. --oneline"
 alias gm="git mergetool"
+alias gmm="git merge master"
 alias go="git checkout"
 alias gom="git push ; git checkout master"
 alias gpl="git pull"

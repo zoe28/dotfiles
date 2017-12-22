@@ -115,6 +115,7 @@ alias screenrc='vim ~/.screenrc'
 alias sshrc='vim ~/.ssh/config'
 alias stylelintrc='vim ~/.stylelintrc'
 alias tmuxrc='vim ~/.tmux.conf'
+alias vimplugrc='vim ~/.vimplugins'
 alias vimrc='vim ~/.vimrc'
 
 
