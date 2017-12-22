@@ -1,5 +1,8 @@
+babel-eslint
 create-react-app
 create-react-native-app
 eslint
+eslint-config-airbnb
+eslint-plugin-react
 stylelint
 stylelint-config-standard

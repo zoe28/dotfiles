@@ -138,8 +138,9 @@ fi
 # Pip
 export PIP_REQUIRE_VIRTUALENV=false
 export PIP_RESPECT_VIRTUALENV=false
-sudo pip install virtualenv
+sudo pip install flake8
 sudo pip install pylint-django
+sudo pip install virtualenv
 export PIP_REQUIRE_VIRTUALENV=true
 export PIP_RESPECT_VIRTUALENV=true
 
