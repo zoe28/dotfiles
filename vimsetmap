@@ -82,9 +82,10 @@ command Scb set scrollbind!
 
 " Set filetyps
 command Re filetype detect
+command Csh set filetype=csh
+command Css set filetype=css
 command Html set filetype=html
 command Js set filetype=javascript
-command Css set filetype=css
 command Less set filetype=less
 
 
