@@ -178,6 +178,11 @@ nmap ?? :%s/<C-r><C-w>//g<Left><Left>
 vmap ?? :s/<C-r><C-w>//g<Left><Left>
 
 
+" search tags
+nmap \\ :Tags <C-r><C-w>
+vmap \\ :Tags <C-r><C-w>
+
+
 " vimrc
 command Vimrc e $MYVIMRC
 command Vimre source $MYVIMRC
