@@ -19,9 +19,12 @@
 --exclude=bower_components
 --exclude=build
 --exclude=cscope.\*
+--exclude=db/*
 --exclude=dist
+--exclude=log/*
 --exclude=min
---exclude=node_modules
+--exclude=node_modules/*
 --exclude=tags
---exclude=vendor
+--exclude=vendor/*
 --python-kinds=-iv
+--recurse=yes
