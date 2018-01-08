@@ -57,7 +57,6 @@ vnoremap <tab> %
 autocmd FileType python setl sw=2                    " For python, the shift width is four, yes four
 autocmd FileType python set softtabstop=2            " For python, tabs are four spaces!
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class " Autoindent my new blocks in python
-highlight SpellBad term=reverse ctermbg=1
 
 "" Python
 if has('python')
@@ -97,3 +96,4 @@ set tags=./tags;~/src
 
 " Spell check README's
 autocmd BufRead,BufNewFile *.md setlocal spell
+highlight SpellBad term=reverse ctermfg=252 ctermbg=52 guifg=#D9D9D9 guibg=#730B00
