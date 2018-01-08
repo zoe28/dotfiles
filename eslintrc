@@ -2,6 +2,12 @@
   "extends": [
     "eslint:recommended"
   ],
+  "plugins": [
+    "import",
+    "json",
+    "node",
+    "react"
+  ],
   "env": {
     "browser": true,
     "es6": true,
@@ -9,7 +15,14 @@
     "jquery": true,
     "node": true
   },
+  "parserOptions": {
+    "ecmaVersion": 2017,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
   "rules": {
-    "no-console": "off",
+    "no-console": "off"
   }
 }
