@@ -14,10 +14,8 @@ call plug#begin('~/.vim/plugged')
 
                                                                  " == General ==
 Plug 'junegunn/seoul256.vim'                                     " Colorscheme
-Plug 'gmarik/vundle'                                             " Install Vundle
 Plug 'bling/vim-airline'                                         " Powerline in Vimscript
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }           " Directory explorer
-Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeToggle' }       " Tabs for nerdtree
+Plug 'sheerun/vim-polyglot'                                      " Syntax highlighting for languages
 Plug 'scrooloose/syntastic'                                      " Syntax checker
 Plug 'tpope/vim-surround'                                        " Quickly surround words with symbols
 Plug 'tpope/vim-obsession'                                       " Vim sessions
@@ -27,8 +25,6 @@ Plug 'flazz/vim-colorschemes'                                    " Nice syntax h
 Plug 'Lokaltog/vim-easymotion'                                   " Move around better
 Plug 'majutsushi/tagbar'                                         " Tags
 Plug 'mileszs/ack.vim'                                           " Awk/Ag search
-Plug 'Shougo/unite.vim'                                          " Unite
-Plug 'Shougo/neomru.vim'
 Plug 'chrisbra/vim-diff-enhanced'                                " Smarter diffing
 Plug 'blueyed/vim-diminactive'                                   " Dim inactive window (could be very slow)
 Plug 'Raimondi/delimitMate'                                      " Autocomplete for punctuation
@@ -43,14 +39,18 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'                                          " FZF plugin for Vim
 Plug 'junegunn/goyo.vim'                                         " Page layout
 Plug 'junegunn/vim-easy-align'                                   " Aligning columns
+Plug 'wincent/command-t'                                         " file navigation
+
                                                                  " == Javascript ==
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }          " Javascript
 Plug 'walm/jshint.vim', { 'for': 'javascript' }                  " I can haz good JS style?
 Plug 'douglascrockford/JSLint', { 'for': 'javascript' }
 Plug 'burnettk/vim-angular', { 'for': 'javascript' }             " Angular
+
                                                                  " == HTML ==
 Plug 'htacg/tidy-html5', { 'do': 'make install', 'for': 'html' } " HTML5 syntax
 Plug 'mattn/emmet-vim', { 'for': 'html' }                        " Expanding HTML abbreviations
+Plug 'digitaltoad/vim-pug'                                       " Pug (Jade) templates
                                                                  " == CSS ==
 Plug 'groenewege/vim-less', { 'for': 'less' }                    " syntax highlighting for LESS
 Plug 'ap/vim-css-color', { 'for': 'css' }                        " Highligh CSS colors
@@ -83,22 +83,6 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 "" Emmet
 let g:user_emmet_leader_key='<C-G>'
 
-"" Unite
-let g:unite_source_history_yank_enable = 1
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
-nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
-nnoremap <leader>e :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
-
-" Custom mappings for the unite buffer
-autocmd FileType unite call s:unite_settings()
-function! s:unite_settings()
-  " Play nice with supertab
-  let b:SuperTabDisabled=1
-  " Enable navigation with control-j and control-k in insert mode
-  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
-  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
-endfunction
 
 "" Airline settings
 autocmd User AirlineAfterInit call AirlineInit()
@@ -125,11 +109,6 @@ function! AirlineInit()
   let g:airline#extensions#tmuxline#enabled = 1
 endfunction
 
-"" NerdTree settings
-let g:nerdtree_tabs_open_on_console_startup = 0
-let NERDTreeQuitOnOpen = 1
-let NERDTreeShowHidden = 1
-map <Leader>t :NERDTreeToggle<Enter>
 
 "" Synstastic settings
 let g:syntastic_aggregate_errors = 1
@@ -152,8 +131,6 @@ set statusline+=%{SyntasticStatuslineFlag()}
 highlight link SyntasticError Error
 highlight link SyntasticWarning WildMenu
 
-"" Autoequalize splits
-autocmd VimResized * wincmd =
 
 "" Easymotion
 nmap <Leader>s <Plug>(easymotion-s2)
@@ -169,8 +146,10 @@ map <Leader>h <Plug>(easymotion-linebackward)
 let g:EasyMotion_startofline = 0
 let g:EasyMotion_smartcase = 1
 
+
 "" Tags
 nmap <F8> :TagbarToggle<CR>
+
 
 "" Awk/Ag
 if executable('ag')
@@ -185,17 +164,21 @@ if executable('ag')
   set grepformat=%f:%l:%c:%m
 endif
 
+
 "" Indent Guide
 let g:indent_guides_guide_size = 1
 
 let g:NERDTreeDirArrows = 0
 
+
 "" Vim Diminactive
 let g:diminactive_use_colorcolumn = 0
 let g:diminactive_use_syntax = 1
 
+
 "" Vim Fugitive
 set diffopt+=vertical
+
 
 "" EasyAlign
 " Start interactive EasyAlign in visual mode (e.g. vipga)
@@ -203,27 +186,3 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
-
-
-
-" ----------------------------------------------------------------------------
-" Large files
-" ----------------------------------------------------------------------------
-" file is large from 10mb
-let g:LargeFile = 1024 * 1024 * 10
-augroup LargeFile
-  autocmd BufReadPre * let f=getfsize(expand("<afile>")) | if f > g:LargeFile || f == -2 | call LargeFile() | endif
-augroup END
-
-function LargeFile()
-  " no syntax highlighting etc
-  set eventignore+=FileType
-  " save memory when other file is viewed
-  setlocal bufhidden=unload
-  " is read-only (write with :w new_filename)
-  setlocal buftype=nowrite
-  " no undo possible
-  setlocal undolevels=-1
-  " display message
-  autocmd VimEnter *  echo "The file is larger than " . (g:LargeFile / 1024 / 1024) . " MB, so some options are changed (see .vimrc for details)."
-endfunction
