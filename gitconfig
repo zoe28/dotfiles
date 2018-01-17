@@ -65,3 +65,4 @@
   insteadOf = git://
 [diff]
   renames = copies
+  mnemonicprefix = true
