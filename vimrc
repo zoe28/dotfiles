@@ -13,8 +13,11 @@ set path=~/**
 " ----------------------------------------------------------------------------
 " Load external files
 " ----------------------------------------------------------------------------
-source ~/.vimplugins
-source ~/.vimsetmap
+source ~/.plugs.vim   " needs to come first
+
+source ~/.set.vim
+source ~/.map.vim
+source ~/.autocmd.vim
 
 
 " ----------------------------------------------------------------------------
@@ -25,29 +28,8 @@ autocmd BufEnter * :syntax sync fromstart
 filetype on
 filetype plugin indent on
 
-if exists('$TMUX')
-  set clipboard=
-else
-  set clipboard=unnamed        "sync with OS clipboard
-endif
-
 hi NonText cterm=NONE ctermfg=NONE
 
-
-" ----------------------------------------------------------------------------
-" Searching and replacing
-" ---------------------------------------------------------------------------
-
-set showmatch                    " brackets/brace matching
-set incsearch                    " show me whats matching as I type my search
-set hlsearch                     " Highlight search results
-
-" prepend all searches with \v to get rid of vim's 'crazy default regex characters'
-nnoremap / /\v
-" make tab % in normal mode. This allows us to jump between brackets.
-nnoremap <tab> %
-" make tab % in visual mode. this allows us to jump between brackets.
-vnoremap <tab> %
 
 
 " ---------------------------------------------------------------------------
@@ -92,8 +74,3 @@ let g:netrw_liststyle = 3
 
 "" ctags
 set tags=./tags;~/src
-
-
-" Spell check README's
-autocmd BufRead,BufNewFile *.md setlocal spell
-highlight SpellBad term=reverse ctermfg=252 ctermbg=52 guifg=#D9D9D9 guibg=#730B00
