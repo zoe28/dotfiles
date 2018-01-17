@@ -4,9 +4,9 @@
   ],
   "plugins": [
     "import",
-    "json",
-    "node",
-    "react"
+  "json",
+  "node",
+  "react"
   ],
   "env": {
     "browser": true,
@@ -19,10 +19,14 @@
     "ecmaVersion": 2017,
     "sourceType": "module",
     "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
       "jsx": true
     }
   },
   "rules": {
     "no-console": "off"
+  },
+  "globals": {
+    "chrome": true
   }
 }
