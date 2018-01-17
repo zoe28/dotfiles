@@ -9,3 +9,5 @@ eslint-plugin-node
 eslint-plugin-react
 stylelint
 stylelint-config-standard
+webpack
+webpack-bundle-size-analyzer
