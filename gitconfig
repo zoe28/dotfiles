@@ -52,7 +52,7 @@
   revert = checkout HEAD
   uncommit = reset --soft HEAD^
 [push]
-  default = tracking
+  default = current
 [branch]
   autosetuprebase = always
 [rerere]
