@@ -144,6 +144,12 @@ vs() {
 
 
 
+# Javascript
+# --------------------------------------------------------------------
+alias bundlesize="npx webpack --json | npx webpack-bundle-size-analyzer"
+
+
+
 # manpages
 # --------------------------------------------------------------------
 
