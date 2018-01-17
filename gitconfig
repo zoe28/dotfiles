@@ -10,6 +10,7 @@
   tool = vimdiff
   conflictstyle = diff3
   external = gitmerge
+  stat = 1
 [mergetool]
   prompt = false
 [color]
@@ -51,7 +52,7 @@
   revert = checkout HEAD
   uncommit = reset --soft HEAD^
 [push]
-  default = current
+  default = tracking
 [branch]
   autosetuprebase = always
 [rerere]
@@ -62,3 +63,5 @@
   insteadOf = git://
 [url "https://"]
   insteadOf = git://
+[diff]
+  renames = copies
