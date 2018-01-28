@@ -123,6 +123,18 @@ alias vimrc='vim ~/.vimrc'
 # FZF & search
 # --------------------------------------------------------------------
 
+# fzf file helper
+fff() {
+  if [ $# -eq 0 ] ; then
+    FILENAME=$(fzf -1 -m -i)
+  else
+    FILENAME=$(fzf -1 -m -i -q $@)
+  fi
+  if [ -n "$FILENAME" ] ; then
+    echo $FILENAME
+  fi
+}
+
 # open all files containing query
 vg() {
   if [ ! $# -eq 0 ] ; then
@@ -132,21 +144,41 @@ vg() {
 
 # search and open file
 vs() {
-  if [ $# -eq 0 ] ; then
-    FILENAME=$(fzf -1 -m -i)
-  else
-    FILENAME=$(fzf -1 -m -i -q $@)
-  fi
-  if [ -n "$FILENAME" ] ; then
-    vim -o $FILENAME
+  FILE=$(fff "$@")
+  if [ -n "$FILE" ] ; then
+    vim -o $FILE
   fi
 }
+
+
+# Java
+# --------------------------------------------------------------------
+jv() {
+  FILE=$(fff "$@")
+  if [ -n "$FILE" ] ; then
+    DIRNAME=$(dirname "${FILE}")
+    CLASSNAME=$(basename "${FILE}" .java)
+    FILE=$(basename "${FILE}")
+    cd $DIRNAME > /dev/null && \
+      javac $FILE && \
+      java $CLASSNAME && \
+      cd - > /dev/null
+  fi
+}
+
 
 
 
 # Javascript
 # --------------------------------------------------------------------
 alias bundlesize="npx webpack --json | npx webpack-bundle-size-analyzer"
+
+nd() {
+  FILE=$(fff "$@")
+  if [ -n "$FILE" ] ; then
+    node $FILE
+  fi
+}
 
 
 
@@ -184,7 +216,13 @@ alias tcpports="sudo lsof -i tcp -nP"
 # Python
 # --------------------------------------------------------------------
 alias pep8='pep8 --show-source --show-pep8 '
-alias py="python"
+
+py() {
+  FILE=$(fff "$@")
+  if [ -n "$FILE" ] ; then
+    python $FILE
+  fi
+}
 
 
 
