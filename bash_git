@@ -73,6 +73,7 @@ gb() {
 
 # double-check that you really want to commit to master
 gc() {
+  clear
   BRANCH_NAME=`git symbolic-ref --short HEAD`
   if [ "$BRANCH_NAME" = "master" ] ; then
     read -p "Are you sure you want to commit to master? [y/n] " -n 1 CONFIRM
