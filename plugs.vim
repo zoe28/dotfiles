@@ -46,17 +46,19 @@ Plug 'pangloss/vim-javascript', { 'for': 'javascript' }          " Javascript
 Plug 'walm/jshint.vim', { 'for': 'javascript' }                  " I can haz good JS style?
 Plug 'douglascrockford/JSLint', { 'for': 'javascript' }
 Plug 'burnettk/vim-angular', { 'for': 'javascript' }             " Angular
+Plug 'mxw/vim-jsx', { 'for': ['js', 'jsx'] }                     " ReactJS
 
                                                                  " == HTML ==
 Plug 'htacg/tidy-html5', { 'do': 'make install', 'for': 'html' } " HTML5 syntax
 Plug 'mattn/emmet-vim', { 'for': 'html' }                        " Expanding HTML abbreviations
-Plug 'digitaltoad/vim-pug'                                       " Pug (Jade) templates
+Plug 'digitaltoad/vim-pug', { 'for': 'pug' }                     " Pug (Jade) templates
+Plug 'Glench/Vim-Jinja2-Syntax', { 'for': 'html' }               " Jinja2
+"
                                                                  " == CSS ==
 Plug 'groenewege/vim-less', { 'for': 'less' }                    " syntax highlighting for LESS
 Plug 'ap/vim-css-color', { 'for': ['css', 'scss'] }              " Highligh CSS colors
 Plug 'craigemery/vim-autotag'                                    " Auto update ctags
 Plug 'wavded/vim-stylus', { 'for': 'styl' }                      " Stylus files
-Plug 'mxw/vim-jsx', { 'for': ['js', 'jsx'] }                     " ReactJS
 
 " Initialize plugin system
 call plug#end()
