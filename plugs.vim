@@ -53,7 +53,7 @@ Plug 'mattn/emmet-vim', { 'for': 'html' }                        " Expanding HTM
 Plug 'digitaltoad/vim-pug'                                       " Pug (Jade) templates
                                                                  " == CSS ==
 Plug 'groenewege/vim-less', { 'for': 'less' }                    " syntax highlighting for LESS
-Plug 'ap/vim-css-color', { 'for': 'css' }                        " Highligh CSS colors
+Plug 'ap/vim-css-color', { 'for': ['css', 'scss'] }              " Highligh CSS colors
 Plug 'craigemery/vim-autotag'                                    " Auto update ctags
 Plug 'wavded/vim-stylus', { 'for': 'styl' }                      " Stylus files
 Plug 'mxw/vim-jsx', { 'for': ['js', 'jsx'] }                     " ReactJS
