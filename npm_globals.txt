@@ -7,6 +7,8 @@ eslint-plugin-import
 eslint-plugin-json
 eslint-plugin-node
 eslint-plugin-react
+gatsby-cli
+serve
 stylelint
 stylelint-config-standard
 webpack
