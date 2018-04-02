@@ -2,6 +2,8 @@
 # ------------------------------------------------------------------------------
 alias du="du -hs | gsort -h" # file sizes
 alias grep='grep -G'
+alias down='cd ~/Downloads'
+alias docs='cd ~/Documents'
 
 
 
