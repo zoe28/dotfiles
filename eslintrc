@@ -27,6 +27,8 @@
     "no-console": "off"
   },
   "globals": {
-    "chrome": true
+    "chrome": true,
+    "bytegain": true,
+    "ga": true
   }
 }
