@@ -40,6 +40,7 @@ Plug 'junegunn/fzf.vim'                                          " FZF plugin fo
 Plug 'junegunn/goyo.vim'                                         " Page layout
 Plug 'junegunn/vim-easy-align'                                   " Aligning columns
 Plug 'wincent/command-t'                                         " file navigation
+Plug 'junegunn/vim-xmark', { 'do': 'make' }                      " Markdown
 
                                                                  " == Javascript ==
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }          " Javascript
@@ -57,7 +58,6 @@ Plug 'Glench/Vim-Jinja2-Syntax', { 'for': 'html' }               " Jinja2
                                                                  " == CSS ==
 Plug 'groenewege/vim-less', { 'for': 'less' }                    " syntax highlighting for LESS
 Plug 'ap/vim-css-color', { 'for': 'css' }                        " Highligh CSS colors
-Plug 'craigemery/vim-autotag'                                    " Auto update ctags
 Plug 'wavded/vim-stylus', { 'for': 'styl' }                      " Stylus files
 
 " Initialize plugin system
