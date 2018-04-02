@@ -57,7 +57,7 @@ Plug 'Glench/Vim-Jinja2-Syntax', { 'for': 'html' }               " Jinja2
 "
                                                                  " == CSS ==
 Plug 'groenewege/vim-less', { 'for': 'less' }                    " syntax highlighting for LESS
-Plug 'ap/vim-css-color', { 'for': 'css' }                        " Highligh CSS colors
+Plug 'ap/vim-css-color', { 'for': ['css', 'scss'] }              " Highligh CSS colors
 Plug 'wavded/vim-stylus', { 'for': 'styl' }                      " Stylus files
 
 " Initialize plugin system
