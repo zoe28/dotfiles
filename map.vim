@@ -118,11 +118,33 @@ command No set invnumber! | GitGutterToggle
 
 
 " Ack
-nmap <Leader>/ :Ack
+nmap <Leader>/ :Ack<Space>
 
 
 " fzf
 set rtp+=~/.fzf
+nnoremap ff :FZF<CR>
+
+function! s:escape(path)
+  return substitute(a:path, ' ', '\\ ', 'g')
+endfunction
+
+function! AgHandler(line)
+  let parts = split(a:line, ':')
+  let [fn, lno] = parts[0 : 1]
+  execute 'sp '. s:escape(fn)
+  execute lno
+  normal! zz
+endfunction
+
+command! -nargs=+ Fg call fzf#run({
+  \ 'source': 'ag "<args>"',
+  \ 'sink': function('AgHandler'),
+  \ 'options': '+m',
+  \ 'tmux_height': '60%'
+\ })
+
+nnoremap fg :Fg<Space>
 
 
 " unhighlight search
@@ -170,3 +192,8 @@ vnoremap <tab> %
 
 " jump back to previous buffer
 nnoremap <leader>, <c-^>
+
+
+" show and select buffer
+nnoremap gb :ls<CR>:b<Space>
+

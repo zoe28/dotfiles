@@ -18,7 +18,6 @@ Plug 'bling/vim-airline'                                         " Powerline in 
 Plug 'sheerun/vim-polyglot'                                      " Syntax highlighting for languages
 Plug 'scrooloose/syntastic'                                      " Syntax checker
 Plug 'tpope/vim-surround'                                        " Quickly surround words with symbols
-Plug 'tpope/vim-obsession'                                       " Vim sessions
 Plug 'christoomey/vim-tmux-navigator'                            " Doh! That's a Tmux split (no longer!)
 Plug 'airblade/vim-gitgutter'                                    " Shows Git diff
 Plug 'flazz/vim-colorschemes'                                    " Nice syntax highlighting
