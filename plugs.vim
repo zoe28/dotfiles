@@ -40,6 +40,7 @@ Plug 'junegunn/goyo.vim'                                         " Page layout
 Plug 'junegunn/vim-easy-align'                                   " Aligning columns
 Plug 'wincent/command-t'                                         " file navigation
 Plug 'junegunn/vim-xmark', { 'do': 'make' }                      " Markdown
+Plug 'honza/vim-snippets'                                        " snippets
 
                                                                  " == Javascript ==
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }          " Javascript
@@ -185,5 +186,8 @@ set diffopt+=vertical
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
 
+
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+
