@@ -123,28 +123,9 @@ nmap <Leader>/ :Ack<Space>
 
 " fzf
 set rtp+=~/.fzf
-nnoremap ff :FZF<CR>
+nnoremap ff :GFiles<CR>
 
-function! s:escape(path)
-  return substitute(a:path, ' ', '\\ ', 'g')
-endfunction
-
-function! AgHandler(line)
-  let parts = split(a:line, ':')
-  let [fn, lno] = parts[0 : 1]
-  execute 'sp '. s:escape(fn)
-  execute lno
-  normal! zz
-endfunction
-
-command! -nargs=+ Fg call fzf#run({
-  \ 'source': 'ag "<args>"',
-  \ 'sink': function('AgHandler'),
-  \ 'options': '+m',
-  \ 'tmux_height': '60%'
-\ })
-
-nnoremap fg :Fg<Space>
+nnoremap fg :Ag<Space>
 
 
 " unhighlight search
