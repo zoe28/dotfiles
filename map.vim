@@ -136,6 +136,8 @@ noremap <silent><esc> <esc>:noh<CR><esc>
 nmap ?? :%s/<C-r><C-w>//g<Left><Left>
 vmap ?? :s/<C-r><C-w>//g<Left><Left>
 
+nmap ??? :windo %s/<C-r><C-w>//g<Left><Left>
+
 
 " search tags
 nmap \\ :Tags <C-r><C-w>
