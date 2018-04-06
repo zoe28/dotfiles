@@ -111,11 +111,12 @@ alias bashrc='vim ~/.bashrc'
 alias eslintrc='vim ~/.eslintrc'
 alias gitrc='vim ~/.gitconfig'
 alias inputrc='vim ~/.inputrc'
+alias maprc='vim ~/.map.vim'
+alias plugrc='vim ~/.plugs.vim'
 alias screenrc='vim ~/.screenrc'
 alias sshrc='vim ~/.ssh/config'
 alias stylelintrc='vim ~/.stylelintrc'
 alias tmuxrc='vim ~/.tmux.conf'
-alias plugrc='vim ~/.plugs.vim'
 alias vimrc='vim ~/.vimrc'
 
 
