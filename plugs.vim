@@ -29,6 +29,7 @@ Plug 'blueyed/vim-diminactive'                                   " Dim inactive 
 Plug 'Raimondi/delimitMate'                                      " Autocomplete for punctuation
 Plug 'ervandew/supertab'                                         " Tab autocomplete
 Plug 'tpope/vim-fugitive'                                        " Git wrapper
+Plug 'tpope/vim-sleuth'                                          " Git wrapper
 Plug 'ntpeters/vim-better-whitespace'                            " Highlight whitespace
 Plug 'AndrewRadev/linediff.vim'                                  " Line diffs
 Plug 'mikker/seoul256-iTerm'                                     " Seoul iTerm
@@ -189,5 +190,9 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+
+" Tagbar
+nnoremap <silent> <Leader>b :TagbarToggle<CR>
 
 
