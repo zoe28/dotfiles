@@ -1,6 +1,5 @@
 bash-completion
 coreutils
-ctags
 fasd
 fd
 fzf
