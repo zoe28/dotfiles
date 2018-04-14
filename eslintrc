@@ -29,6 +29,7 @@
   "globals": {
     "chrome": true,
     "bytegain": true,
-    "ga": true
+    "ga": true,
+    "Intercom": true
   }
 }
