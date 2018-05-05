@@ -1,32 +1,8 @@
 [user]
-  name = atav32
+  name = Brian Zhang
   email = brianbzhang@gmail.com
 [github]
   user = atav32
-[core]
-  editor = vim
-  excludesfile = ~/.gitignore_global
-[merge]
-  tool = vimdiff
-  conflictstyle = diff3
-  external = gitmerge
-  stat = 1
-[mergetool]
-  prompt = false
-[color]
-  status = auto
-  branch = auto
-  interactive = auto
-  diff = auto
-  grep = auto
-  ui = 1
-[color "diff"]
-  meta = yellow bold
-  frag = magenta
-  old = red reverse white
-  new = green reverse white
-[log]
-  decorate = full
 [alias]
   a = add
   b = branch
@@ -51,18 +27,45 @@
   unstage = reset HEAD
   revert = checkout HEAD
   uncommit = reset --soft HEAD^
-[push]
-  default = current
 [branch]
   autosetuprebase = always
-[rerere]
-  enabled = 1
+[color]
+  status = auto
+  branch = auto
+  interactive = auto
+  diff = auto
+  grep = auto
+  ui = 1
+[color "diff"]
+  meta = yellow bold
+  frag = magenta
+  old = red reverse white
+  new = green reverse white
+[core]
+  editor = vim
+  excludesfile = ~/.gitignore_global
+[diff]
+  renames = copies
+  mnemonicprefix = true
+  tool = vscode
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE
 [help]
   autocorrect = 1
+[log]
+  decorate = full
+[merge]
+  tool = vscode
+[mergtool]
+  prompt = false
+[mergetool "vscode"]
+  cmd = code --wait $MERGED
+  prompt = false
+[push]
+  default = current
+[rerere]
+  enabled = 1
 [url "http://"]
   insteadOf = git://
 [url "https://"]
   insteadOf = git://
-[diff]
-  renames = copies
-  mnemonicprefix = true
