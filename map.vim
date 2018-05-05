@@ -121,13 +121,6 @@ command No set invnumber! | GitGutterToggle
 nmap <Leader>/ :Ack<Space>
 
 
-" fzf
-set rtp+=~/.fzf
-nnoremap ff :GFiles<CR>
-
-nnoremap fg :Ag<Space>
-
-
 " unhighlight search
 noremap <silent><esc> <esc>:noh<CR><esc>
 
