@@ -127,9 +127,9 @@ alias vimrc='vim ~/.vimrc'
 # fzf file helper
 fff() {
   if [ $# -eq 0 ] ; then
-    FILENAME=$(fzf -1 -m -i)
+    FILENAME=$(fzf -1 -m -i --preview 'cat {}')
   else
-    FILENAME=$(fzf -1 -m -i -q $@)
+    FILENAME=$(fzf -1 -m -i --preview 'cat {}' -q $@)
   fi
   if [ -n "$FILENAME" ] ; then
     echo $FILENAME
@@ -139,7 +139,7 @@ fff() {
 # open all files containing query
 vg() {
   if [ ! $# -eq 0 ] ; then
-    vim -o $(ag -l "$@")
+    vim -o $(ag -l "$@" | fzf --preview "cat {} | ag -C 1 $@")
   fi
 }
 
@@ -148,6 +148,13 @@ vs() {
   FILE=$(fff "$@")
   if [ -n "$FILE" ] ; then
     vim -o $FILE
+  fi
+}
+
+vv() {
+  FILE=$(fff "$@")
+  if [ -n "$FILE" ] ; then
+    vim -O $FILE
   fi
 }
 
