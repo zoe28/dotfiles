@@ -42,13 +42,14 @@ Plug 'junegunn/vim-easy-align'                                   " Aligning colu
 Plug 'wincent/command-t'                                         " file navigation
 Plug 'junegunn/vim-xmark', { 'do': 'make' }                      " Markdown
 Plug 'honza/vim-snippets'                                        " snippets
+Plug 'junegunn/rainbow_parentheses.vim'                          " rainbow parentheses
 
                                                                  " == Javascript ==
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }          " Javascript
 Plug 'walm/jshint.vim', { 'for': 'javascript' }                  " I can haz good JS style?
 Plug 'douglascrockford/JSLint', { 'for': 'javascript' }
 Plug 'burnettk/vim-angular', { 'for': 'javascript' }             " Angular
-Plug 'mxw/vim-jsx', { 'for': ['js', 'jsx'] }                     " ReactJS
+Plug 'mxw/vim-jsx', { 'for': ['javascript', 'jsx'] }             " ReactJS
 
                                                                  " == HTML ==
 Plug 'htacg/tidy-html5', { 'do': 'make install', 'for': 'html' } " HTML5 syntax
