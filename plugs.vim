@@ -43,6 +43,7 @@ Plug 'wincent/command-t'                                         " file navigati
 Plug 'junegunn/vim-xmark', { 'do': 'make' }                      " Markdown
 Plug 'honza/vim-snippets'                                        " snippets
 Plug 'junegunn/rainbow_parentheses.vim'                          " rainbow parentheses
+Plug 'wesQ3/vim-windowswap'                                      " swap Vim splits
 
                                                                  " == Javascript ==
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }          " Javascript

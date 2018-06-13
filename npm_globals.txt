@@ -8,6 +8,7 @@ eslint-plugin-json
 eslint-plugin-node
 eslint-plugin-react
 gatsby-cli
+jest-cli
 serve
 stylelint
 stylelint-config-standard

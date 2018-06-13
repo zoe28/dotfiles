@@ -139,7 +139,7 @@ fff() {
 # open all files containing query
 vg() {
   if [ ! $# -eq 0 ] ; then
-    vim -o $(ag -l "$@" | fzf --preview "cat {} | ag -C 1 $@")
+    vim -o $(ag -l "$@" | fzf -1 -m -i --preview "cat {} | ag -C 1 $@")
   fi
 }
 
