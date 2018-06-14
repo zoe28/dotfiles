@@ -50,3 +50,17 @@ function LargeFile()
   autocmd VimEnter *  echo "The file is larger than " . (g:LargeFile / 1024 / 1024) . " MB, so some options are changed (see .vimrc for details)."
 endfunction
 
+
+
+" LaTeX
+au FileType tex setlocal nocursorline
+au FileType tex set nofoldenable
+au FileType tex :NoMatchParen
+au FileType tex :syn clear texAccent
+au FileType tex :syn clear texLength
+au FileType tex :syn clear texOnlyMath
+au FileType tex :syn clear texOption
+au FileType tex :syn clear texSectionZone
+au FileType tex :syn clear texStatement
+au FileType tex :syn clear texString
+au FileType tex :syn clear texSubSectionZone

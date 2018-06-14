@@ -44,6 +44,7 @@ Plug 'junegunn/vim-xmark', { 'do': 'make' }                      " Markdown
 Plug 'honza/vim-snippets'                                        " snippets
 Plug 'junegunn/rainbow_parentheses.vim'                          " rainbow parentheses
 Plug 'wesQ3/vim-windowswap'                                      " swap Vim splits
+Plug 'lervag/vimtex', { 'for': 'tex' }                           " LaTeX
 
                                                                  " == Javascript ==
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }          " Javascript
@@ -130,6 +131,7 @@ let g:syntastic_python_checkers = ['flake8'] "['pylint', 'flake8']
 let g:syntastic_python_flake8_args = '--config ~/.flake8 --ignore=E501,W503'
 "let g:syntastic_python_pylint_args = '--rcfile .pylintrc --load-plugins pylint_django --msg-template="{path}:{line}: [{msg_id}] {msg}" -r n'
 let g:loaded_syntastic_sh_shellcheck_checker = 1
+let g:syntastic_ignore_files = ['tex']
 set statusline+=%#warningmsg#
 set statusline+=%*
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -196,6 +198,16 @@ nmap ga <Plug>(EasyAlign)
 
 " Tagbar
 nnoremap <silent> <Leader>b :TagbarToggle<CR>
+
+
+" Polyglot
+let g:polyglot_disabled = ['latex']
+
+
+" Vimtex
+let g:vimtex_compiler_latexmk = {'callback' : 0}
+let g:vimtex_fold_enabled=0
+let g:matchup_matchparen_deferred = 1
 
 
 " FZF
