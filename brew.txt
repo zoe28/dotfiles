@@ -4,12 +4,15 @@ fasd
 fd
 fzf
 git
+heroku
 htop
+mongodb
 node
 nvm
 postgresql
 readline
 reattach-to-user-namespace
+shellcheck
 the_silver_searcher
 tmux
 vim
