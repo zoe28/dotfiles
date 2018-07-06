@@ -4,6 +4,7 @@ create-react-native-app
 eslint
 eslint-config-airbnb
 eslint-plugin-import
+eslint-plugin-jest
 eslint-plugin-json
 eslint-plugin-node
 eslint-plugin-react

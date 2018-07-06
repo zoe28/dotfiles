@@ -4,6 +4,7 @@
   ],
   "plugins": [
     "import",
+    "jest",
   "json",
   "node",
   "react"
