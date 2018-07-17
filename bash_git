@@ -81,7 +81,7 @@ gc() {
 
 # remove old branches that have already been merged into master
 gclean() {
-  DATE=`date -v-1m +%m-%d-%Y` # default date is 1 month ago
+  DATE=`date -d '30 days ago' +%m-%d-%Y` # default date is 1 month ago
   DRY_RUN=""
   CURRENT_BRANCH=`git symbolic-ref --short HEAD`
   BRANCHES=0
