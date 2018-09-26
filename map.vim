@@ -104,7 +104,7 @@ nnoremap <Enter> zz
 
 
 " Remove all console.log
-nnoremap gc :g/console.log/d<Enter>
+nnoremap gcl :g/console.log/d<Enter>
 
 
 " Line comments
