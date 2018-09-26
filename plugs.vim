@@ -58,7 +58,8 @@ Plug 'htacg/tidy-html5', { 'do': 'make install', 'for': 'html' }  " HTML5 syntax
 Plug 'mattn/emmet-vim', { 'for': 'html' }                         " Expanding HTML abbreviations
 Plug 'digitaltoad/vim-pug', { 'for': 'pug' }                      " Pug (Jade) templates
 Plug 'Glench/Vim-Jinja2-Syntax', { 'for': 'html' }                " Jinja2
-                                                                  "
+Plug 'mustache/vim-mustache-handlebars', { 'for': 'handlebars' }  " Mustache, Handlebars
+
                                                                   " == CSS ==
 Plug 'groenewege/vim-less', { 'for': 'less' }                     " syntax highlighting for LESS
 Plug 'ap/vim-css-color', { 'for': ['css', 'scss', 'html', 'js'] } " Highligh CSS colors
