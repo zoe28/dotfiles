@@ -11,7 +11,9 @@ eslint-plugin-react
 gatsby-cli
 jest-cli
 serve
+source-map-explorer
 stylelint
 stylelint-config-standard
 webpack
+webpack-cli
 webpack-bundle-size-analyzer
