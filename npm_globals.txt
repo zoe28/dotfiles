@@ -10,6 +10,7 @@ eslint-plugin-node
 eslint-plugin-react
 gatsby-cli
 jest-cli
+node-nightly
 serve
 source-map-explorer
 stylelint
