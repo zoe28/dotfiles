@@ -1,6 +1,7 @@
 # Change directories
 # --------------------------------------------------------------------
 alias cs='cd'
+alias csl='cd -'
 alias ~='cd ~'
 alias ..='cd ..'             # go to parent dir
 alias ...='cd ../..'         # go to grandparent dir
