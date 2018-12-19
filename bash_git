@@ -2,11 +2,12 @@
 # --------------------------------------------------------------------
 alias cm='ag "<<<<<<<"'
 alias ga="git add -p"
+alias gaa="git add ."
 alias gbc="echo Total branches: `git branch | wc -l`"
 alias gbu="git branch -u origin/$(git rev-parse --abbrev-ref HEAD)"
 alias gd="clear ; git diff"
-alias gdw="clear ; git diff --color-words"
 alias gds="git diff --staged"
+alias gdw="clear ; git diff --color-words"
 alias gf="git fetch"
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 alias gld="git log master.. --oneline"

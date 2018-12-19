@@ -5,6 +5,7 @@ alias df='df -kTh'
 alias du="du -hs | sort -h"
 alias f='open -a Finder ./'
 alias grep='grep --color=auto'
+alias hosts='sudo vim /etc/hosts'
 alias killall='pkill -u $USER'
 alias ll='ls -lsahF --color=auto' #long list
 alias lr='ls -lR'                 #recursive
