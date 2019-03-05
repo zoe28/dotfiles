@@ -140,6 +140,9 @@ set statusline+=%{SyntasticStatuslineFlag()}
 highlight link SyntasticError Error
 highlight link SyntasticWarning WildMenu
 
+nmap <Leader>ne :lnext<CR>
+nmap <Leader>Ne :lprevious<CR>
+
 
 "" Easymotion
 nmap <Leader>s <Plug>(easymotion-s2)
