@@ -1,8 +1,10 @@
 *.*.js.map
+*.bundle.js
 *.css.map
 *.js.map
 *.json
 *.min.*
+*.min.js
 *.pyc
 *.sql
 *.svg
