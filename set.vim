@@ -10,7 +10,6 @@ set colorcolumn=100            " vertical line to indicate line width
 set complete-=i                " don't autocomplete from included files
 set encoding=utf-8             " Enable unicode
 set et
-set expandtab                  " all tabs are actually spaces
 set iskeyword=-                " hyphens are word boundaries
 set laststatus=2               " always show status line
 set lazyredraw                 " if we're going to redraw, lets not be lazy about it.
@@ -19,11 +18,13 @@ set nostartofline              " don't jump to the start of a line when scrollin
 set number                     " show line numbers
 set report=0                   " tell us about changes
 set scrolloff=5                " keep cursor 5 lines away from the edge of the screen
-set shiftwidth=2
 set showcmd                    " display commands as I type them
 set showmode                   " show the current mode
 set smartindent
+set expandtab                  " all tabs are actually spaces
+set tabstop=2
 set softtabstop=2              " two!
+set shiftwidth=2
 set timeoutlen=300
 set ttimeoutlen=10
 set ttimeoutlen=50             " timeout length when switching modes
