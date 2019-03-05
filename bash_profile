@@ -29,3 +29,16 @@ export LANG=en_US.UTF-8
 # Add coreutils
 export CORE_UTILS=/usr/local/opt/coreutils/libexec/gnubin
 export PATH=$CORE_UTILS:$PATH
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/bz/google-cloud-sdk/path.bash.inc' ]; then . '/Users/bz/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/bz/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/bz/google-cloud-sdk/completion.bash.inc'; fi
+
+# Add keybase
+export KEYBASE="/Volumes/Keybase (bz)/team/bytegain/devtools/bin"
+export PATH=$KEYBASE:$PATH
+
+# Add mkcert certificates
+NODE_EXTRA_CA_CERTS="$(mkcert -CAROOT)/rootCA.pem"
