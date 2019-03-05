@@ -45,6 +45,7 @@ Plug 'honza/vim-snippets'                                                " snipp
 Plug 'junegunn/rainbow_parentheses.vim'                                  " rainbow parentheses
 Plug 'wesQ3/vim-windowswap'                                              " swap Vim splits
 Plug 'lervag/vimtex', { 'for': 'tex' }                                   " LaTeX
+Plug 'tpope/vim-unimpaired'                                              " complementary pairs of mappings
 
                                                                          " == Javascript ==
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }                  " Javascript
