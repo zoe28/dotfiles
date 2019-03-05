@@ -18,6 +18,7 @@ alias ps="ps aux"
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 alias tree='tree -Csuh' #alternative to recursive ls
 
+
 ## unzip everything
 extract () {
   if [ -f $1 ] ; then
@@ -40,6 +41,7 @@ extract () {
  fi
 }
 
+
 ## display files in scrollable columns
 lsm() {
   # 34 for 2 columns
@@ -47,10 +49,12 @@ lsm() {
   ls -Fc | perl -lne 's/(.{34}).*/$1... /s ; print' | column -x | more
 }
 
+
 ## mkdir and then enter folder
 md() {
   mkdir -p $1 && cd $1
 }
+
 
 ## git mv when in repo, \mv elsewhere
 mv() {
@@ -60,6 +64,7 @@ mv() {
     $(which mv) -iv "$@"
   fi
 }
+
 
 ## source config files
 re () {
@@ -71,6 +76,7 @@ re () {
 
   echo "sourced .rc files"
 }
+
 
 ## git rm when in repo, \rm elsewhere
 # also tar a back-up and put it in /tmp
@@ -265,6 +271,7 @@ alias grp='grep'
 
 # Vim
 # --------------------------------------------------------------------
+alias lv='vim $(ls -tp | grep -v /$ | head -1)'
 alias rmswp='rm -rf ~/.vim/swap/*.swp' # delete all .swp files
 alias v="vim"
 alias va="vim -o" # multiple files in splits
