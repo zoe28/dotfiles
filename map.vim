@@ -172,4 +172,3 @@ nnoremap <leader>, <c-^>
 
 " show and select buffer
 nnoremap gb :ls<CR>:b<Space>
-

@@ -10,6 +10,7 @@ eslint-plugin-node
 eslint-plugin-react
 firebase-tools
 gatsby-cli
+gulp-cli
 jest-cli
 node-nightly
 serve
