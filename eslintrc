@@ -32,6 +32,8 @@
     "bytegain": true,
     "fbq": true,
     "ga": true,
-    "Intercom": true
+    "Intercom": true,
+    "jest": true,
+    "test": true
   }
 }
