@@ -20,3 +20,4 @@ stylelint-config-standard
 webpack
 webpack-cli
 webpack-bundle-size-analyzer
+yarn
