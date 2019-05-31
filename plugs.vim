@@ -46,6 +46,8 @@ Plug 'junegunn/rainbow_parentheses.vim'                                  " rainb
 Plug 'wesQ3/vim-windowswap'                                              " swap Vim splits
 Plug 'lervag/vimtex', { 'for': 'tex' }                                   " LaTeX
 Plug 'tpope/vim-unimpaired'                                              " complementary pairs of mappings
+Plug 'ludovicchabant/vim-gutentags'                                      " manage tags
+Plug 'scrooloose/nerdtree'                                               " file directory
 
                                                                          " == Javascript ==
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }                  " Javascript
@@ -162,6 +164,25 @@ let g:EasyMotion_smartcase = 1
 "" Tags
 nmap <F8> :TagbarToggle<CR>
 
+"" Gutentag
+set statusline+=%{gutentags#statusline()}
+
+" Tagbar
+nnoremap <silent> <Leader>b :TagbarToggle<CR>
+
+
+"" nerdtree
+map <C-n> :NERDTreeToggle<CR>
+autocmd StdinReadPre * let s:std_in=1
+" open a NERDTree automatically when vim starts up if no files were specified
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" open NERDTree automatically when vim starts up on opening a directory
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+" close vim if the only window left open is NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+
+
 
 "" Awk/Ag
 if executable('ag')
@@ -200,9 +221,6 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-
-" Tagbar
-nnoremap <silent> <Leader>b :TagbarToggle<CR>
 
 
 " Polyglot
