@@ -1,4 +1,4 @@
-bash-completion
+bash-completion@2
 coreutils
 fasd
 fd
