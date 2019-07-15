@@ -7,6 +7,7 @@ git
 heroku
 htop
 mongodb
+mkcert
 node
 nvm
 postgresql
