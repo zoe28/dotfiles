@@ -69,6 +69,7 @@ mv() {
 ## source config files
 re () {
   source ~/.bashrc
+  source ~/.profile
 
   if [ -f ~/.alias ]; then
     source ~/.alias
