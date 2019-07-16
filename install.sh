@@ -149,8 +149,8 @@ echo -e "\\nsudo pip install "
 export PIP_REQUIRE_VIRTUALENV=false
 export PIP_RESPECT_VIRTUALENV=false
 sudo pip install flake8
+sudo pip install ipdb
 sudo pip install pylint-django
-sudo pip install pyscope
 sudo pip install virtualenv
 export PIP_REQUIRE_VIRTUALENV=true
 export PIP_RESPECT_VIRTUALENV=true
