@@ -1,5 +1,5 @@
 " ----------------------------------------------------------------------------
-" Vim Plug
+" Plugins
 " ----------------------------------------------------------------------------
 
 " Configuration
@@ -79,7 +79,7 @@ call plug#end()
 
 
 " ---------------------------------------------------------------------------
-" COLOR SCHEME
+" Color scheme
 " ---------------------------------------------------------------------------
 colorscheme seoul256
 let g:seoul256_background = 236
@@ -91,13 +91,9 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 
 
 
-"------------------------------------------------
-" Plugin settings
-"------------------------------------------------
-
-"" Emmet
-let g:user_emmet_leader_key='<C-G>'
-
+" ----------------------------------------------------------------------------
+" Powerline
+" ----------------------------------------------------------------------------
 
 "" Airline settings
 autocmd User AirlineAfterInit call AirlineInit()
@@ -125,127 +121,10 @@ function! AirlineInit()
 endfunction
 
 
-"" Synstastic settings
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-let g:syntastic_enable_signs = 1
-let g:syntastic_html_tidy_exec = '~/.vim/bundle/tidy-html5/bin/tidy'
-let g:syntastic_html_tidy_ignore_errors=['proprietary attribute', 'trimming empty <']
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_loc_list_height = 5
-let g:syntastic_python_checkers = ['flake8'] "['pylint', 'flake8']
-let g:syntastic_python_flake8_args = '--config ~/.flake8 --ignore=E501,W503'
-"let g:syntastic_python_pylint_args = '--rcfile .pylintrc --load-plugins pylint_django --msg-template="{path}:{line}: [{msg_id}] {msg}" -r n'
-let g:loaded_syntastic_sh_shellcheck_checker = 1
-let g:syntastic_ignore_files = ['tex']
-set statusline+=%#warningmsg#
-set statusline+=%*
-set statusline+=%{SyntasticStatuslineFlag()}
-highlight link SyntasticError Error
-highlight link SyntasticWarning WildMenu
-
-nmap <Leader>ne :lnext<CR>
-nmap <Leader>Ne :lprevious<CR>
-
-
-"" Easymotion
-nmap <Leader>s <Plug>(easymotion-s2)
-
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
-
-map <Leader>l <Plug>(easymotion-lineforward)
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
-map <Leader>h <Plug>(easymotion-linebackward)
-
-let g:EasyMotion_startofline = 0
-let g:EasyMotion_smartcase = 1
-
-
-"" Tags
-nmap <F8> :TagbarToggle<CR>
-
-"" Gutentag
-set statusline+=%{gutentags#statusline()}
-
-" Tagbar
-nnoremap <silent> <Leader>b :TagbarToggle<CR>
-
-
-"" nerdtree
-map <C-n> :NERDTreeToggle<CR>
-autocmd StdinReadPre * let s:std_in=1
-" open a NERDTree automatically when vim starts up if no files were specified
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-" open NERDTree automatically when vim starts up on opening a directory
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
-" close vim if the only window left open is NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-
-
-
-"" Awk/Ag
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
-if executable('ack')
-  set grepprg=ack\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow\ $*
-  set grepformat=%f:%l:%c:%m
-endif
-if executable('ag')
-  set grepprg=ag\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow
-  set grepformat=%f:%l:%c:%m
-endif
-
-
-"" Indent Guide
-let g:indent_guides_guide_size = 1
-
-let g:NERDTreeDirArrows = 0
-
-
-"" Vim Diminactive
-let g:diminactive_use_colorcolumn = 0
-let g:diminactive_use_syntax = 1
-
-
-"" Vim Fugitive
-set diffopt+=vertical
-
-
-"" EasyAlign
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-
-
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
-
-
-
-" Polyglot
-let g:polyglot_disabled = ['latex']
-
-
-" Vimtex
-let g:vimtex_compiler_latexmk = {'callback' : 0}
-let g:vimtex_fold_enabled=0
-let g:matchup_matchparen_deferred = 1
-
-
-" Ale
-let g:ale_fixers = {
-  \ '*': ['remove_trailing_lines', 'trim_whitespace'],
-  \ 'javascript': ['prettier', 'eslint'],
-\ }
-
-
+" ----------------------------------------------------------------------------
 " FZF
+" ----------------------------------------------------------------------------
+
 set rtp+=~/.fzf
 
 command! -bang -nargs=* GGrep
@@ -280,3 +159,143 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
+
+" ----------------------------------------------------------------------------
+" Syntastic
+" ----------------------------------------------------------------------------
+
+let g:syntastic_aggregate_errors = 1
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+let g:syntastic_enable_signs = 1
+let g:syntastic_html_tidy_exec = '~/.vim/bundle/tidy-html5/bin/tidy'
+let g:syntastic_html_tidy_ignore_errors=['proprietary attribute', 'trimming empty <']
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_loc_list_height = 5
+let g:syntastic_python_checkers = ['flake8'] "['pylint', 'flake8']
+let g:syntastic_python_flake8_args = '--config ~/.flake8 --ignore=E501,W503'
+"let g:syntastic_python_pylint_args = '--rcfile .pylintrc --load-plugins pylint_django --msg-template="{path}:{line}: [{msg_id}] {msg}" -r n'
+let g:loaded_syntastic_sh_shellcheck_checker = 1
+let g:syntastic_ignore_files = ['tex']
+set statusline+=%#warningmsg#
+set statusline+=%*
+set statusline+=%{SyntasticStatuslineFlag()}
+highlight link SyntasticError Error
+highlight link SyntasticWarning WildMenu
+
+nmap <Leader>ne :lnext<CR>
+nmap <Leader>Ne :lprevious<CR>
+
+
+" ----------------------------------------------------------------------------
+" Easymotion
+" ----------------------------------------------------------------------------
+
+nmap <Leader>s <Plug>(easymotion-s2)
+
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+
+map <Leader>l <Plug>(easymotion-lineforward)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader>h <Plug>(easymotion-linebackward)
+
+let g:EasyMotion_startofline = 0
+let g:EasyMotion_smartcase = 1
+
+
+" ----------------------------------------------------------------------------
+" Tags
+" ----------------------------------------------------------------------------
+
+nmap <F8> :TagbarToggle<CR>
+
+"" Gutentag
+set statusline+=%{gutentags#statusline()}
+
+" Tagbar
+nnoremap <silent> <Leader>b :TagbarToggle<CR>
+
+
+" ----------------------------------------------------------------------------
+" Nertree
+" ----------------------------------------------------------------------------
+
+map <C-n> :NERDTreeToggle<CR>
+autocmd StdinReadPre * let s:std_in=1
+" open a NERDTree automatically when vim starts up if no files were specified
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" open NERDTree automatically when vim starts up on opening a directory
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+" close vim if the only window left open is NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+
+" ----------------------------------------------------------------------------
+" Awk/Ag
+" ----------------------------------------------------------------------------
+
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+if executable('ack')
+  set grepprg=ack\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow\ $*
+  set grepformat=%f:%l:%c:%m
+endif
+if executable('ag')
+  set grepprg=ag\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow
+  set grepformat=%f:%l:%c:%m
+endif
+
+
+" ----------------------------------------------------------------------------
+" Miscellaneous
+" ----------------------------------------------------------------------------
+
+"" Indent Guide
+let g:indent_guides_guide_size = 1
+
+let g:NERDTreeDirArrows = 0
+
+
+"" Vim Diminactive
+let g:diminactive_use_colorcolumn = 0
+let g:diminactive_use_syntax = 1
+
+
+"" Vim Fugitive
+set diffopt+=vertical
+let g:github_enterprise_urls = ['https://git.corp.stripe.com']  " for vim-rhubarb
+
+
+"" EasyAlign
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+
+"" Polyglot
+let g:polyglot_disabled = ['latex']
+
+
+" Vimtex
+let g:vimtex_compiler_latexmk = {'callback' : 0}
+let g:vimtex_fold_enabled=0
+let g:matchup_matchparen_deferred = 1
+
+
+"" Ale
+let g:ale_fixers = {
+  \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+  \ 'javascript': ['prettier', 'eslint'],
+\ }
+
+
+"" Emmet
+let g:user_emmet_leader_key='<C-G>'
