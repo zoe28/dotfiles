@@ -10,6 +10,7 @@ hub
 mongodb
 mkcert
 node
+nodenv
 nvm
 postgresql
 readline
