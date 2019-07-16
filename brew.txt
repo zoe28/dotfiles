@@ -6,6 +6,7 @@ fzf
 git
 heroku
 htop
+hub
 mongodb
 mkcert
 node
