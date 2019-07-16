@@ -25,6 +25,9 @@ alias stash="git add . ; git stash"
 alias throwaway='git stash'
 alias vrm='vim README.md'
 
+# Wrap git automatically by adding the following to ~/.bash_profile:
+eval "$(hub alias -s)"
+
 
 
 # Git functions
