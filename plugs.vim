@@ -13,60 +13,65 @@ endif
 call plug#begin('~/.vim/plugged')
 
                                                                          " == General ==
-Plug 'junegunn/seoul256.vim'                                             " Colorscheme
-Plug 'bling/vim-airline'                                                 " Powerline in Vimscript
-Plug 'sheerun/vim-polyglot'                                              " Syntax highlighting for languages
-Plug 'scrooloose/syntastic'                                              " Syntax checker
-Plug 'tpope/vim-surround'                                                " Quickly surround words with symbols
-Plug 'christoomey/vim-tmux-navigator'                                    " Doh! That's a Tmux split (no longer!)
-Plug 'airblade/vim-gitgutter'                                            " Shows Git diff
-Plug 'flazz/vim-colorschemes'                                            " Nice syntax highlighting
-Plug 'Lokaltog/vim-easymotion'                                           " Move around better
-Plug 'majutsushi/tagbar'                                                 " Tags
-Plug 'mileszs/ack.vim'                                                   " Awk/Ag search
-Plug 'chrisbra/vim-diff-enhanced'                                        " Smarter diffing
-Plug 'blueyed/vim-diminactive'                                           " Dim inactive window (could be very slow)
-Plug 'Raimondi/delimitMate'                                              " Autocomplete for punctuation
-Plug 'ervandew/supertab'                                                 " Tab autocomplete
-Plug 'tpope/vim-fugitive'                                                " Git wrapper
-Plug 'tpope/vim-sleuth'                                                  " Git wrapper
-Plug 'ntpeters/vim-better-whitespace'                                    " Highlight whitespace
 Plug 'AndrewRadev/linediff.vim'                                          " Line diffs
-Plug 'mikker/seoul256-iTerm'                                             " Seoul iTerm
-Plug 'powerline/fonts'                                                   " Powerline fonts (Sauce Code Powerline Regular)
-Plug 'tomtom/tcomment_vim'                                               " comment/uncomment
+Plug 'Lokaltog/vim-easymotion'                                           " Move around better
+Plug 'Raimondi/delimitMate'                                              " Autocomplete for punctuation
+Plug 'airblade/vim-gitgutter'                                            " Shows Git diff
+Plug 'bling/vim-airline'                                                 " Powerline in Vimscript
+Plug 'blueyed/vim-diminactive'                                           " Dim inactive window (could be very slow)
+Plug 'chrisbra/vim-diff-enhanced'                                        " Smarter diffing
+Plug 'christoomey/vim-tmux-navigator'                                    " Doh! That's a Tmux split (no longer!)
+Plug 'ervandew/supertab'                                                 " Tab autocomplete
+Plug 'flazz/vim-colorschemes'                                            " Nice syntax highlighting
+Plug 'honza/vim-snippets'                                                " snippets
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'                                                  " FZF plugin for Vim
 Plug 'junegunn/goyo.vim'                                                 " Page layout
-Plug 'junegunn/vim-easy-align'                                           " Aligning columns
-Plug 'wincent/command-t'                                                 " file navigation
-Plug 'junegunn/vim-xmark', { 'do': 'make' }                              " Markdown
-Plug 'honza/vim-snippets'                                                " snippets
 Plug 'junegunn/rainbow_parentheses.vim'                                  " rainbow parentheses
-Plug 'wesQ3/vim-windowswap'                                              " swap Vim splits
+Plug 'junegunn/seoul256.vim'                                             " Colorscheme
+Plug 'junegunn/vim-easy-align'                                           " Aligning columns
+Plug 'junegunn/vim-xmark', { 'do': 'make' }                              " Markdown
 Plug 'lervag/vimtex', { 'for': 'tex' }                                   " LaTeX
-Plug 'tpope/vim-unimpaired'                                              " complementary pairs of mappings
 Plug 'ludovicchabant/vim-gutentags'                                      " manage tags
+Plug 'majutsushi/tagbar'                                                 " Tags
+Plug 'mikker/seoul256-iTerm'                                             " Seoul iTerm
+Plug 'mileszs/ack.vim'                                                   " Awk/Ag search
+Plug 'ntpeters/vim-better-whitespace'                                    " Highlight whitespace
+Plug 'powerline/fonts'                                                   " Powerline fonts (Sauce Code Powerline Regular)
 Plug 'scrooloose/nerdtree'                                               " file directory
+Plug 'scrooloose/syntastic'                                              " Syntax checker
+Plug 'sheerun/vim-polyglot'                                              " Syntax highlighting for languages
+Plug 'tomtom/tcomment_vim'                                               " comment/uncomment
+Plug 'tpope/vim-fugitive'                                                " Git wrapper
+Plug 'tpope/vim-rhubarb'                                                 " Gbrowse with hub
+Plug 'tpope/vim-sleuth'                                                  " Git wrapper
+Plug 'tpope/vim-surround'                                                " Quickly surround words with symbols
+Plug 'tpope/vim-unimpaired'                                              " complementary pairs of mappings
+Plug 'w0rp/ale'                                                          " async lint engine
+Plug 'wesQ3/vim-windowswap'                                              " swap Vim splits
+Plug 'wincent/command-t'                                                 " file navigation
 
                                                                          " == Javascript ==
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }                  " Javascript
-Plug 'walm/jshint.vim', { 'for': 'javascript' }                          " I can haz good JS style?
-Plug 'douglascrockford/JSLint', { 'for': 'javascript' }
 Plug 'burnettk/vim-angular', { 'for': 'javascript' }                     " Angular
+Plug 'douglascrockford/JSLint', { 'for': 'javascript' }
 Plug 'mxw/vim-jsx', { 'for': ['javascript', 'jsx'] }                     " ReactJS
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }                  " Vim & Javascript
+Plug 'walm/jshint.vim', { 'for': 'javascript' }                          " I can haz good JS style?
 
                                                                          " == HTML ==
+Plug 'Glench/Vim-Jinja2-Syntax', { 'for': 'html' }                       " Jinja2
+Plug 'digitaltoad/vim-pug', { 'for': 'pug' }                             " Pug (Jade) templates
 Plug 'htacg/tidy-html5', { 'do': 'make install', 'for': 'html' }         " HTML5 syntax
 Plug 'mattn/emmet-vim', { 'for': 'html' }                                " Expanding HTML abbreviations
-Plug 'digitaltoad/vim-pug', { 'for': 'pug' }                             " Pug (Jade) templates
-Plug 'Glench/Vim-Jinja2-Syntax', { 'for': 'html' }                       " Jinja2
 Plug 'mustache/vim-mustache-handlebars', { 'for': 'handlebars' }         " Mustache, Handlebars
 
                                                                          " == CSS ==
-Plug 'groenewege/vim-less', { 'for': 'less' }                            " syntax highlighting for LESS
 Plug 'ap/vim-css-color', { 'for': ['css', 'scss', 'js', 'jsx', 'less'] } " Highlight CSS colors
+Plug 'groenewege/vim-less', { 'for': 'less' }                            " syntax highlighting for LESS
 Plug 'wavded/vim-stylus', { 'for': 'styl' }                              " Stylus files
+
+                                                                         " == Ruby ==
+Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }                              " Vim & Ruby
 
 " Initialize plugin system
 call plug#end()
@@ -231,6 +236,13 @@ let g:polyglot_disabled = ['latex']
 let g:vimtex_compiler_latexmk = {'callback' : 0}
 let g:vimtex_fold_enabled=0
 let g:matchup_matchparen_deferred = 1
+
+
+" Ale
+let g:ale_fixers = {
+  \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+  \ 'javascript': ['prettier', 'eslint'],
+\ }
 
 
 " FZF
