@@ -172,3 +172,9 @@ nnoremap <leader>, <c-^>
 
 " show and select buffer
 nnoremap gb :ls<CR>:b<Space>
+
+
+" unix commands
+nnoremap <leader>py :! python %<CR>
+nnoremap <leader>py3 :! python %<CR>
+nnoremap <leader>node :! node %<CR>
