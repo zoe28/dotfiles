@@ -32,11 +32,22 @@ hi NonText cterm=NONE ctermfg=NONE
 
 
 " -------------------------------------------------------------------------------------------------
-" Python Stuff
+" Load additional Vimrc files
 " -------------------------------------------------------------------------------------------------
-" Gonna use 2 spaces for a while
-autocmd FileType python setl sw=2                    " For python, the shift width is two, yes two
-autocmd FileType python set softtabstop=2            " For python, tabs are two spaces
+source ~/.plugs.vim   " needs to come first
+
+source ~/.set.vim
+source ~/.map.vim
+source ~/.autocmd.vim
+
+
+
+" -------------------------------------------------------------------------------------------------
+" Python
+" -------------------------------------------------------------------------------------------------
+" I just like 2 spaces
+autocmd FileType python setl sw=2
+autocmd FileType python set softtabstop=2
 " Autoindent my new blocks in python
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 
@@ -84,14 +95,3 @@ autocmd VimLeave * nested if (!isdirectory($HOME . "/.vim")) |
 
 autocmd VimEnter * nested if argc() == 0 && filereadable($HOME . "/.vim/Session.vim") |
 	\ execute "source " . $HOME . "/.vim/Session.vim"
-
-
-
-" -------------------------------------------------------------------------------------------------
-" Load external files
-" -------------------------------------------------------------------------------------------------
-source ~/.plugs.vim   " needs to come first
-
-source ~/.set.vim
-source ~/.map.vim
-source ~/.autocmd.vim
