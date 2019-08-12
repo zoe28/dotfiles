@@ -4,7 +4,7 @@ alias cm='ag "<<<<<<<"'
 alias ga="git add -p"
 alias gaa="git add ."
 alias gbc="echo Total branches: `git branch | wc -l`"
-alias gbu="git branch -u origin/$(git rev-parse --abbrev-ref HEAD)" # set upstream
+alias gbu='git branch --set-upstream-to=origin/"$(git rev-parse --abbrev-ref HEAD)" "$(git rev-parse --abbrev-ref HEAD)"'
 alias gd="clear ; git diff"
 alias gds="git diff --staged"
 alias gdw="clear ; git diff --color-words"
@@ -14,7 +14,7 @@ alias gld="git log master.. --oneline"
 alias gm="git mergetool"
 alias gmm="git merge master"
 alias go="git checkout"
-alias gom="git push && git checkout master && git fetch && git pull"
+alias gom="git checkout master && git fetch && git pull"
 alias gpl="git pull"
 alias gps="git push"
 alias gs="git status -sb"
