@@ -124,17 +124,14 @@ function! AirlineInit()
 endfunction
 
 
+
 " ----------------------------------------------------------------------------
-" FZF
+" fzf
 " ----------------------------------------------------------------------------
 
 set rtp+=~/.fzf
 
-command! -bang -nargs=* GGrep
-  \ call fzf#vim#grep(
-  \   'git grep --line-number '.shellescape(<q-args>), 0,
-  \   { 'dir': systemlist('git rev-parse --show-toplevel')[0] },
-  \   <bang>0)
+autocmd! VimEnter * command! -nargs=* -complete=file GFiles :call fzf#vim#gitfiles('', fzf#vim#with_preview('right'))
 nnoremap ff :GFiles<CR>
 
 command! -bang -nargs=* Rg
@@ -144,8 +141,10 @@ command! -bang -nargs=* Rg
   \   <bang>0)
 nnoremap fg :Rg<CR>
 
-autocmd! VimEnter * command! -nargs=* -complete=file Ag :call fzf#vim#ag('', fzf#vim#with_preview('right'))
-autocmd! VimEnter * command! -nargs=* -complete=file GFiles :call fzf#vim#gitfiles('', fzf#vim#with_preview('right'))
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
 
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
