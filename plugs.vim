@@ -161,6 +161,54 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
+nmap <C-]> :FZFTags<CR>
+
+" search files
+nmap <Leader>f :GFiles<CR>
+nmap <Leader>F :Files<CR>
+
+" search buffer
+nmap <Leader>b :Buffers<CR>
+" nmap <Leader>h :History<CR>
+
+" saerch tags
+nmap <Leader>t :BTags<CR>
+nmap <Leader>T :Tags<CR>
+
+" search lines
+nmap <Leader>' :Marks<CR>'
+
+" grep in project
+nmap <Leader>a :Ag<Space>
+
+" search Vim docs
+nmap <Leader>H :Helptags!<CR>
+
+" search Vim commands
+nmap <Leader>C :Commands<CR>
+
+" search key mappings
+nmap <Leader>M :Maps<CR>
+
+
+
+" ----------------------------------------------------------------------------
+" Awk/Ag
+" ----------------------------------------------------------------------------
+
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+if executable('ack')
+  set grepprg=ack\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow\ $*
+  set grepformat=%f:%l:%c:%m
+endif
+if executable('ag')
+  set grepprg=ag\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow
+  set grepformat=%f:%l:%c:%m
+endif
+
+
 
 " ----------------------------------------------------------------------------
 " Syntastic
@@ -189,6 +237,7 @@ highlight link SyntasticWarning WildMenu
 
 nmap <Leader>ne :lnext<CR>
 nmap <Leader>Ne :lprevious<CR>
+
 
 
 " ----------------------------------------------------------------------------
