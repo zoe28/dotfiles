@@ -1,3 +1,7 @@
+" reload vimrc
+map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+
+
 " Swap v and CTRL-V, because Block mode is more useful that Visual mode
 nnoremap v     <C-V>
 nnoremap <C-V> v
@@ -64,20 +68,21 @@ nnoremap gqa :qa<Enter>
 
 
 " Split commands.
-nnoremap <silent> ss :split  .<Enter>
-nnoremap <silent> vv :vsplit .<Enter>
+nnoremap <silent> ss :Sexplore<Enter>
+nnoremap <silent> vv :Vexplore<Enter>
 
 " vertical ➜ horizontal splits
-nnoremap <silent> vs <C-w>t<C-w>K
+nnoremap <silent> vs :windo wincmd K<Enter>
 
 " horizontal ➜ vertical splits
-nnoremap <silent> sv <C-w>t<C-w>H
+nnoremap <silent> sv :windo wincmd H<Enter>
 
 " Resize splits
 nnoremap ++ 10<C-w>+
 nnoremap -- 10<C-w>-
 nnoremap << 5<C-w><
 nnoremap >> 5<C-w>>
+nnoremap <> <C-w>=
 
 
 " File Explorer
@@ -140,10 +145,6 @@ vmap \\ :Tags <C-r><C-w>
 " vimrc
 command Vimrc e $MYVIMRC
 command Vimre source $MYVIMRC
-
-
-" Easy reloading of vimrc
-map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 
 " tabs
