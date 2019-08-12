@@ -113,7 +113,7 @@ function! AirlineInit()
   " Sections
   let g:airline_inactive_collapse = 1
   let g:airline_section_b = airline#section#create([])
-  let g:airline_section_c = airline#section#create(['%{getcwd()}', '/', '%t'])
+  let g:airline_section_c = airline#section#create(['%F'])
   let g:airline_section_x = airline#section#create_right([])
   let g:airline_section_y = airline#section#create_right(['%p%%', '%c'])
   let g:airline_section_z = airline#section#create_right(['branch'])
