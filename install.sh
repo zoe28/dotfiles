@@ -58,6 +58,11 @@ fi
 ln -sf "$PWD/config.ctags" "$HOME/.ctags.d/config.ctags"
 
 
+## git-prompt
+if [ ! -e ~/.git-prompt.sh ]; then
+  curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -o ~/.git-prompt.sh
+fi
+
 
 ## Mac OS X
 if [[ $OSTYPE == darwin* ]]; then
@@ -131,13 +136,6 @@ if [[ $OSTYPE == linux-gnu ]]; then
   else
     echo -e "silver searcher already installed"
   fi
-fi
-
-
-
-## git-prompt
-if [ ! -e ~/.git-prompt.sh ]; then
-  curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -o ~/.git-prompt.sh
 fi
 
 
