@@ -31,8 +31,8 @@ highlight SpellBad term=reverse ctermfg=252 ctermbg=52 guifg=#D9D9D9 guibg=#730B
 
 
 
-" Large file - file is larger than 10MB
-let g:LargeFile = 1024 * 1024 * 10
+" Large file - file is larger than 20MB
+let g:LargeFile = 1024 * 1024 * 20
 augroup LargeFile
   autocmd BufReadPre * let f=getfsize(expand("<afile>")) | if f > g:LargeFile || f == -2 | call LargeFile() | endif
 augroup END
