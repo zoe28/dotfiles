@@ -258,24 +258,29 @@ let g:EasyMotion_startofline = 0
 let g:EasyMotion_smartcase = 1
 
 
+
 " ----------------------------------------------------------------------------
 " Tags
 " ----------------------------------------------------------------------------
-
-nmap <F8> :TagbarToggle<CR>
 
 "" Gutentag
 set statusline+=%{gutentags#statusline()}
 
 " Tagbar
-nnoremap <silent> <Leader>b :TagbarToggle<CR>
+nnoremap <silent> fb :TagbarToggle<CR>
+
 
 
 " ----------------------------------------------------------------------------
-" Nertree
+" nerdtree
 " ----------------------------------------------------------------------------
 
-map <C-n> :NERDTreeToggle<CR>
+let NERDTreeCascadeOpenSingleChildDir=0
+let NERDTreeQuitOnOpen = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+nnoremap <Leader>= :NERDTreeToggle<CR>
+nnoremap <silent> <Leader>v :NERDTreeFind<CR>
 autocmd StdinReadPre * let s:std_in=1
 " open a NERDTree automatically when vim starts up if no files were specified
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
@@ -284,22 +289,6 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 " close vim if the only window left open is NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-
-" ----------------------------------------------------------------------------
-" Awk/Ag
-" ----------------------------------------------------------------------------
-
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
-if executable('ack')
-  set grepprg=ack\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow\ $*
-  set grepformat=%f:%l:%c:%m
-endif
-if executable('ag')
-  set grepprg=ag\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow
-  set grepformat=%f:%l:%c:%m
-endif
 
 
 " ----------------------------------------------------------------------------
