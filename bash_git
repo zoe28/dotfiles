@@ -177,6 +177,17 @@ grc() {
 }
 
 
+# open a PR
+pr() {
+  BRANCH="$(git symbolic-ref HEAD)";
+  BRANCH="${BRANCH#refs/heads/}";
+  git push -u origin "$BRANCH";
+  URL="$(git remote get-url origin)";
+  HTTP_URL=${URL/:/\/}
+  open "https://$HTTP_URL/compare/$BRANCH?expand=1"
+}
+
+
 squash() {
   git rebase -i HEAD~$1
 }
