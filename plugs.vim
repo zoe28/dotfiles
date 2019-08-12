@@ -340,3 +340,11 @@ let g:ale_fix_on_save = 1
 
 "" Emmet
 let g:user_emmet_leader_key='<C-G>'
+
+
+"" Sorbet
+if fnamemodify(getcwd(), ':p') == $HOME.'/stripe/pay-server/'
+  let g:ale_linters = {'ruby': ['sorbet-lsp']}
+end
+" Bind <leader>d to go-to-definition.
+nmap <silent> <leader>d <Plug>(ale_go_to_definition)
