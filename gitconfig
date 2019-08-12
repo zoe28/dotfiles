@@ -49,7 +49,7 @@
   mnemonicprefix = true
   tool = vscode
 [difftool "vscode"]
-    cmd = code --wait --diff $LOCAL $REMOTE
+  cmd = code --wait --diff $LOCAL $REMOTE
 [help]
   autocorrect = 1
 [log]
@@ -70,9 +70,9 @@
 [url "https://"]
   insteadOf = git://
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
 [hub]
-	host = git.corp.stripe.com
+  host = git.corp.stripe.com
