@@ -1,3 +1,12 @@
+" Syntax
+autocmd BufEnter * :syntax sync fromstart
+filetype on
+filetype plugin indent on
+
+hi NonText cterm=NONE ctermfg=NONE
+
+
+
 " Autoequalize splits
 autocmd VimResized * wincmd =
 
