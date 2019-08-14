@@ -25,36 +25,39 @@ Plug 'chrisbra/vim-diff-enhanced'                                               
 Plug 'christoomey/vim-tmux-navigator'                                                       " Doh! That's a Tmux split (no longer!)
 Plug 'ervandew/supertab'                                                                    " Tab autocomplete
 Plug 'flazz/vim-colorschemes'                                                               " Nice syntax highlighting
-Plug 'honza/vim-snippets'                                                                   " snippets
+Plug 'honza/vim-snippets'                                                                   " Snippets
 Plug 'junegunn/fzf.vim'                                                                     " FZF plugin for Vim
 Plug 'junegunn/goyo.vim'                                                                    " Page layout
-Plug 'junegunn/rainbow_parentheses.vim'                                                     " rainbow parentheses
+Plug 'junegunn/rainbow_parentheses.vim'                                                     " Rainbow parentheses
 Plug 'junegunn/seoul256.vim'                                                                " Colorscheme
 Plug 'junegunn/vim-easy-align'                                                              " Aligning columns
 Plug 'junegunn/vim-xmark', { 'do': 'make' }                                                 " Markdown
 Plug 'lervag/vimtex', { 'for': 'tex' }                                                      " LaTeX
-Plug 'ludovicchabant/vim-gutentags'                                                         " manage tags
+Plug 'ludovicchabant/vim-gutentags'                                                         " Manage tags
 Plug 'majutsushi/tagbar'                                                                    " Tags
 Plug 'mikker/seoul256-iTerm'                                                                " Seoul iTerm
 Plug 'mileszs/ack.vim'                                                                      " Awk/Ag search
 Plug 'ntpeters/vim-better-whitespace'                                                       " Highlight whitespace
 Plug 'powerline/fonts'                                                                      " Powerline fonts (Sauce Code Powerline Regular)
-" Plug 'scrooloose/nerdtree'                                                                " file explorer
+Plug 'sbdchd/neoformat'                                                                     " Auto formatter
+" Plug 'scrooloose/nerdtree'                                                                " File explorer
 Plug 'scrooloose/syntastic'                                                                 " Syntax checker
 Plug 'sheerun/vim-polyglot'                                                                 " Syntax highlighting for languages
-Plug 'tomtom/tcomment_vim'                                                                  " comment/uncomment
+Plug 'tomtom/tcomment_vim'                                                                  " Comment/uncomment
 Plug 'tpope/vim-fugitive'                                                                   " Git wrapper
 Plug 'tpope/vim-rhubarb'                                                                    " Gbrowse with hub
 Plug 'tpope/vim-sleuth'                                                                     " Git wrapper
 Plug 'tpope/vim-surround'                                                                   " Quickly surround words with symbols
-Plug 'tpope/vim-unimpaired'                                                                 " complementary pairs of mappings
-Plug 'w0rp/ale'                                                                             " async lint engine
-Plug 'wesQ3/vim-windowswap'                                                                 " swap Vim splits
-Plug 'wincent/command-t'                                                                    " file navigation
+Plug 'tpope/vim-unimpaired'                                                                 " Complementary pairs of mappings
+Plug 'w0rp/ale'                                                                             " Async lint engine
+Plug 'wesQ3/vim-windowswap'                                                                 " Swap Vim splits
+Plug 'wincent/command-t'                                                                    " File navigation
 
                                                                                             " == Javascript ==
 Plug 'burnettk/vim-angular', { 'for': 'javascript' }                                        " Angular
-Plug 'douglascrockford/JSLint', { 'for': 'javascript' }
+Plug 'douglascrockford/JSLint', { 'for': 'javascript' }                                     " linting
+Plug 'flowtype/vim-flow', { 'for': ['javascript', 'javascript.jsx'] }                       " Flow type checking
+Plug 'galooshi/vim-import-js', { 'for': ['javascript', 'javascript.jsx'] }                  " Easier imports
 Plug 'MaxMEllon/vim-jsx-pretty', { 'for': ['javascript', 'javascript.jsx'] }                " React
 " Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] } " React
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }                                     " Vim & Javascript
@@ -334,8 +337,18 @@ let g:matchup_matchparen_deferred = 1
 let g:ale_fixers = {
   \ '*': ['remove_trailing_lines', 'trim_whitespace'],
   \ 'javascript': ['prettier', 'eslint'],
+  \ 'css': ['prettier'],
+  \ 'markdown': ['prettier'],
 \ }
-let g:ale_fix_on_save = 1
+
+" Be sure to never install 'prettier' globally, or you will be running
+let g:ale_javascript_prettier_use_local_config = 1
+
+augroup aleMaps
+  au FileType javascript let g:ale_fix_on_save = 1
+  au FileType css let g:ale_fix_on_save = 1
+  au FileType markdown let g:ale_fix_on_save = 1
+augroup END
 
 
 "" Emmet
@@ -348,3 +361,11 @@ if fnamemodify(getcwd(), ':p') == $HOME.'/stripe/pay-server/'
 end
 " Bind <leader>d to go-to-definition.
 nmap <silent> <leader>d <Plug>(ale_go_to_definition)
+
+
+"" Flow
+let g:javascript_plugin_flow = 1
+
+
+"" Neoformat
+" autocmd BufWritePre *.js Neoformat
