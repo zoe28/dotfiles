@@ -164,34 +164,33 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
-nmap <C-]> :FZFTags<CR>
 
 " search files
-nmap <Leader>f :GFiles<CR>
-nmap <Leader>F :Files<CR>
+nnoremap <Leader>f :GFiles<CR>
+nnoremap <Leader>F :Files<CR>
 
 " search buffer
-nmap <Leader>b :Buffers<CR>
-" nmap <Leader>h :History<CR>
+nnoremap <Leader>b :Buffers<CR>
+" nnoremap <Leader>h :History<CR>
 
 " saerch tags
-nmap <Leader>t :BTags<CR>
-nmap <Leader>T :Tags<CR>
+nnoremap <Leader>t :BTags<CR>
+nnoremap <Leader>T :Tags<CR>
 
 " search lines
-nmap <Leader>' :Marks<CR>'
+nnoremap <Leader>' :Marks<CR>'
 
 " grep in project
-nmap <Leader>a :Ag<Space>
+nnoremap <Leader>a :Ag<Space>
 
 " search Vim docs
-nmap <Leader>H :Helptags!<CR>
+nnoremap <Leader>H :Helptags!<CR>
 
 " search Vim commands
-nmap <Leader>C :Commands<CR>
+nnoremap <Leader>C :Commands<CR>
 
 " search key mappings
-nmap <Leader>M :Maps<CR>
+nnoremap <Leader>M :Maps<CR>
 
 
 
@@ -238,8 +237,8 @@ set statusline+=%{SyntasticStatuslineFlag()}
 highlight link SyntasticError Error
 highlight link SyntasticWarning WildMenu
 
-nmap <Leader>ne :lnext<CR>
-nmap <Leader>Ne :lprevious<CR>
+nnoremap <Leader>ne :lnext<CR>
+nnoremap <Leader>Ne :lprevious<CR>
 
 
 
@@ -247,7 +246,7 @@ nmap <Leader>Ne :lprevious<CR>
 " Easymotion
 " ----------------------------------------------------------------------------
 
-nmap <Leader>s <Plug>(easymotion-s2)
+nnoremap <Leader>s <Plug>(easymotion-s2)
 
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
@@ -320,7 +319,7 @@ xmap ga <Plug>(EasyAlign)
 
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
+nnoremap ga <Plug>(EasyAlign)
 
 
 "" Polyglot
@@ -360,7 +359,7 @@ if fnamemodify(getcwd(), ':p') == $HOME.'/stripe/pay-server/'
   let g:ale_linters = {'ruby': ['sorbet-lsp']}
 end
 " Bind <leader>d to go-to-definition.
-nmap <silent> <leader>d <Plug>(ale_go_to_definition)
+nnoremap <silent> <leader>d <Plug>(ale_go_to_definition)
 
 
 "" Flow

@@ -1,5 +1,5 @@
 " reload vimrc
-map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+noremap <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 
 " Swap v and CTRL-V, because Block mode is more useful that Visual mode
@@ -21,7 +21,7 @@ noremap <S-k> <NOP>
 
 
 " Make Y behave like other capitals
-map Y y$"
+noremap Y y$"
 
 
 " Easier visual indent
@@ -52,7 +52,7 @@ command Pa set paste!
 
 
 " Chrome Secure Shell remappings
-map <C-e> <C-w>
+noremap <C-e> <C-w>
 
 
 " Save
@@ -101,7 +101,7 @@ noremap Q <NOP>
 
 
 " Space to fold/unfold code
-nmap gz za
+nnoremap gz za
 
 
 " Move cursor line to the center of the screen
@@ -118,12 +118,12 @@ nnoremap g< ^:%s/\/\///c<Enter>y
 
 
 " Line numbers
-nmap <F6> :set invnumber<CR>
+nnoremap <F6> :set invnumber<CR>
 command No set invnumber! | GitGutterToggle
 
 
 " Ack
-nmap <Leader>/ :Ack<Space>
+nnoremap <Leader>/ :Ack<Space>
 
 
 " unhighlight search
@@ -131,15 +131,15 @@ noremap <silent><esc> <esc>:noh<CR><esc>
 
 
 " replace
-nmap ?? :%s/<C-r><C-w>//g<Left><Left>
-vmap ?? :s/<C-r><C-w>//g<Left><Left>
+nnoremap ?? :%s/<C-r><C-w>//g<Left><Left>
+vnoremap ?? :s/<C-r><C-w>//g<Left><Left>
 
-nmap ??? :windo %s/<C-r><C-w>//g<Left><Left>
+nnoremap ??? :windo %s/<C-r><C-w>//g<Left><Left>
 
 
 " search tags
-nmap \\ :Tags <C-r><C-w>
-vmap \\ :Tags <C-r><C-w>
+nnoremap \\ :Tags <C-r><C-w>
+vnoremap \\ :Tags <C-r><C-w>
 
 
 " vimrc
