@@ -10,9 +10,10 @@ let mapleader = " "
 " -------------------------------------------------------------------------------------------------
 source ~/.plugs.vim   " needs to come first
 
-source ~/.set.vim
-source ~/.map.vim
+source ~/.abbrev.vim
 source ~/.autocmd.vim
+source ~/.map.vim
+source ~/.set.vim
 
 
 

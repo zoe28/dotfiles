@@ -1,5 +1,9 @@
-" reload vimrc
-noremap <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+" edit vimrc
+nnoremap <leader>vrc :vsplit $MYVIMRC<cr>
+nnoremap <leader>vab :vsplit ~/.abbrev.vim<cr>
+nnoremap <leader>vmp :vsplit ~/.map.vim<cr>
+nnoremap <leader>vpg :vsplit ~/.plugs.vim<cr>
+nnoremap <silent> <leader>rv :source $MYVIMRC<CR>:filetype detect<CR>:exe ":echom 'vimrc reloaded'"<CR>
 
 
 " Swap v and CTRL-V, because Block mode is more useful that Visual mode
