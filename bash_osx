@@ -10,7 +10,7 @@ alias docs='cd ~/Documents'
 # Armory
 # ------------------------------------------------------------------------------
 # useful executables
-export PATH="/Users/brian/armory:$PATH"
+export PATH="$HOME/armory:$PATH"
 
 
 

@@ -146,9 +146,6 @@ shopt -s checkwinsize
 
 
 
-
-
-
 # Source more bash files
 # --------------------------------------------------------------------
 source ~/.bash_alias
