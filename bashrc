@@ -159,3 +159,4 @@ source ~/.bash_ps1
 if [[ $OSTYPE == darwin* ]]; then
   source ~/.bash_osx
 fi
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
