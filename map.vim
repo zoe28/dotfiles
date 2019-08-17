@@ -1,3 +1,11 @@
+" edit vimrc
+nnoremap <leader>vrc :vsplit $MYVIMRC<cr>
+nnoremap <leader>vab :vsplit ~/.abbrev.vim<cr>
+nnoremap <leader>vmp :vsplit ~/.map.vim<cr>
+nnoremap <leader>vpg :vsplit ~/.plugs.vim<cr>
+nnoremap <silent> <leader>rv :source $MYVIMRC<CR>:filetype detect<CR>:exe ":echom 'vimrc reloaded'"<CR>
+
+
 " Swap v and CTRL-V, because Block mode is more useful that Visual mode
 nnoremap v     <C-V>
 nnoremap <C-V> v
@@ -17,7 +25,7 @@ noremap <S-k> <NOP>
 
 
 " Make Y behave like other capitals
-map Y y$"
+noremap Y y$"
 
 
 " Easier visual indent
@@ -48,7 +56,7 @@ command Pa set paste!
 
 
 " Chrome Secure Shell remappings
-map <C-e> <C-w>
+noremap <C-e> <C-w>
 
 
 " Save
@@ -64,20 +72,21 @@ nnoremap gqa :qa<Enter>
 
 
 " Split commands.
-nnoremap <silent> ss :split  .<Enter>
-nnoremap <silent> vv :vsplit .<Enter>
+nnoremap <silent> ss :Sexplore<Enter>
+nnoremap <silent> vv :Vexplore<Enter>
 
 " vertical ➜ horizontal splits
-nnoremap <silent> vs <C-w>t<C-w>K
+nnoremap <silent> vs :windo wincmd K<Enter>
 
 " horizontal ➜ vertical splits
-nnoremap <silent> sv <C-w>t<C-w>H
+nnoremap <silent> sv :windo wincmd H<Enter>
 
 " Resize splits
 nnoremap ++ 10<C-w>+
 nnoremap -- 10<C-w>-
 nnoremap << 5<C-w><
 nnoremap >> 5<C-w>>
+nnoremap <> <C-w>=
 
 
 " File Explorer
@@ -96,7 +105,7 @@ noremap Q <NOP>
 
 
 " Space to fold/unfold code
-nmap gz za
+nnoremap gz za
 
 
 " Move cursor line to the center of the screen
@@ -113,12 +122,12 @@ nnoremap g< ^:%s/\/\///c<Enter>y
 
 
 " Line numbers
-nmap <F6> :set invnumber<CR>
+nnoremap <F6> :set invnumber<CR>
 command No set invnumber! | GitGutterToggle
 
 
 " Ack
-nmap <Leader>/ :Ack<Space>
+nnoremap <Leader>/ :Ack<Space>
 
 
 " unhighlight search
@@ -126,24 +135,20 @@ noremap <silent><esc> <esc>:noh<CR><esc>
 
 
 " replace
-nmap ?? :%s/<C-r><C-w>//g<Left><Left>
-vmap ?? :s/<C-r><C-w>//g<Left><Left>
+nnoremap ?? :%s/<C-r><C-w>//g<Left><Left>
+vnoremap ?? :s/<C-r><C-w>//g<Left><Left>
 
-nmap ??? :windo %s/<C-r><C-w>//g<Left><Left>
+nnoremap ??? :windo %s/<C-r><C-w>//g<Left><Left>
 
 
 " search tags
-nmap \\ :Tags <C-r><C-w>
-vmap \\ :Tags <C-r><C-w>
+nnoremap \\ :Tags <C-r><C-w>
+vnoremap \\ :Tags <C-r><C-w>
 
 
 " vimrc
 command Vimrc e $MYVIMRC
 command Vimre source $MYVIMRC
-
-
-" Easy reloading of vimrc
-map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 
 " tabs

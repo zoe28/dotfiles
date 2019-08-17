@@ -6,37 +6,23 @@ let mapleader = " "
 
 
 " -------------------------------------------------------------------------------------------------
-" Path
+" Load additional Vimrc files
 " -------------------------------------------------------------------------------------------------
-set path=.,**
-"set path=~/**
+source ~/.plugs.vim   " needs to come first
 
-
-
-" -------------------------------------------------------------------------------------------------
-" Files
-" -------------------------------------------------------------------------------------------------
-:set autoread
+source ~/.abbrev.vim
+source ~/.autocmd.vim
+source ~/.map.vim
+source ~/.set.vim
 
 
 
 " -------------------------------------------------------------------------------------------------
-" Autocmds
+" Python
 " -------------------------------------------------------------------------------------------------
-autocmd BufEnter * :syntax sync fromstart
-filetype on
-filetype plugin indent on
-
-hi NonText cterm=NONE ctermfg=NONE
-
-
-
-" -------------------------------------------------------------------------------------------------
-" Python Stuff
-" -------------------------------------------------------------------------------------------------
-" Gonna use 2 spaces for a while
-autocmd FileType python setl sw=2                    " For python, the shift width is two, yes two
-autocmd FileType python set softtabstop=2            " For python, tabs are two spaces
+" I just like 2 spaces
+autocmd FileType python setl sw=2
+autocmd FileType python set softtabstop=2
 " Autoindent my new blocks in python
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 
@@ -53,15 +39,6 @@ if 'VIRTUAL_ENV' in os.environ:
   execfile(activate_this, dict(__file__=activate_this))
 EOF
 endif
-
-
-
-" -------------------------------------------------------------------------------------------------
-" Code Folding
-" -------------------------------------------------------------------------------------------------
-set foldmethod=indent
-set foldnestmax=99
-set foldlevel=3
 
 
 
@@ -84,14 +61,3 @@ autocmd VimLeave * nested if (!isdirectory($HOME . "/.vim")) |
 
 autocmd VimEnter * nested if argc() == 0 && filereadable($HOME . "/.vim/Session.vim") |
 	\ execute "source " . $HOME . "/.vim/Session.vim"
-
-
-
-" -------------------------------------------------------------------------------------------------
-" Load external files
-" -------------------------------------------------------------------------------------------------
-source ~/.plugs.vim   " needs to come first
-
-source ~/.set.vim
-source ~/.map.vim
-source ~/.autocmd.vim

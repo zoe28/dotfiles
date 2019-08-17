@@ -1,10 +1,10 @@
 # Git aliases
 # --------------------------------------------------------------------
-alias cm='ag "<<<<<<<"'
+alias cm='ag "<<<<<<< HEAD"'
 alias ga="git add -p"
 alias gaa="git add ."
 alias gbc="echo Total branches: `git branch | wc -l`"
-alias gbu="git branch -u origin/$(git rev-parse --abbrev-ref HEAD)" # set upstream
+alias gbu='git branch --set-upstream-to=origin/"$(git rev-parse --abbrev-ref HEAD)" "$(git rev-parse --abbrev-ref HEAD)"'
 alias gd="clear ; git diff"
 alias gds="git diff --staged"
 alias gdw="clear ; git diff --color-words"
@@ -14,7 +14,7 @@ alias gld="git log master.. --oneline"
 alias gm="git mergetool"
 alias gmm="git merge master"
 alias go="git checkout"
-alias gom="git push && git checkout master && git fetch && git pull"
+alias gom="git checkout master && git fetch && git pull"
 alias gpl="git pull"
 alias gps="git push"
 alias gs="git status -sb"
@@ -32,6 +32,16 @@ eval "$(hub alias -s)"
 
 # Git functions
 # --------------------------------------------------------------------
+
+
+# fetch origin branch
+fo() {
+  git fetch origin "+$1:$1"
+  git checkout "$1"
+  git fetch
+  git pull
+}
+
 
 # fshow - git commit browser
 fshow() {
@@ -60,11 +70,9 @@ ftags() {
 }
 
 
-
 gb() {
   git checkout $(git branch | fzf-tmux -d 15)
 }
-
 
 
 # double-check that you really want to commit to master
@@ -155,7 +163,7 @@ gq() {
 
 # check for merge conflicts before continuing
 grc() {
-  CONFLICT=`ag "<<<<<<<"`
+  CONFLICT=`ag "<<<<<<< HEAD"`
   if [ -z "$CONFLICT" ] ; then
     git add . ; git rebase --continue
   else
@@ -166,6 +174,17 @@ grc() {
       git add . ; git rebase --continue
     fi
   fi
+}
+
+
+# open a PR
+pr() {
+  BRANCH="$(git symbolic-ref HEAD)";
+  BRANCH="${BRANCH#refs/heads/}";
+  git push -u origin "$BRANCH";
+  URL="$(git remote get-url origin)";
+  HTTP_URL=${URL/:/\/}
+  open "https://$HTTP_URL/compare/$BRANCH?expand=1"
 }
 
 

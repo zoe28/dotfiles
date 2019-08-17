@@ -15,6 +15,7 @@ nvm
 postgresql
 readline
 reattach-to-user-namespace
+ripgrep
 shellcheck
 the_silver_searcher
 tmux
