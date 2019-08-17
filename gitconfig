@@ -1,6 +1,6 @@
 [user]
-	name = Zoe
-	email = surui2890@gmail.com
+  name = Zoe
+  email = surui2890@gmail.com
 [github]
   user = atav32
 [alias]
@@ -43,7 +43,7 @@
   new = green reverse white
 [core]
   editor = vim
-	excludesfile = /Users/brian/.gitignore_global
+  excludesfile = /Users/brian/.gitignore_global
 [diff]
   renames = copies
   mnemonicprefix = true
@@ -62,9 +62,9 @@
   cmd = code --wait $MERGED
   prompt = false
 [difftool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\"
+  cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\"
 [mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 [push]
   default = current
 [rerere]
