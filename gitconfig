@@ -3,6 +3,9 @@
   email = brianbzhang@gmail.com
 [github]
   user = atav32
+[hub]
+  host = git.corp.stripe.com
+
 [alias]
   a = add
   b = branch
@@ -52,6 +55,11 @@
   cmd = code --wait --diff $LOCAL $REMOTE
 [help]
   autocorrect = 1
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
 [log]
   decorate = full
 [merge]
@@ -69,10 +77,3 @@
   insteadOf = git://
 [url "https://"]
   insteadOf = git://
-[filter "lfs"]
-  clean = git-lfs clean -- %f
-  smudge = git-lfs smudge -- %f
-  process = git-lfs filter-process
-  required = true
-[hub]
-  host = git.corp.stripe.com
