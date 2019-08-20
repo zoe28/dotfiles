@@ -149,7 +149,7 @@ fff() {
 # open all files containing query
 vg() {
   if [ ! $# -eq 0 ] ; then
-    vim -o $(ag -l "$@" | fzf -1 -m -i --preview "cat {} | ag -C 1 $@")
+    vim -o $(rg -l "$@" | fzf -1 -m -i --preview "cat {} | rg -C 1 $@")
   fi
 }
 
@@ -241,12 +241,6 @@ py() {
     python $FILE
   fi
 }
-
-
-
-# Silver Searcher
-# --------------------------------------------------------------------
-alias agl="ag -l"
 
 
 
