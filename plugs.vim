@@ -139,7 +139,7 @@ nnoremap ff :GFiles<CR>
 
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   'rg --column --line-number --no-heading '.shellescape(<q-args>), 1,
   \   fzf#vim#with_preview('right:50%'),
   \   <bang>0)
 nnoremap fg :Rg<CR>
