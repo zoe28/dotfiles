@@ -1,22 +1,23 @@
 # Bash
 # --------------------------------------------------------------------
-alias cp='cp -v'
-alias df='df -kTh'
+alias agl="ag -l"
+alias cp="cp -v"
+alias df="df -kTh"
 alias du="du -hs | sort -h"
-alias f='open -a Finder ./'
-alias grep='grep --color=auto'
-alias hosts='sudo vim /etc/hosts'
-alias killall='pkill -u $USER'
-alias ll='ls -lsahF --color=auto' #long list
-alias lr='ls -lR'                 #recursive
-alias ls='ls -F --color=auto'     #colors
-alias mkdir="mkdir -p"
-alias mkdir='mkdir -v'
-alias o='open'
-alias path='echo -e ${PATH//:/\\n}'
+alias f="open -a Finder ./"
+alias grep="grep --color=auto"
+alias hosts="sudo vim /etc/hosts"
+alias killall="pkill -u $USER"
+alias ll="ls -lsahF --color=auto" #long list
+alias lr="ls -lR"                 #recursive
+alias ls="ls -F --color=auto"     #colors
+alias mkdir="mkdir -pv"
+alias o="open"
+alias path="echo -e ${PATH//:/\\n}"
 alias ps="ps aux"
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
-alias tree='tree -Csuh' #alternative to recursive ls
+alias rgl="rg -l --colors 'path:fg:green' --colors 'path:style:bold'"
+alias tree="tree -Csuh" #alternative to recursive ls
 
 
 ## unzip everything
