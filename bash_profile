@@ -15,7 +15,7 @@ if [ -f ~/.tmux.conf ]; then
 fi
 
 export PLATFORM=$(uname -s)
-if [ "$PLATFORM" = 'Darwin' ]; then
+if [ "$PLATFORM" = "Darwin" ]; then
   source ~/.bash_osx
 fi
 
@@ -31,10 +31,10 @@ export CORE_UTILS=/usr/local/opt/coreutils/libexec/gnubin
 export PATH=$CORE_UTILS:$PATH
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/bz/google-cloud-sdk/path.bash.inc' ]; then . '/Users/bz/google-cloud-sdk/path.bash.inc'; fi
+if [ -f "$HOME/google-cloud-sdk/path.bash.inc" ]; then . "$HOME/google-cloud-sdk/path.bash.inc"; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/bz/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/bz/google-cloud-sdk/completion.bash.inc'; fi
+if [ -f "$HOME/google-cloud-sdk/completion.bash.inc" ]; then . "$HOME/google-cloud-sdk/completion.bash.inc"; fi
 
 # Add keybase
 export KEYBASE="/Volumes/Keybase (bz)/team/bytegain/devtools/bin"
