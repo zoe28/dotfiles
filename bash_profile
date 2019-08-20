@@ -26,6 +26,9 @@ fi
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
+# ripgrep config
+export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
+
 # Add coreutils
 export CORE_UTILS=/usr/local/opt/coreutils/libexec/gnubin
 export PATH=$CORE_UTILS:$PATH
