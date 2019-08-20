@@ -91,7 +91,7 @@ rm() {
       BACKUP_FILE_NAME="${1%/}.tar.bz2"           # create back-up file-name (breaks for dirs)
       if [ -f $BACKUP_FILE_NAME ]; then           # if the file exists
         tar -jcf $BACKUP_FILE_NAME $1             # tar
-        mv -f $BACKUP_FILE_NAME /tmp > /dev/null  # move tar to /tmp (and shut up)
+        mv -f $BACKUP_FILE_NAME /tmp > /dev/null  # silently move tar to /tmp
       fi
     fi
     shift                                         # next argument
