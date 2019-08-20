@@ -18,8 +18,8 @@ cd() {
   ls --color;
 }
 
-## fd - cd to selected directory
-fd() {
+## fs - cd to selected directory
+fs() {
   local dir
   dir=$(find ${1:-*} -path '*/\.*' -prune \
       -o -type d -print 2> /dev/null | fzf +m) &&
