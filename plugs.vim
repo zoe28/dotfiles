@@ -66,6 +66,9 @@ Plug 'MaxMEllon/vim-jsx-pretty', { 'for': ['javascript', 'javascript.jsx'] }    
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }                                     " Vim & Javascript
 Plug 'walm/jshint.vim', { 'for': 'javascript' }                                             " I can haz good JS style?
 
+                                                                                            " == GraphQL ==
+Plug 'jparise/vim-graphql'                                                                  " GraphQL
+
                                                                                             " == HTML ==
 Plug 'Glench/Vim-Jinja2-Syntax', { 'for': 'html' }                                          " Jinja2
 Plug 'digitaltoad/vim-pug', { 'for': 'pug' }                                                " Pug (Jade) templates
