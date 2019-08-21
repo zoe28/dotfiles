@@ -2,6 +2,9 @@
 " Plugins
 " ----------------------------------------------------------------------------
 
+" Install new plugins
+nnoremap <leader>pi :source $MYVIMRC<CR>:PlugInstall<CR>
+
 " Configuration
 if has("win32")
   let g:vim_home_path = "~/vimfiles"
