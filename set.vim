@@ -9,7 +9,7 @@ set path=.,**
 " UI
 " ----------------------------------------------------------------------------
 
-set autochdir
+set autochdir                  " automatically try to set the current dir to open file
 set autoread                   " auto reload if file saved externally
 set background=dark            " We use a dark terminal so we can play nethack
 set backspace=indent,eol,start " fixes a problem where I cannot delete text that is existing in the file
