@@ -1,27 +1,23 @@
 " edit vimrc
-nnoremap <leader>vrc :vsplit $MYVIMRC<cr>
-nnoremap <leader>vab :vsplit ~/.abbrev.vim<cr>
-nnoremap <leader>vmp :vsplit ~/.map.vim<cr>
-nnoremap <leader>vpg :vsplit ~/.plugs.vim<cr>
+nnoremap <leader>vrc :vsplit $MYVIMRC<CR>
+nnoremap <leader>vab :vsplit ~/.abbrev.vim<CR>
+nnoremap <leader>vmp :vsplit ~/.map.vim<CR>
+nnoremap <leader>vpg :vsplit ~/.plugs.vim<CR>
 nnoremap <silent> <leader>rv :source $MYVIMRC<CR>:filetype detect<CR>:exe ":echom 'vimrc reloaded'"<CR>
 
 
-" Swap v and CTRL-V, because Block mode is more useful that Visual mode
-nnoremap v     <C-V>
-nnoremap <C-V> v
-vnoremap v     <C-V>
-vnoremap <C-V> v
+" reopen last file in split (kinda like cmd-shift-t in Chrome)
+nnoremap <C-S-t> :vs<bar>:b#<CR>
 
 
-" Arrow keys getting in my way
-noremap <Up>    <NOP>
-noremap <Down>  <NOP>
-noremap <Left>  <NOP>
-noremap <Right> <NOP>
+" automatically insert a \v before any search string, so search uses normal regexes
+nnoremap / /\v
+vnoremap / /\v"
 
 
-" No manual
-noremap <S-k> <NOP>
+" make tab % to jump between brackets.
+nnoremap <tab> %
+vnoremap <tab> %
 
 
 " Make Y behave like other capitals
@@ -36,27 +32,6 @@ vnoremap > >gv
 " Pageup/pagedown
 noremap gk <C-u>
 noremap gj <C-d>
-
-
-" Scroll bind
-command Scb set scrollbind!
-
-
-" Set filetyps
-command Re filetype detect
-command Csh set filetype=csh
-command Css set filetype=css
-command Html set filetype=html
-command Js set filetype=javascript
-command Less set filetype=less
-
-
-" paste mode
-command Pa set paste!
-
-
-" Chrome Secure Shell remappings
-noremap <C-e> <C-w>
 
 
 " Save
@@ -89,9 +64,58 @@ nnoremap >> 5<C-w>>
 nnoremap <> <C-w>=
 
 
+" paste mode
+command Pa set paste!
+
+
 " File Explorer
 nnoremap gx :Explore<Enter>
 nnoremap gb :b#<Enter>
+
+
+" unhighlight search
+noremap <silent><esc> <esc>:noh<CR><esc>
+
+
+" replace
+nnoremap ?? :%s/<C-r><C-w>//g<Left><Left>
+vnoremap ?? :s/<C-r><C-w>//g<Left><Left>
+
+nnoremap ??? :windo %s/<C-r><C-w>//g<Left><Left>
+
+
+" yank whole file
+nnoremap yyy :%y<CR>
+
+
+" Move cursor line to the center of the screen
+nnoremap <Enter> zz
+
+
+" make new local file
+nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
+nnoremap <leader>n :cd %:p:h<CR>:new 
+
+
+" Remove all console.log
+nnoremap gcl :g/console.log/d<Enter>
+
+
+" Scroll bind
+command Scb set scrollbind!
+
+
+" Set filetyps
+command Re filetype detect
+command Csh set filetype=csh
+command Css set filetype=css
+command Html set filetype=html
+command Js set filetype=javascript
+command Less set filetype=less
+
+
+" Chrome Secure Shell remappings
+noremap <C-e> <C-w>
 
 
 " Typos
@@ -108,14 +132,6 @@ noremap Q <NOP>
 nnoremap gz za
 
 
-" Move cursor line to the center of the screen
-nnoremap <Enter> zz
-
-
-" Remove all console.log
-nnoremap gcl :g/console.log/d<Enter>
-
-
 " Line comments
 nnoremap g> ^i//<C-c>j
 nnoremap g< ^:%s/\/\///c<Enter>y
@@ -128,17 +144,6 @@ command No set invnumber! | GitGutterToggle
 
 " Ack
 nnoremap <Leader>/ :Ack<Space>
-
-
-" unhighlight search
-noremap <silent><esc> <esc>:noh<CR><esc>
-
-
-" replace
-nnoremap ?? :%s/<C-r><C-w>//g<Left><Left>
-vnoremap ?? :s/<C-r><C-w>//g<Left><Left>
-
-nnoremap ??? :windo %s/<C-r><C-w>//g<Left><Left>
 
 
 " search tags
@@ -161,16 +166,6 @@ nnoremap <C-e>k :tabn<CR>
 nnoremap <C-e>l :tabn<CR>
 
 
-" automatically insert a \v before any search string, so search uses normal regexes
-nnoremap / /\v
-vnoremap / /\v"
-
-
-" make tab % to jump between brackets.
-nnoremap <tab> %
-vnoremap <tab> %
-
-
 " jump back to previous buffer
 nnoremap <leader>, <c-^>
 
@@ -182,4 +177,22 @@ nnoremap gb :ls<CR>:b<Space>
 " unix commands
 nnoremap <leader>py :! python %<CR>
 nnoremap <leader>py3 :! python %<CR>
-nnoremap <leader>node :! node %<CR>
+nnoremap <leader>nd :! node %<CR>
+
+
+" Swap v and CTRL-V, because Block mode is more useful that Visual mode
+nnoremap v     <C-V>
+nnoremap <C-V> v
+vnoremap v     <C-V>
+vnoremap <C-V> v
+
+
+" Arrow keys getting in my way
+noremap <Up>    <NOP>
+noremap <Down>  <NOP>
+noremap <Left>  <NOP>
+noremap <Right> <NOP>
+
+
+" No manual
+noremap <S-k> <NOP>
