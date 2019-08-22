@@ -77,6 +77,7 @@ Plug 'mattn/emmet-vim', { 'for': 'html' }                                       
 Plug 'mustache/vim-mustache-handlebars', { 'for': 'handlebars' }                            " Mustache, Handlebars
 
                                                                                             " == CSS ==
+Plug 'alampros/vim-styled-jsx', { 'for': ['javascript', 'javascript.jsx'] }                 " styled-jsx
 Plug 'ap/vim-css-color', { 'for': ['css', 'scss', 'javascript', 'javascript.jsx', 'less'] } " Highlight CSS colors
 Plug 'groenewege/vim-less', { 'for': 'less' }                                               " syntax highlighting for LESS
 Plug 'wavded/vim-stylus', { 'for': 'styl' }                                                 " Stylus files
