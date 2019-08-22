@@ -27,6 +27,7 @@ set laststatus=2               " always have a file status line at the bottom, e
 set laststatus=2               " always show status line
 set lazyredraw                 " if we're going to redraw, lets not be lazy about it.
 set mat=5                      " show matching brackets for 1/10 of a second
+set mouse=nicr                 " allow mouse scrolling
 set nocompatible
 set nostartofline              " don't jump to the start of a line when scrolling
 set number                     " show line numbers

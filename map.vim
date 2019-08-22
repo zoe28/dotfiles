@@ -77,6 +77,10 @@ nnoremap gb :b#<Enter>
 noremap <silent><esc> <esc>:noh<CR><esc>
 
 
+" allow Vim to still understand escape sequences
+nnoremap <esc>^[ <esc>^[
+
+
 " replace
 nnoremap ?? :%s/<C-r><C-w>//g<Left><Left>
 vnoremap ?? :s/<C-r><C-w>//g<Left><Left>
