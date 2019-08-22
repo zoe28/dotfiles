@@ -102,7 +102,11 @@ nnoremap <leader>n :cd %:p:h<CR>:new
 
 
 " Remove all console.log
-nnoremap gcl :g/console.log/d<Enter>
+nnoremap <leader>cl :g/console.log/d<Enter>
+
+
+" Reload file
+nnoremap <leader>re :edit<CR>
 
 
 " Scroll bind
