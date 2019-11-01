@@ -7,8 +7,9 @@ git
 heroku
 htop
 hub
-mongodb
 mkcert
+mongodb
+mosh
 node
 nodenv
 nvm
