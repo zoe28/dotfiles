@@ -153,6 +153,11 @@ source ~/.bash_cd
 source ~/.bash_git
 source ~/.bash_ps1
 
-if [[ $OSTYPE == darwin* ]]; then
+export PLATFORM=$(uname -s)
+if [ "$PLATFORM" = "Darwin" ]; then
   source ~/.bash_osx
 fi
+
+# if [[ $OSTYPE == darwin* ]]; then
+  # source ~/.bash_osx
+# fi
