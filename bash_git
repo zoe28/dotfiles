@@ -43,6 +43,7 @@ fo() {
   git checkout "$1"
   git fetch
   git pull
+  git branch --set-upstream-to=origin/"$1" "$1"
 }
 
 
