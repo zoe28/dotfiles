@@ -109,6 +109,10 @@ nnoremap <leader>cl :g/console.log/d<Enter>
 nnoremap <leader>re :edit<CR>
 
 
+" tabs -> spaces
+nnoremap <leader><tab> :set shiftwidth=2 tabstop=2 softtabstop=2 expandtab<CR>:retab<CR>
+
+
 " Scroll bind
 command Scb set scrollbind!
 
@@ -148,6 +152,7 @@ nnoremap g< ^:%s/\/\///c<Enter>y
 " Line numbers
 nnoremap <F6> :set invnumber<CR>
 command No set invnumber! | GitGutterToggle
+command NO set invnumber! | GitGutterToggle
 
 
 " Ack
