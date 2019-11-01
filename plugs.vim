@@ -37,6 +37,7 @@ Plug 'junegunn/vim-easy-align'                                                  
 Plug 'junegunn/vim-xmark', { 'do': 'make' }                                                 " Markdown
 Plug 'lervag/vimtex', { 'for': 'tex' }                                                      " LaTeX
 Plug 'ludovicchabant/vim-gutentags'                                                         " Manage tags
+Plug 'MattesGroeger/vim-bookmarks'                                                          " Bookmarks
 Plug 'majutsushi/tagbar'                                                                    " Tags
 Plug 'mikker/seoul256-iTerm'                                                                " Seoul iTerm
 Plug 'mileszs/ack.vim'                                                                      " Awk/Ag search
@@ -77,7 +78,7 @@ Plug 'mattn/emmet-vim', { 'for': 'html' }                                       
 Plug 'mustache/vim-mustache-handlebars', { 'for': 'handlebars' }                            " Mustache, Handlebars
 
                                                                                             " == CSS ==
-Plug 'alampros/vim-styled-jsx', { 'for': ['javascript', 'javascript.jsx'] }                 " styled-jsx
+Plug 'alampros/vim-styled-jsx', { 'for': ['javascript', 'javascript.jsx'] }                 " Highlight CSS colors
 Plug 'ap/vim-css-color', { 'for': ['css', 'scss', 'javascript', 'javascript.jsx', 'less'] } " Highlight CSS colors
 Plug 'groenewege/vim-less', { 'for': 'less' }                                               " syntax highlighting for LESS
 Plug 'wavded/vim-stylus', { 'for': 'styl' }                                                 " Stylus files
@@ -85,6 +86,9 @@ Plug 'wavded/vim-stylus', { 'for': 'styl' }                                     
                                                                                             " == Ruby ==
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }                                                 " Vim & Ruby
 Plug 'zackhsi/sorbet-lsp', { 'for': 'ruby' }                                                " Sorbet
+
+                                                                                            " == Go ==
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }                                          " Go language support
 
 " Initialize plugin system
 call plug#end()
@@ -345,15 +349,24 @@ let g:ale_fixers = {
   \ 'javascript': ['prettier', 'eslint'],
   \ 'css': ['prettier'],
   \ 'markdown': ['prettier'],
+  \ 'ruby': ['prettier'],
 \ }
 
-" Be sure to never install 'prettier' globally, or you will be running
-let g:ale_javascript_prettier_use_local_config = 1
+let g:ale_go_gometalinter_options = '--aggregate --disable-all --enable=golint --enable=goimports --enable=gosec --enable=ineffassign --enable=structcheck --enable=vet --sort=line -t --vendor --vendored-linters'
+let g:ale_javascript_prettier_use_local_config = 1 " Be sure to never install 'prettier' globally, or you will be running
+let g:ale_lint_on_enter = 0 " don't lint on enter
+let g:ale_lint_on_insert_leave = 0 " don't lint when leaving insert mode
+let g:ale_lint_on_text_changed = 'never' " lint only on save
+let g:ale_ruby_rubocop_executable = '.binstubs/rubocop'
+let g:ale_sign_column_always = 1
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '⚠ '
 
 augroup aleMaps
   au FileType javascript let g:ale_fix_on_save = 1
   au FileType css let g:ale_fix_on_save = 1
   au FileType markdown let g:ale_fix_on_save = 1
+  au FileType ruby let g:ale_fix_on_save = 1
 augroup END
 
 
