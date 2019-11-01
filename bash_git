@@ -1,6 +1,6 @@
 # Git aliases
 # --------------------------------------------------------------------
-alias cm='ag "<<<<<<<"'
+alias cm="rg '>>>>>>> '"
 alias ga="git add -p"
 alias gaa="git add ."
 alias gbc="echo Total branches: `git branch | wc -l`"
