@@ -12,6 +12,7 @@ firebase-tools
 gatsby-cli
 gulp-cli
 jest-cli
+jshint
 node-nightly
 serve
 source-map-explorer
