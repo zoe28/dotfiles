@@ -167,7 +167,7 @@ gq() {
 
 # check for merge conflicts before continuing
 grc() {
-  CONFLICT=`ag "<<<<<<<"`
+  CONFLICT=`rg ">>>>>>> "`
   if [ -z "$CONFLICT" ] ; then
     git add . ; git rebase --continue
   else
