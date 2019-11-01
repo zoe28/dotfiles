@@ -9,6 +9,7 @@ web:*.{html,css,js}*
 # Using glob patterns to include/exclude files or folders
 --glob=!git/*
 --glob=!**/__snapshots__/**
+--glob=!**/*.lock
 
 # Set the colors.
 --colors=match:bg:yellow
