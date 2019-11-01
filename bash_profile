@@ -14,11 +14,6 @@ if [ -f ~/.tmux.conf ]; then
   fi
 fi
 
-export PLATFORM=$(uname -s)
-if [ "$PLATFORM" = "Darwin" ]; then
-  source ~/.bash_osx
-fi
-
 if [ -f ~/.alias ]; then
   source ~/.alias
 fi
