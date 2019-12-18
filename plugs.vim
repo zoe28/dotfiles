@@ -129,6 +129,9 @@ function! AirlineInit()
 
   " Tmuxline
   let g:airline#extensions#tmuxline#enabled = 1
+
+  " Ale
+  let g:airline#extensions#ale#enabled = 1
 endfunction
 
 
@@ -221,21 +224,21 @@ endif
 " Syntastic
 " ----------------------------------------------------------------------------
 
+let g:loaded_syntastic_sh_shellcheck_checker = 1
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
 let g:syntastic_enable_signs = 1
 let g:syntastic_html_tidy_exec = '~/.vim/bundle/tidy-html5/bin/tidy'
 let g:syntastic_html_tidy_ignore_errors=['proprietary attribute', 'trimming empty <']
-let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_ignore_files = ['tex']
+let g:syntastic_javascript_checkers = ['prettier', 'eslint']
+let g:syntastic_javascript_eslint_exec = 'eslint_d'
 let g:syntastic_loc_list_height = 5
 let g:syntastic_python_checkers = ['flake8'] "['pylint', 'flake8']
 let g:syntastic_python_flake8_args = '--config ~/.flake8 --ignore=E501,W503'
-"let g:syntastic_python_pylint_args = '--rcfile .pylintrc --load-plugins pylint_django --msg-template="{path}:{line}: [{msg_id}] {msg}" -r n'
-let g:loaded_syntastic_sh_shellcheck_checker = 1
-let g:syntastic_ignore_files = ['tex']
 set statusline+=%#warningmsg#
 set statusline+=%*
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -351,10 +354,24 @@ let g:ale_javascript_prettier_use_local_config = 1 " Be sure to never install 'p
 let g:ale_lint_on_enter = 0 " don't lint on enter
 let g:ale_lint_on_insert_leave = 0 " don't lint when leaving insert mode
 let g:ale_lint_on_text_changed = 'never' " lint only on save
+let g:ale_linters_explicit = 1
 let g:ale_ruby_rubocop_executable = '.binstubs/rubocop'
 let g:ale_sign_column_always = 1
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠ '
+
+call ale#linter#Define('ruby', {
+\   'name': 'sorbet-payserver',
+\   'lsp': 'stdio',
+\   'executable': 'true',
+\   'command': 'pay exec scripts/bin/typecheck --lsp',
+\   'language': 'ruby',
+\   'project_root': $HOME . '/stripe/pay-server',
+\})
+
+if !exists("g:ale_linters")
+    let g:ale_linters = {}
+endif
 
 augroup aleMaps
   au FileType javascript let g:ale_fix_on_save = 1
@@ -370,7 +387,7 @@ let g:user_emmet_leader_key='<C-G>'
 
 "" Sorbet
 if fnamemodify(getcwd(), ':p') == $HOME.'/stripe/pay-server/'
-  let g:ale_linters = {'ruby': ['sorbet-lsp']}
+  let g:ale_linters = {'ruby': ['sorbe-lsp']}
 end
 " Bind <leader>d to go-to-definition.
 nnoremap <silent> <leader>d <Plug>(ale_go_to_definition)
