@@ -294,11 +294,8 @@ let g:github_enterprise_urls = ['https://git.corp.stripe.com']  " for vim-rhubar
 
 "" EasyAlign
 " Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-
-
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nnoremap ga <Plug>(EasyAlign)
+xmap ga <Plug>(EasyAlign)
 
 
 "" Polyglot
