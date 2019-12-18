@@ -56,6 +56,12 @@ nnoremap <silent> vs :windo wincmd K<Enter>
 " horizontal ➜ vertical splits
 nnoremap <silent> sv :windo wincmd H<Enter>
 
+" split nav
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k
+nnoremap <C-H> <C-W>h
+nnoremap <C-L> <C-W>l
+
 " Resize splits
 nnoremap ++ 10<C-w>+
 nnoremap -- 10<C-w>-
