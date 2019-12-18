@@ -37,6 +37,7 @@ Plug 'junegunn/vim-xmark', { 'do': 'make' }                                     
 Plug 'lervag/vimtex', { 'for': 'tex' }                                                      " LaTeX
 Plug 'ludovicchabant/vim-gutentags'                                                         " Manage tags
 Plug 'MattesGroeger/vim-bookmarks'                                                          " Bookmarks
+Plug 'mattn/gist-vim'                                                                       " Create gists
 Plug 'majutsushi/tagbar'                                                                    " Tags
 Plug 'mikker/seoul256-iTerm'                                                                " Seoul iTerm
 Plug 'mileszs/ack.vim'                                                                      " Awk/Ag search
