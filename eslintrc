@@ -5,9 +5,10 @@
   "plugins": [
     "import",
     "jest",
-  "json",
-  "node",
-  "react"
+    "json",
+    "node",
+    "prettier",
+    "react"
   ],
   "env": {
     "browser": true,
@@ -25,6 +26,9 @@
       "jsx": true
     }
   },
+  "rules": {
+    "prettier/prettier": "error"
+  },
   "globals": {
     "chrome": true,
     "bytegain": true,
@@ -33,5 +37,11 @@
     "Intercom": true,
     "jest": true,
     "test": true
-  }
+  },
+  "extends": [
+    "plugin:prettier/recommended",
+    "prettier/flowtype",
+    "prettier/react",
+    "prettier/standard"
+  ]
 }
