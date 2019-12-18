@@ -50,6 +50,7 @@ Plug 'tpope/vim-fugitive'                                                       
 Plug 'tpope/vim-rhubarb'                                                                    " Gbrowse with hub
 Plug 'tpope/vim-sleuth'                                                                     " Git wrapper
 Plug 'tpope/vim-surround'                                                                   " Quickly surround words with symbols
+Plug 'tweekmonster/startuptime.vim'                                                         " Vim profiler
 Plug 'w0rp/ale'                                                                             " Async lint engine
 Plug 'wesQ3/vim-windowswap'                                                                 " Swap Vim splits
 Plug 'wincent/command-t'                                                                    " File navigation
