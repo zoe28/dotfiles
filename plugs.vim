@@ -35,6 +35,7 @@ Plug 'junegunn/seoul256.vim'                                                    
 Plug 'junegunn/vim-easy-align'                                                              " Aligning columns
 Plug 'junegunn/vim-xmark', { 'do': 'make' }                                                 " Markdown
 Plug 'lervag/vimtex', { 'for': 'tex' }                                                      " LaTeX
+Plug 'liuchengxu/vim-clap'                                                                  " Search window
 Plug 'ludovicchabant/vim-gutentags'                                                         " Manage tags
 Plug 'MattesGroeger/vim-bookmarks'                                                          " Bookmarks
 Plug 'mattn/gist-vim'                                                                       " Create gists
@@ -367,3 +368,7 @@ let g:javascript_plugin_flow = 1
 
 "" Neoformat
 " autocmd BufWritePre *.js Neoformat
+
+
+"" Clap
+" autocmd ColorScheme * hi ClapSpinner cterm=bold gui=bold ctermfg=242 guifg=#DF8C8C ctermbg=0 guibg=#7FC1CA
