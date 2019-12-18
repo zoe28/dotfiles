@@ -215,3 +215,8 @@ noremap <Right> <NOP>
 
 " No manual
 noremap <S-k> <NOP>
+
+
+" errors
+nnoremap <Leader>ne :lnext<CR>
+nnoremap <Leader>Ne :lprevious<CR>

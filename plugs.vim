@@ -43,7 +43,6 @@ Plug 'mileszs/ack.vim'                                                          
 Plug 'ntpeters/vim-better-whitespace'                                                       " Highlight whitespace
 Plug 'powerline/fonts'                                                                      " Powerline fonts (Sauce Code Powerline Regular)
 Plug 'sbdchd/neoformat'                                                                     " Auto formatter
-Plug 'scrooloose/syntastic'                                                                 " Syntax checker
 Plug 'sheerun/vim-polyglot'                                                                 " Syntax highlighting for languages
 Plug 'tomtom/tcomment_vim'                                                                  " Comment/uncomment
 Plug 'tpope/vim-fugitive'                                                                   " Git wrapper
@@ -125,7 +124,7 @@ function! AirlineInit()
   let g:airline_section_x = airline#section#create_right([])
   let g:airline_section_y = airline#section#create_right(['%p%%', '%c'])
   let g:airline_section_z = airline#section#create_right(['branch'])
-  let g:airline_section_warning = airline#section#create_right(['syntastic'])
+  let g:airline_section_warning = airline#section#create_right(['ale'])
 
   " Tmuxline
   let g:airline#extensions#tmuxline#enabled = 1
@@ -217,36 +216,6 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow
   set grepformat=%f:%l:%c:%m
 endif
-
-
-
-" ----------------------------------------------------------------------------
-" Syntastic
-" ----------------------------------------------------------------------------
-
-let g:loaded_syntastic_sh_shellcheck_checker = 1
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_enable_signs = 1
-let g:syntastic_html_tidy_exec = '~/.vim/bundle/tidy-html5/bin/tidy'
-let g:syntastic_html_tidy_ignore_errors=['proprietary attribute', 'trimming empty <']
-let g:syntastic_ignore_files = ['tex']
-let g:syntastic_javascript_checkers = ['prettier', 'eslint']
-let g:syntastic_javascript_eslint_exec = 'eslint_d'
-let g:syntastic_loc_list_height = 5
-let g:syntastic_python_checkers = ['flake8'] "['pylint', 'flake8']
-let g:syntastic_python_flake8_args = '--config ~/.flake8 --ignore=E501,W503'
-set statusline+=%#warningmsg#
-set statusline+=%*
-set statusline+=%{SyntasticStatuslineFlag()}
-highlight link SyntasticError Error
-highlight link SyntasticWarning WildMenu
-
-nnoremap <Leader>ne :lnext<CR>
-nnoremap <Leader>Ne :lprevious<CR>
 
 
 
