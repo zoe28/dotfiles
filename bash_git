@@ -4,7 +4,7 @@ alias cm="rg '>>>>>>> '"
 alias ga="git add -p"
 alias gaa="git add ."
 alias gam="git commit --amend"
-alias gau="git add $(git diff --name-only --diff-filter=U)"
+alias gau="git add $(git diff --name-only --diff-filter=U --relative)"
 alias gbc="echo Total branches: `git branch | wc -l`"
 alias gbu='git branch --set-upstream-to=origin/"$(git rev-parse --abbrev-ref HEAD)" "$(git rev-parse --abbrev-ref HEAD)"'
 alias gd="clear ; git diff"
@@ -21,7 +21,7 @@ alias gpl="git pull"
 alias gps="git push"
 alias gs="git status -sb"
 alias gso="git diff --name-status origin/master"
-alias gsu="git diff --name-only --diff-filter=U"
+alias gsu="git diff --name-only --diff-filter=U --relative"
 alias gv="git vimdiff"
 alias reset="git stash"
 alias stash="git add . ; git stash"
@@ -156,6 +156,13 @@ gob() {
   branches=$(git branch) &&
   branch=$(echo "$branches" | fzf-tmux -d 15 +m) &&
   git checkout $(echo "$branch" | sed "s/.* //")
+}
+
+
+# pull master and merge into current branch
+gomm() {
+  git fetch
+  got merge origin/master
 }
 
 
