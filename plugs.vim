@@ -30,7 +30,6 @@ Plug 'ervandew/supertab'                                                        
 Plug 'flazz/vim-colorschemes'                                                               " Nice syntax highlighting
 Plug 'honza/vim-snippets'                                                                   " Snippets
 Plug 'junegunn/fzf.vim'                                                                     " FZF plugin for Vim
-Plug 'junegunn/goyo.vim'                                                                    " Page layout
 Plug 'junegunn/rainbow_parentheses.vim'                                                     " Rainbow parentheses
 Plug 'junegunn/seoul256.vim'                                                                " Colorscheme
 Plug 'junegunn/vim-easy-align'                                                              " Aligning columns
@@ -44,7 +43,6 @@ Plug 'mileszs/ack.vim'                                                          
 Plug 'ntpeters/vim-better-whitespace'                                                       " Highlight whitespace
 Plug 'powerline/fonts'                                                                      " Powerline fonts (Sauce Code Powerline Regular)
 Plug 'sbdchd/neoformat'                                                                     " Auto formatter
-" Plug 'scrooloose/nerdtree'                                                                " File explorer
 Plug 'scrooloose/syntastic'                                                                 " Syntax checker
 Plug 'sheerun/vim-polyglot'                                                                 " Syntax highlighting for languages
 Plug 'tomtom/tcomment_vim'                                                                  " Comment/uncomment
@@ -52,20 +50,16 @@ Plug 'tpope/vim-fugitive'                                                       
 Plug 'tpope/vim-rhubarb'                                                                    " Gbrowse with hub
 Plug 'tpope/vim-sleuth'                                                                     " Git wrapper
 Plug 'tpope/vim-surround'                                                                   " Quickly surround words with symbols
-Plug 'tpope/vim-unimpaired'                                                                 " Complementary pairs of mappings
 Plug 'w0rp/ale'                                                                             " Async lint engine
 Plug 'wesQ3/vim-windowswap'                                                                 " Swap Vim splits
 Plug 'wincent/command-t'                                                                    " File navigation
 
                                                                                             " == Javascript ==
-Plug 'burnettk/vim-angular', { 'for': 'javascript' }                                        " Angular
 Plug 'douglascrockford/JSLint', { 'for': 'javascript' }                                     " linting
 Plug 'flowtype/vim-flow', { 'for': ['javascript', 'javascript.jsx'] }                       " Flow type checking
 Plug 'galooshi/vim-import-js', { 'for': ['javascript', 'javascript.jsx'] }                  " Easier imports
 Plug 'MaxMEllon/vim-jsx-pretty', { 'for': ['javascript', 'javascript.jsx'] }                " React
-" Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] } " React
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }                                     " Vim & Javascript
-Plug 'walm/jshint.vim', { 'for': 'javascript' }                                             " I can haz good JS style?
 
                                                                                             " == GraphQL ==
 Plug 'jparise/vim-graphql'                                                                  " GraphQL
