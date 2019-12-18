@@ -247,6 +247,17 @@ let g:EasyMotion_smartcase = 1
 
 "" Gutentag
 set statusline+=%{gutentags#statusline()}
+let g:gutentags_add_default_project_roots = 0
+let g:gutentags_project_root = ['package.json', '.git']
+let g:gutentags_cache_dir = expand('~/.cache/vim/ctags/')
+let g:gutentags_generate_on_new = 1
+let g:gutentags_generate_on_missing = 1
+let g:gutentags_generate_on_write = 1
+let g:gutentags_generate_on_empty_buffer = 0
+let g:gutentags_ctags_extra_args = [
+	\ '--tag-relative=yes',
+	\ '--fields=+ailmnS',
+	\ ]
 
 " Tagbar
 nnoremap <silent> fb :TagbarToggle<CR>
@@ -330,13 +341,13 @@ let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠ '
 
 call ale#linter#Define('ruby', {
-\   'name': 'sorbet-payserver',
-\   'lsp': 'stdio',
-\   'executable': 'true',
-\   'command': 'pay exec scripts/bin/typecheck --lsp',
-\   'language': 'ruby',
-\   'project_root': $HOME . '/stripe/pay-server',
-\})
+	\ 'name': 'sorbet-payserver',
+	\ 'lsp': 'stdio',
+	\ 'executable': 'true',
+	\ 'command': 'pay exec scripts/bin/typecheck --lsp',
+	\ 'language': 'ruby',
+	\ 'project_root': $HOME . '/stripe/pay-server',
+\ })
 
 if !exists("g:ale_linters")
     let g:ale_linters = {}
