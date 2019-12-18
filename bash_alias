@@ -106,12 +106,6 @@ rm() {
 
 
 
-# Cocos2d-x
-# --------------------------------------------------------------------
-alias cocos="/Users/brian/Armory/cocos2d-x-3.13.1/tools/cocos2d-console/bin/cocos.py"
-
-
-
 # config files
 # --------------------------------------------------------------------
 alias abbrc='vim ~/.abbrev.vim'
