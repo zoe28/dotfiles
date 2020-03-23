@@ -17,6 +17,7 @@ alias path="echo -e ${PATH//:/\\n}"
 alias ps="ps aux"
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 alias rgl="rg -l --colors 'path:fg:green' --colors 'path:style:bold'"
+alias rgi="rg --no-ignore --colors 'path:fg:green' --colors 'path:style:bold'"
 alias tree="tree -Csuh" #alternative to recursive ls
 
 
