@@ -8,6 +8,7 @@ eslint-plugin-jest
 eslint-plugin-json
 eslint-plugin-node
 eslint-plugin-react
+eslint_d
 firebase-tools
 gatsby-cli
 gulp-cli
@@ -18,6 +19,6 @@ source-map-explorer
 stylelint
 stylelint-config-standard
 webpack
-webpack-cli
 webpack-bundle-size-analyzer
+webpack-cli
 yarn

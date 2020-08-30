@@ -5,9 +5,10 @@
   "plugins": [
     "import",
     "jest",
-  "json",
-  "node",
-  "react"
+    "json",
+    "node",
+    "prettier",
+    "react"
   ],
   "env": {
     "browser": true,
@@ -16,8 +17,9 @@
     "jquery": true,
     "node": true
   },
+  "parser": "babel-eslint",
   "parserOptions": {
-    "ecmaVersion": 2017,
+    "ecmaVersion": 2018,
     "sourceType": "module",
     "ecmaFeatures": {
       "experimentalObjectRestSpread": true,
@@ -25,7 +27,7 @@
     }
   },
   "rules": {
-    "no-console": "off"
+    "prettier/prettier": "error"
   },
   "globals": {
     "chrome": true,
@@ -35,5 +37,11 @@
     "Intercom": true,
     "jest": true,
     "test": true
-  }
+  },
+  "extends": [
+    "plugin:prettier/recommended",
+    "prettier/flowtype",
+    "prettier/react",
+    "prettier/standard"
+  ]
 }
