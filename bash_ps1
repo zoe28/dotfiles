@@ -8,7 +8,7 @@ else
   ### git-prompt
   __git_ps1() { :;}
   if [ -e ~/.git-prompt.sh ]; then
-    source ~/.git-prompt.sh > /dev/null
+    source ~/.git-prompt.sh 2> /dev/null
   fi
   PROMPT_COMMAND='history -a; printf "\[\e[38;5;59m\]%$(($COLUMNS - 4))s\r" "$(__git_ps1) ($(date +%m/%d\ %H:%M:%S))"'
   PS1="\[\e[34m\]\u\[\e[1;32m\]@\[\e[0;33m\]\h\[\e[35m\]:"

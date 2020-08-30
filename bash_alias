@@ -8,9 +8,10 @@ alias f="open -a Finder ./"
 alias grep="grep --color=auto"
 alias hosts="sudo vim /etc/hosts"
 alias killall="pkill -u $USER"
-alias ll="ls -lahpsF --color=auto" #long list
+alias ll="ls -lapshF --color=auto" #long list
 alias lr="ls -lpR --color=auto"    #recursive
 alias ls="ls -pF --color=auto"     #colors
+alias lt="ls -lat --color=auto"     #sort time
 alias mkdir="mkdir -pv"
 alias o="open"
 alias path="echo -e ${PATH//:/\\n}"

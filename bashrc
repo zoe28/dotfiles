@@ -51,7 +51,6 @@ export fzf='
    find * -name ".*" -prune -o -type f -print -o -type l -print) 2> /dev/null'
 
 ## fzf
-#export FZF_DEFAULT_COMMAND='ag -l -g ""'
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
 # fzf
@@ -153,11 +152,6 @@ source ~/.bash_cd
 source ~/.bash_git
 source ~/.bash_ps1
 
-export PLATFORM=$(uname -s)
 if [ "$PLATFORM" = "Darwin" ]; then
   source ~/.bash_osx
 fi
-
-# if [[ $OSTYPE == darwin* ]]; then
-  # source ~/.bash_osx
-# fi

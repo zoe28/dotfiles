@@ -1,3 +1,5 @@
+export PLATFORM=$(uname -s)
+
 if [ -f ~/.profile ]; then
   source ~/.profile
 fi
@@ -6,7 +8,7 @@ if [ -f ~/.bashrc ]; then
   source ~/.bashrc
 fi
 
-if [ -f ~/.tmux.conf ]; then
+if [ "$PLATFORM" = "Linux" ] && [ -f ~/.tmux.conf ]; then
   tmux source ~/.tmux.conf > /dev/null
 
   if ! { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then

@@ -9,13 +9,12 @@ set path=.,./..,./../..,./../../..,**
 " UI
 " ----------------------------------------------------------------------------
 
-set nocompatible
-
 set autochdir                     " automatically try to set the current dir to open file
 set autoread                      " auto reload if file saved externally
 set background=dark               " We use a dark terminal so we can play nethack
 set backspace=indent,eol,start    " fixes a problem where I cannot delete text that is existing in the file
 set ch=1                          " command line height
+set clipboard=unnamed             " sync Vim register to clipboar"
 set colorcolumn=100               " vertical line to indicate line width
 set complete-=i                   " don't autocomplete from included files
 set encoding=utf-8                " Enable unicode
@@ -30,7 +29,9 @@ set laststatus=2                  " always show status line
 set lazyredraw                    " if we're going to redraw, lets not be lazy about it.
 set mat=5                         " show matching brackets for 1/10 of a second
 set mouse=nicr                    " allow mouse scrolling
+set nocompatible
 set nostartofline                 " don't jump to the start of a line when scrolling
+set notagbsearch
 set number                        " show line numbers
 set report=0                      " tell us about changes
 set scrolloff=5                   " keep cursor 5 lines away from the edge of the screen
@@ -87,24 +88,13 @@ set hlsearch   " Highlight search results
 
 
 " ----------------------------------------------------------------------------
-" TMUX
-" ----------------------------------------------------------------------------
-
-if exists('$TMUX')
-  set clipboard=
-else
-  set clipboard=unnamed  " sync with OS clipboard
-endif
-
-
-" ----------------------------------------------------------------------------
 " Tags
 " ----------------------------------------------------------------------------
 
-set tags=./tags;~/src
+set tags=./tags,tags;~/src
 
 
 " ----------------------------------------------------------------------------
 " Files
 " ----------------------------------------------------------------------------
-set suffixesadd+=.js
+set suffixesadd+=.js,/index.js
