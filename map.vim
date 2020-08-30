@@ -131,7 +131,7 @@ nnoremap <Leader>/ :Ack<Space>
 
 
 " unhighlight search
-noremap <silent><esc> <esc>:noh<CR><esc>
+" noremap <silent><esc> <esc>:noh<CR><esc>
 
 
 " replace
