@@ -61,6 +61,11 @@ endfunction
 
 
 
+" crontab
+autocmd filetype crontab setlocal nobackup nowritebackup
+
+
+
 " LaTeX
 au FileType tex setlocal nocursorline
 au FileType tex set nofoldenable
