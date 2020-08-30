@@ -74,14 +74,6 @@ fi
 
 
 
-# Node
-# --------------------------------------------------------------------
-# Node Virtual Machine
-export NVM_DIR="/Users/zhangb/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-
-
 # Perl
 # --------------------------------------------------------------------
 if [ -f "~/.perlrc" ]; then
@@ -102,8 +94,8 @@ fi
 
 # Ruby
 # --------------------------------------------------------------------
-#eval "$(rbenv init -)"
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$HOME/gems/bin:$PATH
+eval "$(rbenv init -)"
 
 
 
@@ -156,4 +148,3 @@ source ~/.bash_ps1
 if [[ $OSTYPE == darwin* ]]; then
   source ~/.bash_osx
 fi
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
