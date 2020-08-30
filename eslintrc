@@ -1,6 +1,10 @@
 {
   "extends": [
-    "eslint:recommended"
+    "eslint:recommended",
+    "plugin:prettier/recommended",
+    "prettier/flowtype",
+    "prettier/react",
+    "prettier/standard"
   ],
   "plugins": [
     "import",
@@ -37,11 +41,5 @@
     "Intercom": true,
     "jest": true,
     "test": true
-  },
-  "extends": [
-    "plugin:prettier/recommended",
-    "prettier/flowtype",
-    "prettier/react",
-    "prettier/standard"
-  ]
+  }
 }

@@ -10,6 +10,7 @@ web:*.{html,css,js}*
 --glob=!git/*
 --glob=!**/__snapshots__/**
 --glob=!**/*.lock
+--glob=!**/*.js.map
 
 # Set the colors.
 --colors=match:bg:yellow
