@@ -40,7 +40,6 @@ Plug 'mileszs/ack.vim'                                                          
 Plug 'ntpeters/vim-better-whitespace'                                                       " Highlight whitespace
 Plug 'powerline/fonts'                                                                      " Powerline fonts (Sauce Code Powerline Regular)
 Plug 'sbdchd/neoformat'                                                                     " Auto formatter
-" Plug 'scrooloose/nerdtree'                                                                " File explorer
 Plug 'scrooloose/syntastic'                                                                 " Syntax checker
 Plug 'sheerun/vim-polyglot'                                                                 " Syntax highlighting for languages
 Plug 'tomtom/tcomment_vim'                                                                  " Comment/uncomment
@@ -51,7 +50,7 @@ Plug 'tpope/vim-surround'                                                       
 Plug 'tpope/vim-unimpaired'                                                                 " Complementary pairs of mappings
 Plug 'w0rp/ale'                                                                             " Async lint engine
 Plug 'wesQ3/vim-windowswap'                                                                 " Swap Vim splits
-Plug 'wincent/command-t'                                                                    " File navigation
+" Plug 'wincent/command-t'                                                                    " File navigation
 
                                                                                             " == Javascript ==
 Plug 'burnettk/vim-angular', { 'for': 'javascript' }                                        " Angular
@@ -270,26 +269,6 @@ set statusline+=%{gutentags#statusline()}
 
 " Tagbar
 nnoremap <silent> fb :TagbarToggle<CR>
-
-
-
-" ----------------------------------------------------------------------------
-" nerdtree
-" ----------------------------------------------------------------------------
-
-let NERDTreeCascadeOpenSingleChildDir=0
-let NERDTreeQuitOnOpen = 1
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-nnoremap <Leader>= :NERDTreeToggle<CR>
-nnoremap <silent> <Leader>v :NERDTreeFind<CR>
-autocmd StdinReadPre * let s:std_in=1
-" open a NERDTree automatically when vim starts up if no files were specified
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-" open NERDTree automatically when vim starts up on opening a directory
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
-" close vim if the only window left open is NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 
 
