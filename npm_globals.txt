@@ -1,5 +1,4 @@
 babel-eslint
-create-react-app
 create-react-native-app
 eslint
 eslint-config-airbnb
@@ -14,6 +13,7 @@ gatsby-cli
 gulp-cli
 jest-cli
 node-nightly
+npm-check
 serve
 source-map-explorer
 stylelint

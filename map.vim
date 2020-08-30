@@ -199,13 +199,6 @@ nnoremap <leader>py3 :! python %<CR>
 nnoremap <leader>nd :! node %<CR>
 
 
-" Swap v and CTRL-V, because Block mode is more useful that Visual mode
-nnoremap v     <C-V>
-nnoremap <C-V> v
-vnoremap v     <C-V>
-vnoremap <C-V> v
-
-
 " Arrow keys getting in my way
 noremap <Up>    <NOP>
 noremap <Down>  <NOP>

@@ -51,7 +51,6 @@ export fzf='
    find * -name ".*" -prune -o -type f -print -o -type l -print) 2> /dev/null'
 
 ## fzf
-#export FZF_DEFAULT_COMMAND='ag -l -g ""'
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
 # fzf
