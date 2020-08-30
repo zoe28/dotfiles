@@ -153,7 +153,13 @@ source ~/.bash_cd
 source ~/.bash_git
 source ~/.bash_ps1
 
-if [[ $OSTYPE == darwin* ]]; then
+export PLATFORM=$(uname -s)
+if [ "$PLATFORM" = "Darwin" ]; then
   source ~/.bash_osx
 fi
+
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# if [[ $OSTYPE == darwin* ]]; then
+  # source ~/.bash_osx
+# fi

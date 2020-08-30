@@ -3,60 +3,71 @@
   email = surui2890@gmail.com
 [github]
   user = atav32
+[hub]
+  host = git.corp.stripe.com
+
+
 [alias]
   a = add
+  add-unmerged = "!git add $(git diff --name-only --diff-filter=U --relative)"
   b = branch
   bo = branch
   branches = branch
   c = commit
   co = checkout
-  up = checkout
   di = diff
-  vimdiff = difftool --tool=vimdiff --no-prompt
+  edit-unmerged = "!$EDITOR -O $(git diff --name-only --diff-filter=U --relative)"
   fin = finish
-  last = diff-tree --no-commit-id --name-status -r HEAD~1..HEAD
   glog = log --graph
+  last = diff-tree --no-commit-id --name-status -r HEAD~1..HEAD
   master = checkout master
   o = log --graph origin..HEAD
   out = log --graph origin..HEAD
   outgoing = log --graph origin..HEAD
   pl = pull
   ps = push
+  revert = checkout HEAD
   st = status
   sum = status
-  unstage = reset HEAD
-  revert = checkout HEAD
   uncommit = reset --soft HEAD^
+  unmerged = diff --name-only --diff-filter=U --relative
+  unstage = reset HEAD
+  up = checkout
+  vimdiff = difftool --tool=vimdiff --no-prompt
 [branch]
   autosetuprebase = always
 [color]
-  status = auto
   branch = auto
-  interactive = auto
   diff = auto
   grep = auto
+  interactive = auto
+  status = auto
   ui = 1
 [color "diff"]
-  meta = yellow bold
   frag = magenta
-  old = red reverse white
+  meta = yellow bold
   new = green reverse white
+  old = red reverse white
 [core]
   editor = vim
   excludesfile = /Users/brian/.gitignore_global
 [diff]
-  renames = copies
   mnemonicprefix = true
-  tool = vscode
-[difftool "vscode"]
-  cmd = code --wait --diff $LOCAL $REMOTE
+  renames = copies
+  tool = vimdiff
 [help]
   autocorrect = 1
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  process = git-lfs filter-process
+  required = true
+  smudge = git-lfs smudge -- %f
 [log]
   decorate = full
 [merge]
-  tool = vscode
-[mergtool]
+  tool = vimdiff3
+[mergtool "vimdiff3"]
+  cmd = vim -f -d \"$LOCAL\" \"$MERGED\" \"$REMOTE\"
   prompt = false
 [mergetool "vscode"]
   cmd = code --wait $MERGED
@@ -73,10 +84,3 @@
   insteadOf = git://
 [url "https://"]
   insteadOf = git://
-[filter "lfs"]
-  clean = git-lfs clean -- %f
-  smudge = git-lfs smudge -- %f
-  process = git-lfs filter-process
-  required = true
-[hub]
-  host = git.corp.stripe.com

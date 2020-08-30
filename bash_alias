@@ -1,22 +1,23 @@
 # Bash
 # --------------------------------------------------------------------
-alias cp='cp -v'
-alias df='df -kTh'
+alias agl="ag -l"
+alias cp="cp -v"
+alias df="df -kTh"
 alias du="du -hs | sort -h"
-alias f='open -a Finder ./'
-alias grep='grep --color=auto'
-alias hosts='sudo vim /etc/hosts'
-alias killall='pkill -u $USER'
-alias ll='ls -lsahF --color=auto' #long list
-alias lr='ls -lR'                 #recursive
-alias ls='ls -F --color=auto'     #colors
-alias mkdir="mkdir -p"
-alias mkdir='mkdir -v'
-alias o='open'
-alias path='echo -e ${PATH//:/\\n}'
+alias f="open -a Finder ./"
+alias grep="grep --color=auto"
+alias hosts="sudo vim /etc/hosts"
+alias killall="pkill -u $USER"
+alias ll="ls -lahpsF --color=auto" #long list
+alias lr="ls -lpR --color=auto"    #recursive
+alias ls="ls -pF --color=auto"     #colors
+alias mkdir="mkdir -pv"
+alias o="open"
+alias path="echo -e ${PATH//:/\\n}"
 alias ps="ps aux"
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
-alias tree='tree -Csuh' #alternative to recursive ls
+alias rgl="rg -l --colors 'path:fg:green' --colors 'path:style:bold'"
+alias tree="tree -Csuh" #alternative to recursive ls
 
 
 ## unzip everything
@@ -90,7 +91,7 @@ rm() {
       BACKUP_FILE_NAME="${1%/}.tar.bz2"           # create back-up file-name (breaks for dirs)
       if [ -f $BACKUP_FILE_NAME ]; then           # if the file exists
         tar -jcf $BACKUP_FILE_NAME $1             # tar
-        mv -f $BACKUP_FILE_NAME /tmp > /dev/null  # move tar to /tmp (and shut up)
+        mv -f $BACKUP_FILE_NAME /tmp > /dev/null  # silently move tar to /tmp
       fi
     fi
     shift                                         # next argument
@@ -105,14 +106,9 @@ rm() {
 
 
 
-# Cocos2d-x
-# --------------------------------------------------------------------
-alias cocos="/Users/brian/Armory/cocos2d-x-3.13.1/tools/cocos2d-console/bin/cocos.py"
-
-
-
 # config files
 # --------------------------------------------------------------------
+alias abbrc='vim ~/.abbrev.vim'
 alias agrc='vim ~/.agignore'
 alias aliasrc='vim ~/.alias'
 alias bashrc='vim ~/.bashrc'
@@ -121,11 +117,18 @@ alias gitrc='vim ~/.gitconfig'
 alias inputrc='vim ~/.inputrc'
 alias maprc='vim ~/.map.vim'
 alias plugrc='vim ~/.plugs.vim'
-alias screenrc='vim ~/.screenrc'
+alias rgrc='vim ~/.ripgreprc'
 alias sshrc='vim ~/.ssh/config'
 alias stylelintrc='vim ~/.stylelintrc'
 alias tmuxrc='vim ~/.tmux.conf'
 alias vimrc='vim ~/.vimrc'
+
+
+
+# env
+# --------------------------------------------------------------------
+alias ee="set -a; source .env; set +a"
+alias ue="unset $(grep -v '^#' .env | sed -E 's/(.*)=.*/\1/' | xargs)"
 
 
 
@@ -147,7 +150,7 @@ fff() {
 # open all files containing query
 vg() {
   if [ ! $# -eq 0 ] ; then
-    vim -o $(ag -l "$@" | fzf -1 -m -i --preview "cat {} | ag -C 1 $@")
+    vim -o $(rg -l "$@" | fzf -1 -m -i --preview "cat {} | rg -C 1 $@")
   fi
 }
 
@@ -239,12 +242,6 @@ py() {
     python $FILE
   fi
 }
-
-
-
-# Silver Searcher
-# --------------------------------------------------------------------
-alias agl="ag -l"
 
 
 

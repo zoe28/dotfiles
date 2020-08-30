@@ -1,8 +1,10 @@
 # Git aliases
 # --------------------------------------------------------------------
-alias cm='ag "<<<<<<< HEAD"'
+alias cm="rg '>>>>>>> '"
 alias ga="git add -p"
 alias gaa="git add ."
+alias gam="git commit --amend"
+alias gau="git add $(git diff --name-only --diff-filter=U --relative)"
 alias gbc="echo Total branches: `git branch | wc -l`"
 alias gbu='git branch --set-upstream-to=origin/"$(git rev-parse --abbrev-ref HEAD)" "$(git rev-parse --abbrev-ref HEAD)"'
 alias gd="clear ; git diff"
@@ -19,11 +21,12 @@ alias gpl="git pull"
 alias gps="git push"
 alias gs="git status -sb"
 alias gso="git diff --name-status origin/master"
+alias gsu="git diff --name-only --diff-filter=U --relative"
 alias gv="git vimdiff"
-alias reset='git stash'
+alias reset="git stash"
 alias stash="git add . ; git stash"
-alias throwaway='git stash'
-alias vrm='vim README.md'
+alias throwaway="git stash"
+alias vrm="vim README.md"
 
 # Wrap git automatically by adding the following to ~/.bash_profile:
 eval "$(hub alias -s)"
@@ -40,6 +43,7 @@ fo() {
   git checkout "$1"
   git fetch
   git pull
+  git branch --set-upstream-to=origin/"$1" "$1"
 }
 
 
@@ -155,6 +159,13 @@ gob() {
 }
 
 
+# pull master and merge into current branch
+gomm() {
+  git fetch
+  got merge origin/master
+}
+
+
 # show details of last commit
 gq() {
   git show :/$1
@@ -163,7 +174,7 @@ gq() {
 
 # check for merge conflicts before continuing
 grc() {
-  CONFLICT=`ag "<<<<<<< HEAD"`
+  CONFLICT=`rg ">>>>>>> "`
   if [ -z "$CONFLICT" ] ; then
     git add . ; git rebase --continue
   else

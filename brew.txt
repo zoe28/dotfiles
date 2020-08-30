@@ -7,8 +7,10 @@ git
 heroku
 htop
 hub
-mongodb
 mkcert
+mongodb
+mosh
+neovim
 node
 nodenv
 nvm
@@ -19,4 +21,5 @@ ripgrep
 shellcheck
 the_silver_searcher
 tmux
+tree
 vim
