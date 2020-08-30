@@ -72,6 +72,29 @@ if [[ $OSTYPE == darwin* ]]; then
   # Cmd-Q Finder
   defaults write com.apple.finder QuitMenuItem -bool YES && killall Finder
 
+  # Install vim-plug and all plugins
+  if [ ! -f ~/.vim/autoload/plug.vim ]; then
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    vim -c PlugInstall -c qa &> /dev/null
+  fi
+
+  # Install Tmux Plugin Manager
+  if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  fi
+
+  # Install Bash It
+  if [ ! -d "$HOME/.bash_it" ]; then
+    git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it
+  fi
+
+  # Install global NPM cli
+  if [ -d "/usr/local/Cellar/node" ]; then
+    echo -e "Installing npm global packages. This could take a while..."
+    < npm_globals.txt xargs npm install -g
+  fi
+
   # Install Homebrew
   if [ ! -d "/usr/local/Cellar" ]; then
     echo -e "Installing Homebrew"
@@ -85,28 +108,11 @@ if [[ $OSTYPE == darwin* ]]; then
     < brew.txt xargs brew install
   fi
 
-  # Install vim-plug and all plugins
-  if [ ! -f ~/.vim/autoload/plug.vim ]; then
-    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    vim -c PlugInstall -c qa &> /dev/null
-  fi
-
   # Install universal ctags
   if [ ! -d "/usr/local/Cellar/universal-ctags" ]; then
     brew reinstall --HEAD universal-ctags/universal-ctags/universal-ctags
   fi
 
-  # Install Tmux Plugin Manager
-  if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
-    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-  fi
-
-  # Install global NPM cli
-  if [ -d "/usr/local/Cellar/node" ]; then
-    echo -e "Installing npm global packages. This could take a while..."
-    < npm_globals.txt xargs npm install -g
-  fi
 fi
 
 

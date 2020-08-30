@@ -1,6 +1,9 @@
 [user]
-  name = Brian Zhang
+  name = BZ
   email = brianbzhang@gmail.com
+# [user]
+#   name = Zoe
+#   email = surui2890@gmail.com
 [github]
   user = atav32
 [hub]
@@ -50,7 +53,7 @@
   old = red reverse white
 [core]
   editor = vim
-  excludesfile = ~/.gitignore_global
+  excludesfile = /Users/brian/.gitignore_global
 [diff]
   mnemonicprefix = true
   renames = copies
@@ -72,6 +75,10 @@
 [mergetool "vscode"]
   cmd = code --wait $MERGED
   prompt = false
+[difftool "sourcetree"]
+  cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\"
+[mergetool "sourcetree"]
+  cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 [push]
   default = current
 [rerere]
