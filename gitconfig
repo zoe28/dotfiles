@@ -18,8 +18,8 @@
   di = diff
   edit-unmerged = "!$EDITOR -O $(git diff --name-only --diff-filter=U --relative)"
   fin = finish
-  glog = log --graph
   last = diff-tree --no-commit-id --name-status -r HEAD~1..HEAD
+  lg = log --graph
   master = checkout master
   o = log --graph origin..HEAD
   out = log --graph origin..HEAD

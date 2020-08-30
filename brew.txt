@@ -15,6 +15,7 @@ node
 nodenv
 nvm
 postgresql
+ranger
 readline
 reattach-to-user-namespace
 ripgrep

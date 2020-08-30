@@ -6,13 +6,14 @@ alias gaa="git add ."
 alias gam="git commit --amend"
 alias gau="git add $(git diff --name-only --diff-filter=U --relative)"
 alias gbc="echo Total branches: `git branch | wc -l`"
-alias gbu='git branch --set-upstream-to=origin/"$(git rev-parse --abbrev-ref HEAD)" "$(git rev-parse --abbrev-ref HEAD)"'
+alias gbu='git branch -u origin/"$(git rev-parse --abbrev-ref HEAD)" "$(git rev-parse --abbrev-ref HEAD)"'
 alias gd="clear ; git diff"
 alias gds="git diff --staged"
 alias gdw="clear ; git diff --color-words"
 alias gf="git fetch"
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 alias gld="git log master.. --oneline"
+alias glt="git log --no-walk --tags --pretty='%h %d %s' --decorate=full"
 alias gm="git mergetool"
 alias gmm="git merge master"
 alias go="git checkout"
@@ -39,11 +40,11 @@ eval "$(hub alias -s)"
 
 # fetch origin branch
 fo() {
-  git fetch origin "+$1:$1"
+  git fetch origin
+  git fetch origin "+$1:origin/$1"
   git checkout "$1"
-  git fetch
   git pull
-  git branch --set-upstream-to=origin/"$1" "$1"
+  git branch -u origin/"$1" "$1"
 }
 
 
