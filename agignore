@@ -1,9 +1,15 @@
+*.*.js.map
+*.bundle.js
+*.css.map
+*.js.map
+*.json
+*.min.*
+*.min.js
 *.pyc
 *.sql
-*.json
 *.svg
-*.min.*
-*.css.map
+main.*.js
 
-node_modules/
+build/
 dist/
+node_modules/

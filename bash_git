@@ -1,41 +1,52 @@
 # Git aliases
 # --------------------------------------------------------------------
-alias cm='ag "<<<<<<<"'
+alias cm="rg '>>>>>>> '"
 alias ga="git add -p"
+alias gaa="git add ."
+alias gam="git commit --amend"
+alias gau="git add $(git diff --name-only --diff-filter=U --relative)"
 alias gbc="echo Total branches: `git branch | wc -l`"
+alias gbu='git branch -u origin/"$(git rev-parse --abbrev-ref HEAD)" "$(git rev-parse --abbrev-ref HEAD)"'
 alias gd="clear ; git diff"
 alias gds="git diff --staged"
+alias gdw="clear ; git diff --color-words"
 alias gf="git fetch"
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 alias gld="git log master.. --oneline"
+alias glt="git log --no-walk --tags --pretty='%h %d %s' --decorate=full"
 alias gm="git mergetool"
 alias gmm="git merge master"
 alias go="git checkout"
-alias gom="git push && git checkout master && git fetch && git pull"
+alias gom="git checkout master && git fetch && git pull"
 alias gpl="git pull"
 alias gps="git push"
 alias gs="git status -sb"
 alias gso="git diff --name-status origin/master"
+alias gsu="git diff --name-only --diff-filter=U --relative"
 alias gv="git vimdiff"
-alias reset='git stash'
+alias reset="git stash"
 alias stash="git add . ; git stash"
-alias throwaway='git stash'
-alias vrm='vim README.md'
+alias throwaway="git stash"
+alias vrm="vim README.md"
 
+# Wrap git automatically by adding the following to ~/.bash_profile:
+eval "$(hub alias -s)"
 
-# Git commit indicator
-parse_git_dirty ()
-{
-  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]] && echo "*"
-}
-parse_git_branch ()
-{
-  git branch 2> /dev/null | grep '*' | sed "s/*\ \(.*\)/$(parse_git_dirty)\1/"
-}
 
 
 # Git functions
 # --------------------------------------------------------------------
+
+
+# fetch origin branch
+fo() {
+  git fetch origin
+  git fetch origin "+$1:origin/$1"
+  git checkout "$1"
+  git pull
+  git branch -u origin/"$1" "$1"
+}
+
 
 # fshow - git commit browser
 fshow() {
@@ -64,11 +75,9 @@ ftags() {
 }
 
 
-
 gb() {
   git checkout $(git branch | fzf-tmux -d 15)
 }
-
 
 
 # double-check that you really want to commit to master
@@ -89,7 +98,7 @@ gc() {
 
 # remove old branches that have already been merged into master
 gclean() {
-  DATE=`date -v-1m +%m-%d-%Y` # default date is 1 month ago
+  DATE=`date -d '30 days ago' +%m-%d-%Y` # default date is 1 month ago
   DRY_RUN=""
   CURRENT_BRANCH=`git symbolic-ref --short HEAD`
   BRANCHES=0
@@ -151,6 +160,13 @@ gob() {
 }
 
 
+# pull master and merge into current branch
+gomm() {
+  git fetch
+  got merge origin/master
+}
+
+
 # show details of last commit
 gq() {
   git show :/$1
@@ -159,7 +175,7 @@ gq() {
 
 # check for merge conflicts before continuing
 grc() {
-  CONFLICT=`ag "<<<<<<<"`
+  CONFLICT=`rg ">>>>>>> "`
   if [ -z "$CONFLICT" ] ; then
     git add . ; git rebase --continue
   else
@@ -170,6 +186,17 @@ grc() {
       git add . ; git rebase --continue
     fi
   fi
+}
+
+
+# open a PR
+pr() {
+  BRANCH="$(git symbolic-ref HEAD)";
+  BRANCH="${BRANCH#refs/heads/}";
+  git push -u origin "$BRANCH";
+  URL="$(git remote get-url origin)";
+  HTTP_URL=${URL/:/\/}
+  open "https://$HTTP_URL/compare/$BRANCH?expand=1"
 }
 
 

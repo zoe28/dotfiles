@@ -1,21 +1,26 @@
 # Bash
 # --------------------------------------------------------------------
-alias cp='cp -v'
-alias df='df -kTh'
+alias agl="ag -l"
+alias cp="cp -v"
+alias df="df -kTh"
 alias du="du -hs | sort -h"
-alias f='open -a Finder ./'
-alias grep='grep --color=auto'
-alias killall='pkill -u $USER'
-alias ll='ls -lsahF --color=auto' #long list
-alias lr='ls -lR'                 #recursive
-alias ls='ls -F --color=auto'     #colors
-alias mkdir="mkdir -p"
-alias mkdir='mkdir -v'
-alias o='open'
-alias path='echo -e ${PATH//:/\\n}'
+alias f="open -a Finder ./"
+alias grep="grep --color=auto"
+alias hosts="sudo vim /etc/hosts"
+alias killall="pkill -u $USER"
+alias ll="ls -lapshF --color=auto" #long list
+alias lr="ls -lpR --color=auto"    #recursive
+alias ls="ls -pF --color=auto"     #colors
+alias lt="ls -lat --color=auto"     #sort time
+alias mkdir="mkdir -pv"
+alias o="open"
+alias path="echo -e ${PATH//:/\\n}"
 alias ps="ps aux"
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
-alias tree='tree -Csuh' #alternative to recursive ls
+alias rgl="rg -l --colors 'path:fg:green' --colors 'path:style:bold'"
+alias rgi="rg --no-ignore --colors 'path:fg:green' --colors 'path:style:bold'"
+alias tree="tree -Csuh" #alternative to recursive ls
+
 
 ## unzip everything
 extract () {
@@ -39,6 +44,7 @@ extract () {
  fi
 }
 
+
 ## display files in scrollable columns
 lsm() {
   # 34 for 2 columns
@@ -46,10 +52,12 @@ lsm() {
   ls -Fc | perl -lne 's/(.{34}).*/$1... /s ; print' | column -x | more
 }
 
+
 ## mkdir and then enter folder
 md() {
   mkdir -p $1 && cd $1
 }
+
 
 ## git mv when in repo, \mv elsewhere
 mv() {
@@ -60,9 +68,11 @@ mv() {
   fi
 }
 
+
 ## source config files
 re () {
   source ~/.bashrc
+  source ~/.profile
 
   if [ -f ~/.alias ]; then
     source ~/.alias
@@ -70,6 +80,7 @@ re () {
 
   echo "sourced .rc files"
 }
+
 
 ## git rm when in repo, \rm elsewhere
 # also tar a back-up and put it in /tmp
@@ -82,7 +93,7 @@ rm() {
       BACKUP_FILE_NAME="${1%/}.tar.bz2"           # create back-up file-name (breaks for dirs)
       if [ -f $BACKUP_FILE_NAME ]; then           # if the file exists
         tar -jcf $BACKUP_FILE_NAME $1             # tar
-        mv -f $BACKUP_FILE_NAME /tmp > /dev/null  # move tar to /tmp (and shut up)
+        mv -f $BACKUP_FILE_NAME /tmp > /dev/null  # silently move tar to /tmp
       fi
     fi
     shift                                         # next argument
@@ -97,26 +108,29 @@ rm() {
 
 
 
-# Cocos2d-x
-# --------------------------------------------------------------------
-alias cocos="/Users/brian/Armory/cocos2d-x-3.13.1/tools/cocos2d-console/bin/cocos.py"
-
-
-
 # config files
 # --------------------------------------------------------------------
+alias abbrc='vim ~/.abbrev.vim'
 alias agrc='vim ~/.agignore'
 alias aliasrc='vim ~/.alias'
 alias bashrc='vim ~/.bashrc'
 alias eslintrc='vim ~/.eslintrc'
 alias gitrc='vim ~/.gitconfig'
 alias inputrc='vim ~/.inputrc'
-alias screenrc='vim ~/.screenrc'
+alias maprc='vim ~/.map.vim'
+alias plugrc='vim ~/.plugs.vim'
+alias rgrc='vim ~/.ripgreprc'
 alias sshrc='vim ~/.ssh/config'
 alias stylelintrc='vim ~/.stylelintrc'
 alias tmuxrc='vim ~/.tmux.conf'
-alias plugsrc='vim ~/.plugs.vim'
 alias vimrc='vim ~/.vimrc'
+
+
+
+# env
+# --------------------------------------------------------------------
+alias ee="set -a; source .env; set +a"
+alias ue="unset $(grep -v '^#' .env | sed -E 's/(.*)=.*/\1/' | xargs)"
 
 
 
@@ -126,9 +140,9 @@ alias vimrc='vim ~/.vimrc'
 # fzf file helper
 fff() {
   if [ $# -eq 0 ] ; then
-    FILENAME=$(fzf -1 -m -i)
+    FILENAME=$(fzf -1 -m -i --preview 'cat {}')
   else
-    FILENAME=$(fzf -1 -m -i -q $@)
+    FILENAME=$(fzf -1 -m -i --preview 'cat {}' -q $@)
   fi
   if [ -n "$FILENAME" ] ; then
     echo $FILENAME
@@ -138,7 +152,7 @@ fff() {
 # open all files containing query
 vg() {
   if [ ! $# -eq 0 ] ; then
-    vim -o $(ag -l "$@")
+    vim -o $(rg -l "$@" | fzf -1 -m -i --preview "cat {} | rg -C 1 $@")
   fi
 }
 
@@ -147,6 +161,13 @@ vs() {
   FILE=$(fff "$@")
   if [ -n "$FILE" ] ; then
     vim -o $FILE
+  fi
+}
+
+vv() {
+  FILE=$(fff "$@")
+  if [ -n "$FILE" ] ; then
+    vim -O $FILE
   fi
 }
 
@@ -256,6 +277,7 @@ alias grp='grep'
 
 # Vim
 # --------------------------------------------------------------------
+alias lv='vim $(ls -tp | grep -v /$ | head -1)'
 alias rmswp='rm -rf ~/.vim/swap/*.swp' # delete all .swp files
 alias v="vim"
 alias va="vim -o" # multiple files in splits

@@ -51,7 +51,6 @@ export fzf='
    find * -name ".*" -prune -o -type f -print -o -type l -print) 2> /dev/null'
 
 ## fzf
-#export FZF_DEFAULT_COMMAND='ag -l -g ""'
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
 # fzf
@@ -71,14 +70,6 @@ fi
 # --------------------------------------------------------------------
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-
-
-# Node
-# --------------------------------------------------------------------
-# Node Virtual Machine
-export NVM_DIR="/Users/zhangb/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 
 
@@ -102,8 +93,8 @@ fi
 
 # Ruby
 # --------------------------------------------------------------------
-#eval "$(rbenv init -)"
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$HOME/gems/bin:$PATH
+eval "$(rbenv init -)"
 
 
 
@@ -143,9 +134,6 @@ export PIP_RESPECT_VIRTUALENV=true
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
-
-
-
 
 
 

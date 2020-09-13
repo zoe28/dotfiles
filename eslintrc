@@ -1,12 +1,18 @@
 {
   "extends": [
-    "eslint:recommended"
+    "eslint:recommended",
+    "plugin:prettier/recommended",
+    "prettier/flowtype",
+    "prettier/react",
+    "prettier/standard"
   ],
   "plugins": [
     "import",
-  "json",
-  "node",
-  "react"
+    "jest",
+    "json",
+    "node",
+    "prettier",
+    "react"
   ],
   "env": {
     "browser": true,
@@ -15,8 +21,9 @@
     "jquery": true,
     "node": true
   },
+  "parser": "babel-eslint",
   "parserOptions": {
-    "ecmaVersion": 2017,
+    "ecmaVersion": 2018,
     "sourceType": "module",
     "ecmaFeatures": {
       "experimentalObjectRestSpread": true,
@@ -24,9 +31,15 @@
     }
   },
   "rules": {
-    "no-console": "off"
+    "prettier/prettier": "error"
   },
   "globals": {
-    "chrome": true
+    "chrome": true,
+    "bytegain": true,
+    "fbq": true,
+    "ga": true,
+    "Intercom": true,
+    "jest": true,
+    "test": true
   }
 }

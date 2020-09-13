@@ -1,3 +1,12 @@
+" Syntax
+autocmd BufEnter * :syntax sync fromstart
+filetype on
+filetype plugin indent on
+
+hi NonText cterm=NONE ctermfg=NONE
+
+
+
 " Autoequalize splits
 autocmd VimResized * wincmd =
 
@@ -31,8 +40,8 @@ highlight SpellBad term=reverse ctermfg=252 ctermbg=52 guifg=#D9D9D9 guibg=#730B
 
 
 
-" Large file - file is larger than 10MB
-let g:LargeFile = 1024 * 1024 * 10
+" Large file - file is larger than 20MB
+let g:LargeFile = 1024 * 1024 * 20
 augroup LargeFile
   autocmd BufReadPre * let f=getfsize(expand("<afile>")) | if f > g:LargeFile || f == -2 | call LargeFile() | endif
 augroup END
@@ -50,3 +59,22 @@ function LargeFile()
   autocmd VimEnter *  echo "The file is larger than " . (g:LargeFile / 1024 / 1024) . " MB, so some options are changed (see .vimrc for details)."
 endfunction
 
+
+
+" crontab
+autocmd filetype crontab setlocal nobackup nowritebackup
+
+
+
+" LaTeX
+au FileType tex setlocal nocursorline
+au FileType tex set nofoldenable
+au FileType tex :NoMatchParen
+au FileType tex :syn clear texAccent
+au FileType tex :syn clear texLength
+au FileType tex :syn clear texOnlyMath
+au FileType tex :syn clear texOption
+au FileType tex :syn clear texSectionZone
+au FileType tex :syn clear texStatement
+au FileType tex :syn clear texString
+au FileType tex :syn clear texSubSectionZone

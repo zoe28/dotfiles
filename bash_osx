@@ -2,13 +2,15 @@
 # ------------------------------------------------------------------------------
 alias du="du -hs | gsort -h" # file sizes
 alias grep='grep -G'
+alias down='cd ~/Downloads'
+alias docs='cd ~/Documents'
 
 
 
 # Armory
 # ------------------------------------------------------------------------------
 # useful executables
-export PATH="/Users/brian/armory:$PATH"
+export PATH="$HOME/armory:$PATH"
 
 
 
